@@ -1,9 +1,8 @@
 #Working on Real Project With Python
 #The Cars Dataset
-cars = pd.read_csv(r"C:\Users\user\Projects\Data-Analysis-Projects\Cars Data Analysis\CarsDataset.csv")
-cars
-?cars
-#How to Analyze DataFrames
+import pandas as pd
+cars = pd.read_csv(r"C:\Users\me\Projects\Cars-Model-Analysis\CarsDataset.csv")
+cars #How to Analyze DataFrames
 cars.head() # for the head of the data
 cars.shape # for the total number of Rows and Columns
 cars.index # for the Range of the Data
@@ -34,4 +33,3 @@ cars[~(cars['Weight'] > 4000)]
 # Increase all the values of 'MPG_City' column by 3.
 cars['MPG_City'] =  cars['MPG_City'].apply(lambda x:x+3)
 cars
-------
