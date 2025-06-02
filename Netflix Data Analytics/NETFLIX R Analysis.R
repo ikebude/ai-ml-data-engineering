@@ -1,6 +1,7 @@
 #Working on Real Project With R
 #The NetFlix Dataset
-Netflix <- read_csv("C:/Users/user/Projects/Data-Analysis-Projects/Netflix Data Analytics/Netflix-Dataset.csv")
+library(tidyverse)
+Netflix <- read_csv("C:/Users/me/Projects/Global_Data_Analytics_Projects/Netflix Data Analytics/Netflix-Dataset.csv")
 Netflix
 #How to Analyze DataFrames
 head(Netflix) # for the head of the data
@@ -75,3 +76,11 @@ Netflix |> arrange(desc(Year))
 Netflix |> filter((Category =='Movie') & (Type =='Dramas') | (Category =='TV Show') & (Type == "Kids' TV"))
 #We Have come to the End.
 ################################################################################
+
+
+
+
+
+
+
+
