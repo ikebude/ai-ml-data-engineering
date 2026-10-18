@@ -1,0 +1,226 @@
+{
+  "dataset": {
+    "total_companies": 502,
+    "sectors_count": 11,
+    "total_marketcap_trillions_usd": 55.58,
+    "top_10_companies_mcap_share": 0.4012,
+    "outliers_flagged_z_gt_3_5": 150
+  },
+  "pca_and_clustering": {
+    "optimal_k": 3,
+    "silhouette_score": 0.37,
+    "silhouette_by_k": {
+      "3": 0.37,
+      "4": 0.3235,
+      "5": 0.2809,
+      "6": 0.2723
+    },
+    "pca_explained_variance_ratio": [
+      0.3582,
+      0.1618,
+      0.1573
+    ],
+    "pca_2d_cumulative_variance": 0.52,
+    "pca_3d_cumulative_variance": 0.6773
+  },
+  "cluster_profiles": [
+    {
+      "cluster": 0,
+      "count": 70,
+      "median_mcap_bn": 131.89,
+      "median_price_to_ebitda": 43.15,
+      "median_rev_growth": 0.151
+    },
+    {
+      "cluster": 1,
+      "count": 371,
+      "median_mcap_bn": 36.9,
+      "median_price_to_ebitda": 12.39,
+      "median_rev_growth": 0.045
+    },
+    {
+      "cluster": 2,
+      "count": 61,
+      "median_mcap_bn": 16.09,
+      "median_price_to_ebitda": 5.55,
+      "median_rev_growth": 0.013
+    }
+  ],
+  "classification_benchmark": {
+    "target": "mcap_tier (3-class stratified 5-fold CV from operational fundamentals)",
+    "features_used": [
+      "Ebitda",
+      "Revenuegrowth",
+      "Fulltimeemployees",
+      "Currentprice",
+      "price_to_ebitda"
+    ],
+    "logistic_regression_baseline": {
+      "accuracy": 0.6554,
+      "macro_f1": 0.6505,
+      "macro_f1_ci_95": [
+        0.6074,
+        0.6926
+      ]
+    },
+    "random_forest_classifier": {
+      "accuracy": 0.8745,
+      "macro_f1": 0.8749,
+      "macro_f1_ci_95": [
+        0.8492,
+        0.9038
+      ]
+    }
+  },
+  "top_10_outliers": [
+    {
+      "Symbol": "NVR",
+      "Shortname": "NVR, Inc.",
+      "Sector": "Consumer Cyclical",
+      "robust_z_max": 81.35,
+      "marketcap_bn": 25.36
+    },
+    {
+      "Symbol": "BKNG",
+      "Shortname": "Booking Holdings Inc. Common St",
+      "Sector": "Consumer Cyclical",
+      "robust_z_max": 49.16,
+      "marketcap_bn": 167.09
+    },
+    {
+      "Symbol": "AZO",
+      "Shortname": "AutoZone, Inc.",
+      "Sector": "Consumer Cyclical",
+      "robust_z_max": 31.26,
+      "marketcap_bn": 54.69
+    },
+    {
+      "Symbol": "FICO",
+      "Shortname": "Fair Isaac Corporation",
+      "Sector": "Technology",
+      "robust_z_max": 19.67,
+      "marketcap_bn": 50.91
+    },
+    {
+      "Symbol": "SW",
+      "Shortname": "Smurfit WestRock plc",
+      "Sector": "Consumer Cyclical",
+      "robust_z_max": 19.57,
+      "marketcap_bn": 27.71
+    },
+    {
+      "Symbol": "SMCI",
+      "Shortname": "Super Micro Computer, Inc.",
+      "Sector": "Technology",
+      "robust_z_max": 17.07,
+      "marketcap_bn": 18.5
+    },
+    {
+      "Symbol": "PLTR",
+      "Shortname": "Palantir Technologies Inc.",
+      "Sector": "Technology",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 183.49
+    },
+    {
+      "Symbol": "INCY",
+      "Shortname": "Incyte Corporation",
+      "Sector": "Healthcare",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 13.26
+    },
+    {
+      "Symbol": "CRWD",
+      "Shortname": "CrowdStrike Holdings, Inc.",
+      "Sector": "Technology",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 89.24
+    },
+    {
+      "Symbol": "TTWO",
+      "Shortname": "Take-Two Interactive Software, ",
+      "Sector": "Communication Services",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 31.96
+    }
+  ],
+  "sector_concentration": [
+    {
+      "Sector": "Technology",
+      "companies": 82,
+      "marketcap_tn": 17.287,
+      "weight_share": 0.311,
+      "median_rev_growth": 0.071
+    },
+    {
+      "Sector": "Communication Services",
+      "companies": 22,
+      "marketcap_tn": 7.804,
+      "weight_share": 0.1404,
+      "median_rev_growth": 0.041
+    },
+    {
+      "Sector": "Financial Services",
+      "companies": 67,
+      "marketcap_tn": 7.108,
+      "weight_share": 0.1279,
+      "median_rev_growth": 0.116
+    },
+    {
+      "Sector": "Consumer Cyclical",
+      "companies": 55,
+      "marketcap_tn": 6.372,
+      "weight_share": 0.1146,
+      "median_rev_growth": 0.041
+    },
+    {
+      "Sector": "Healthcare",
+      "companies": 62,
+      "marketcap_tn": 5.19,
+      "weight_share": 0.0934,
+      "median_rev_growth": 0.06
+    },
+    {
+      "Sector": "Industrials",
+      "companies": 70,
+      "marketcap_tn": 3.765,
+      "weight_share": 0.0677,
+      "median_rev_growth": 0.031
+    },
+    {
+      "Sector": "Consumer Defensive",
+      "companies": 37,
+      "marketcap_tn": 3.254,
+      "weight_share": 0.0585,
+      "median_rev_growth": -0.003
+    },
+    {
+      "Sector": "Energy",
+      "companies": 22,
+      "marketcap_tn": 1.599,
+      "weight_share": 0.0288,
+      "median_rev_growth": -0.0135
+    },
+    {
+      "Sector": "Utilities",
+      "companies": 32,
+      "marketcap_tn": 1.257,
+      "weight_share": 0.0226,
+      "median_rev_growth": 0.042
+    },
+    {
+      "Sector": "Real Estate",
+      "companies": 31,
+      "marketcap_tn": 1.081,
+      "weight_share": 0.0195,
+      "median_rev_growth": 0.072
+    },
+    {
+      "Sector": "Basic Materials",
+      "companies": 22,
+      "marketcap_tn": 0.865,
+      "weight_share": 0.0156,
+      "median_rev_growth": 0.003
+    }
+  ]
+}

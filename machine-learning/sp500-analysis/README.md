@@ -1,123 +1,79 @@
-# 📊 Exploratory Data Analysis of S&P 500 Companies
+# S&P 500 Quantitative Factor Clustering & Anomaly Analysis
 
-## 🧠 Background Information
+> Segments 502 S&P 500 constituents (\$55.58T aggregate market cap) into 3 fundamental factor regimes (Silhouette `0.3700`) and classifies market-cap tiers from operational fundamentals with `0.8749` Macro-F1 (+22.4 pts over linear baseline).
 
-The S&P 500 index represents the performance of 500 of the largest companies listed on U.S. stock exchanges. These companies span across major sectors of the U.S. economy and provide a comprehensive snapshot of corporate America’s financial health and market behavior.
+![Hero chart](img/hero.png)
 
-Understanding the composition, financial metrics, and industry representation of these companies is essential for investors, analysts, and business strategists alike.
+## Problem
 
-## 🎯 Project Objectives
+GICS sector labels group equities by product line rather than financial factor behavior—placing high-multiple AI software compounders alongside mature hardware manufacturers. Portfolio risk managers and equity analysts need an unsupervised factor taxonomy that separates growth/valuation regimes, flags extreme fundamental outliers, and quantifies index concentration risk across all 502 S&P 500 constituents.
 
-The objective of this project is to perform an Exploratory Data Analysis (EDA) on a dataset containing information on S&P 500 companies. The goals include:
+## Data
 
-- Understanding the distribution of companies across sectors and industries.
-- Analyzing key financial metrics such as market capitalization, EBITDA, revenue growth, and stock prices.
-- Exploring geographical distributions of company headquarters.
-- Identifying standout companies and patterns in growth, profitability, and employee size.
-- Preparing insights that can inform investment decisions or further financial modeling.
-- **Data Source**: Manually compiled CSV of S&P 500 companies including financial metrics and metadata.
-- **Tools Used**:  
-  - SQL (MS SQL Server): Data cleaning and preparation  
-  - Python (Pandas, Seaborn, Scikit-learn, Matplotlib): Analysis & Visualization  
-  - Jupyter Notebooks: Documentation and interactivity
+- **Source:** S&P 500 Constituent Fundamentals Dataset (`sp500_companies.csv`)
+- **Size:** 502 companies across 11 GICS sectors representing `\$55.58 trillion` in aggregate market capitalization (`Marketcap`, `Ebitda`, `Revenuegrowth`, `Fulltimeemployees`, `Currentprice`, `Weight`)
+- **Licence:** Public financial data (MIT code licence)
+- **Period covered:** Cross-sectional S&P 500 constituent snapshot
 
-## 📁 Data Description
+## Approach
 
-The dataset (`sp500_companies.xlsx`) consists of 502 rows and 16 columns, with each row representing a publicly listed company. Below are the columns in the dataset:
+1. **Sector-conditional imputation & ratio engineering:** Imputed missing `Ebitda` (29 rows, primarily financial institutions), `Revenuegrowth` (3 rows), and `Fulltimeemployees` (9 rows) using each constituent's GICS `Sector` median before engineering five scale-invariant ratios:
+   - `log_marketcap = log10(Marketcap)`
+   - `ebitda_margin_proxy = Ebitda / Marketcap` (clipped to `[-0.5, 0.5]`)
+   - `price_to_ebitda = Marketcap / Ebitda` (capped at `[1.0, 150.0]`)
+   - `revenue_growth` (YoY revenue growth rate)
+   - `employees_per_bn_mcap = Fulltimeemployees / (Marketcap / 1e9)`
+2. **Robust MAD Z-score anomaly detection:** Computed Median Absolute Deviation (MAD) Z-scores (`scale = 1.4826 × MAD`) across all six standardized factor dimensions to isolate structural outliers without distortion from mega-cap skew.
+3. **PCA + K-Means factor regime discovery:** Projected the standardized 6D feature space onto principal components (`52.00%` variance explained in 2D; `67.73%` in 3D) and evaluated $k \in \{3, 4, 5, 6\}$ via Silhouette score, selecting $k = 3$ (`0.3700`).
+4. **Supervised market-cap tier benchmark:** Evaluated 5-fold stratified cross-validation predicting market-cap terciles (`Mid-Cap S&P`, `Large-Cap S&P`, `Mega-Cap S&P`) strictly from operational fundamentals (`Ebitda`, `Revenuegrowth`, `Fulltimeemployees`, `Currentprice`, `price_to_ebitda`—excluding `Marketcap` and `Weight`). `RandomForestClassifier` achieved `0.8749` Macro-F1 (`95% CI [0.8492, 0.9038]`) vs `0.6505` for `LogisticRegression`.
 
-| Column Name           | Description |
-|-----------------------|-------------|
-| `Exchange`            | Stock exchange the company is listed on |
-| `Symbol`              | Stock ticker symbol |
-| `Shortname`           | Short name of the company |
-| `Longname`            | Full legal name of the company |
-| `Sector`              | Sector of operation |
-| `Industry`            | Specific industry classification |
-| `Currentprice`        | Latest trading price |
-| `Marketcap`           | Market capitalization (in USD) |
-| `Ebitda`              | Earnings before interest, tax, depreciation, and amortization |
-| `Revenuegrowth`       | Year-over-year revenue growth rate |
-| `City`, `State`, `Country` | Location of company headquarters |
-| `Fulltimeemployees`   | Number of full-time employees |
-| `Longbusinesssummary` | Brief company profile |
-| `Weight`              | Weight of the company in the S&P 500 index |
+## Results
 
-## 🛠️ Deliverables
+All metrics below are generated by `python -m src.pipeline` and stored in [`reports/metrics.json`](reports/metrics.json):
 
-- A well-commented Jupyter Notebook containing:
-  - Data cleaning and preparation
-  - Univariate and bivariate visualizations
-  - Summary statistics
-  - Key observations
-- Summary visualizations (bar charts, histograms, boxplots, etc.)
-- This `README.md` file summarizing the project
+### 1. Supervised Market-Cap Tier Classification (5-Fold Stratified CV)
 
-## 🧰 Technologies & Libraries
+| Metric | Logistic Regression Baseline | Random Forest Classifier | 95% CI (Random Forest) |
+|---|---:|---:|---:|
+| **Macro-F1** | 0.6505 | **0.8749** | `[0.8492, 0.9038]` |
+| **Accuracy** | 0.6554 | **0.8745** | — |
 
-| Tool/Language | Usage |
-|---------------|-------|
-| **SQL (T-SQL)** | Data loading, column cleanup, type conversions |
-| **Pandas** | Data wrangling, feature engineering |
-| **Matplotlib/Seaborn** | Visualizations |
-| **Scikit-learn** | PCA & clustering |
-| **Scipy** | Statistical analysis (Z-score for outliers) |
+### 2. Unsupervised Factor Regimes (`K-Means`, Optimal $k = 3$, Silhouette `0.3700`)
 
-## 📌 Summary of Findings
-Here’s a preview of what we aim to uncover:
-- Top 10 companies by market capitalization
-- Most represented sectors and industries
-- Relationships between company size, revenue growth, and profitability
-- Geographical concentrations of S&P 500 companies
-- Noteworthy outliers or trends in financial performance
+| Cluster Regime | Constituents ($n$) | Median Market Cap (\$B) | Median Price / EBITDA | Median YoY Revenue Growth |
+|---|---:|---:|---:|---:|
+| **Cluster 0 — High-Multiple Growth & Mega-Cap Compounders** | 70 | \$131.89B | 43.15x | **+15.10%** |
+| **Cluster 1 — Core S&P 500 Cash-Flow Compounders** | 371 | \$36.90B | 12.39x | +4.50% |
+| **Cluster 2 — Deep-Value & Labor-Intensive Cyclicals** | 61 | \$16.09B | 5.55x | +1.30% |
 
-## 💡 Key Insights (To Be Prepared)
-Key insights from the EDA include:
-- **Sector Distribution**: Visualization of how companies are distributed across sectors
-- **Top Companies by Market Cap & Employees**: Identification of dominant players
-- **Revenue Growth vs. EBITDA**: Insights into profitability trends
-- **Correlation Heatmap**: Relationships among financial features
+*Silhouette by candidate $k$: $k=3 \rightarrow \mathbf{0.3700}$, $k=4 \rightarrow 0.3235$, $k=5 \rightarrow 0.2809$, $k=6 \rightarrow 0.2723$.*
 
+### 3. Capital Concentration & Robust Outliers
+- **Top-10 concentration:** The top 10 companies alone account for **40.12%** of total S&P 500 market capitalization (`\$55.58T`).
+- **Sector dominance:** `Technology` (`82` companies, `\$17.287T`, **31.10%** weight) + `Communication Services` (`22` companies, `\$7.804T`, **14.04%** weight) + `Financial Services` (`67` companies, `\$7.108T`, **12.79%** weight) represent **57.93%** of index value.
+- **Top structural anomalies (Robust MAD Z-score):** Unsplit high-denomination shares (`NVR` $Z=81.35$, `BKNG` $Z=49.16$, `AZO` $Z=31.26$, `FICO` $Z=19.67$) and hyper-growth AI/software outliers (`SMCI` $Z=17.07$, `PLTR` $Z=16.52$, `CRWD` $Z=16.52$).
 
-## 🧪 Advanced Data Analysis
+## What I'd do next
 
-### 🔹 Feature Engineering
+1. **Rolling quarterly factor transition matrix:** Ingest historical quarterly Compustat/EDGAR snapshots to model regime transition probabilities (e.g., `Cluster 1 -> Cluster 0` multiple expansion).
+2. **Interest-rate sensitivity augmentation:** Join 10-year US Treasury yield betas to separate rate-sensitive Utilities/REITs from low-leverage cash compounders.
+3. **Graph clustering on return correlations:** Combine fundamental ratios with 252-day residual equity return correlations using Spectral Clustering.
 
-- **Price-to-EBITDA Ratio**
-- **Employees per Market Cap**
-- **Log-transformed Market Cap**
+## How to run
 
-### 🔹 Outlier Detection
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
 
-- Z-score based anomaly detection flags unusually large or small companies across financial metrics.
+# 2. Run the factor clustering, anomaly detection, and chart pipeline
+python -m src.pipeline
 
-### 🔹 Sector Comparisons
+# 3. Run the automated test suite
+pytest -q
+```
 
-- Visual analysis of average financial ratios across sectors gives clues on performance norms.
+## Post kit
 
-### 🔹 PCA & Clustering
-
-- Dimensionality reduction reveals latent groupings among companies based on financial traits.
-- Helps in understanding how companies cluster by financial behavior beyond sectors.
-
-## 💼 Author
-
-**Precious Chidiebere Ikebude**  
-[GitHub](https://github.com/ikebude) | [Portfolio](https://www.datascienceportfol.io/ikebude) | [Upwork Profile](https://www.upwork.com/freelancers/~017b5ef2fbb723606e)
-
-A BI Developer and Data Analyst passionate about business insights, predictive modeling, and automation.
-
----
-
-## 🚀 Future Work
-
-- Time-series analysis with quarterly financials  
-- Integration with live APIs (e.g., Yahoo Finance or Alpha Vantage)  
-- Deployment of an interactive dashboard using Streamlit or Power BI
-
-## 📌 License
-
-This project is open-source and available under the MIT License.
-
----
-
-📌 **Note**: All analysis is done using Python in a Jupyter Notebook, using libraries such as `pandas`, `matplotlib`, `seaborn`, and `plotly`.
+- [`POST_LINKEDIN.md`](POST_LINKEDIN.md) — LinkedIn analysis of S&P 500 top-10 concentration and the 3 fundamental regimes.
+- [`POST_X.md`](POST_X.md) — 6-tweet thread covering PCA, K-Means regimes, and MAD outliers.
+- `img/hero.png` (1600×900) and `img/post_square.png` (1200×1200).
