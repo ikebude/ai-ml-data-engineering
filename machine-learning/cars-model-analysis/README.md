@@ -1,64 +1,66 @@
-# Cars Model Analysis
- ____
- ![](car_analysis.jpeg)
- 
-**Task Overview:** The purpose of this project is to analyze the available data that shows the model of cars, their make, what the engine is made up of, and other factors that governs the Car. the Data is of Different Cars and their specification
+# Automotive Hedonic Pricing & Powertrain Analysis
 
-The Data was made available by Wanda for this Project, It is saved in a csv file with the name "CarsDataset".
+> Predicts vehicle MSRP from physical specifications and regional origin without dealer-invoice leakage: $R^2 = 0.8659$, MAPE `12.28%`, and MAE `\$4,189.54` (13.2% lower error than log-linear Ridge baseline).
 
-## Project Objectives:
-This project will focus on analyzing Cars data without a specific date range. We are looking to understand;
- > The demographics of the cars model, How much KPG does most set of buyers purchase their cars, How long a model is well informed, How good are the cars, How much of sales have they been making, etc.
- 
-If there's any chance for further question, there will be space to answer them.
+![Hero chart](img/hero.png)
 
-## Data Column Details.
-****
-![](cars_data.png)
+## Problem
 
-Here are the names of the column with a brief info
+Automotive valuation and fleet procurement teams need to benchmark whether a vehicle's Manufacturer Suggested Retail Price (`MSRP`) reflects its underlying mechanical specifications (`Horsepower`, `EngineSize`, `Weight`, `MPG`, `DriveTrain`) or a regional brand premium (`Origin`). A common mistake on this dataset is leaving `Invoice` (dealer cost) in the predictor matrix—which leaks the target because `Invoice` is a fixed ~92% markdown of `MSRP`. This pipeline builds a leak-free hedonic pricing model and decomposes the European vs Asian/US brand premium.
 
-+ Make: This column contains the make of the cars (e.g Acura, Accord, Audi, etc.)
-+ Model: This is the model of the car based on the make of the car, often times different cars can have the same model.
-+ Type: This id the type of car the model falls under. for example, Sudan, SUV, Sports.
-+ Origin: This Shows the Continent that the Car make originated from.
-+ DriveTrain: This considers the wheels of the car. whether it is a foul wheel drive or just carry only the front.
-+ MSRP: This is known as the Manufacturer's Suggested Retail Price. Its is the price that a manufacturer recommends for stores to sell their product.
-+ Invoice: This should be the cost price of the Car make.
-+ EngineSize: This is the size of the engine, ranging from 1.3 to 8.3.
-+ Cylinders: This measures the cylinders of the car.
-+ Horsepower: This column shows the entire horse power of the car make. The least is seen as 73.
-+ MPG_City: This shows the miles per gallon of the car make when running on city roads.
-+ MPG_Highway: This shoes the miles per gallon of the car make when running on Highway roads.
-+ Weight: This shows the weight of the car in KG.
-+ Wheelbase:....
-+ Length: The length of the car in centimeters.
+## Data
 
-## Business Requirements/Task Overview:
-****
-![](data_structure.png)
+- **Source:** Multi-Manufacturer Vehicle Specifications & Pricing Dataset (`CarsDataset.csv`)
+- **Size:** 428 vehicles across 38 makes, 6 body types (`Sedan`, `SUV`, `Sports`, `Wagon`, `Truck`, `Hybrid`), and 3 regional origins (`Asia` 158, `USA` 147, `Europe` 123); 342 train / 86 origin-stratified test vehicles
+- **Licence:** Public educational dataset (MIT code licence)
+- **Period covered:** Cross-sectional multi-segment model year catalog (`mean MSRP \$32,774.86`, `median MSRP \$27,635.00`)
 
- *We would want to first analyze the data-frame to view some column aggregation, looking at the summary, count of null values, number of unique values in a column, etc.*
- #### After Satisfying the above, we can then head into solving the tasks below.
- 1. Find all Null Values in the dataset. If there is any null value in any column, then fill it with the mean of that column.
- 2. Check what are the different types of Make are there in our dataset. And, what is the count (occurrence) of each Make in the data?
- 3. Show all the records where Origin is Asia or Europe.
- 4. Remove all the records (rows) where Weight is above 4000.
- 5. Increase all the values of 'MPG_City' column by 3.
- 
- ## Deliverables:
-+ A  Python Script containing generated coding for showing insights on the Cars Dataset
-+ An interactive dashboard containing important KPI's and the rest of unanswered questions from the Cars dataset.
-+ An  R Script containing generated coding for showing insights on the Cars Dataset
-+ A report containing insights on Weather Dataset (e.g Unique Weather Numbers, Filtered Table, etc.)
+## Approach
 
-![](Rstudio.png)
+1. **Currency parsing & rotary-engine imputation:** Parsed `$` and `,` characters from `MSRP` and `Invoice`, stripped trailing whitespace across categorical strings, and imputed the 2 missing `Cylinders` records (Mazda RX-8 rotary engines) to `4.0` cylinders.
+2. **Domain feature engineering & strict leakage firewall:**
+   - `power_to_weight = (Horsepower / Weight) * 1000` (hp per 1,000 lbs)
+   - `mpg_combined = 0.55 * MPG_City + 0.45 * MPG_Highway` (EPA combined cycle formula)
+   - `dealer_margin_pct = ((MSRP - Invoice) / MSRP) * 100` (computed for descriptive segment auditing only; **strictly excluded** alongside `Invoice` from all model predictors).
+3. **Log-MSRP transformation & model comparison:** Because luxury and exotic trims create strong positive skewness in `MSRP`, both the `Ridge` baseline and `GradientBoostingRegressor` are trained in $\log(\text{MSRP})$ space inside a `ColumnTransformer` (`StandardScaler` + `OneHotEncoder`) and evaluated in raw USD ($\exp(\hat{y})$) on a stratified 80/20 split with 500 bootstrap iterations.
+4. **Why Gradient Boosting outperforms Log-Ridge:** `GradientBoostingRegressor` captures non-linear horsepower-to-weight thresholds in `Sports` and `Europe` luxury segments, lowering MAE from `\$4,826.78` to `\$4,189.54` (`-13.2%`) and MAPE from `14.32%` to `12.28%`.
 
-## Constraints:
-- The data cannot be shared with unauthorized personnel.
-- The data cannot be modified or altered in any way.
-- The project must comply with data privacy regulations.
-- The project must be completed within the allocated time and budget.
+## Results
 
-## Conclusion
-The data analytics project for Cars is an important initiative that will help the Project Manager to understand The most used cars and other info's as well. The external consultant will work closely with the Project team to ensure that the project is successful and delivers the expected results.
+All metrics are computed on the held-out 20% stratified test split (`n = 86` vehicles) and verified against [`reports/metrics.json`](reports/metrics.json):
+
+| Metric | Log-Ridge Baseline | Gradient Boosting Regressor | 95% CI (Gradient Boosting) |
+|---|---:|---:|---:|
+| **MAE (\$ USD)** | \$4,826.78 | **\$4,189.54** | `[$3,176.53, $5,305.41]` |
+| **RMSE (\$ USD)** | \$7,226.65 | **\$6,621.17** | `[$4,736.78, $8,302.67]` |
+| **MAPE (%)** | 14.32% | **12.28%** | `[9.86%, 14.81%]` |
+| **$R^2$** | 0.8403 | **0.8659** | `[0.7175, 0.9381]` |
+
+### Key Hedonic Pricing & Margin Findings
+1. **Top 3 MSRP predictors (Permutation $R^2$ drop):** `Horsepower` (`0.6949 ± 0.1191` $R^2$ drop) dominates valuation, followed by `Origin` (`0.1640 ± 0.0248`) and `Weight` (`0.1090 ± 0.0185`).
+2. **European brand premium:** European models command a median MSRP of **\$40,590** (`mean \$48,349.80`), which is **59.1% higher** than US models (`median \$25,520`) and **76.2% higher** than Asian models (`median \$23,032.50`), even after controlling for powertrain size.
+3. **Dealer gross margins by body type:** Across all 428 vehicles, average dealer gross margin between `Invoice` and `MSRP` is **8.06%**, peaking in `Truck` (**9.03%**) and `Sports` (**8.94%**, median MSRP `\$40,590`) and compressing in `Wagon` (**7.38%**) and `Hybrid` (**7.46%**, combined MPG `55.45`).
+
+## What I'd do next
+
+1. **Hierarchical mixed-effects brand intercept:** Add random intercepts for `Make` (`38` manufacturers) using empirical Bayes shrinkage so luxury marques (`Porsche`, `Mercedes-Benz`, `Lexus`) are separated from mass-market marques sharing the same `Origin`.
+2. **Residual under/over-valuation screener:** Rank vehicles by standardized residual $(\text{MSRP} - \widehat{\text{MSRP}}) / \widehat{\text{MSRP}}$ to identify best-value trims per horsepower and wheelbase class.
+
+## How to run
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run the hedonic pricing pipeline and generate charts
+python -m src.pipeline
+
+# 3. Run the automated leakage and metric test suite
+pytest -q
+```
+
+## Post kit
+
+- [`POST_LINKEDIN.md`](POST_LINKEDIN.md) — LinkedIn breakdown of hedonic vehicle valuation and dealer margin structure.
+- [`POST_X.md`](POST_X.md) — 6-tweet thread on log-space regression, leakage prevention, and permutation importance.
+- `img/hero.png` (1600×900) and `img/post_square.png` (1200×1200).

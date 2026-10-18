@@ -1,0 +1,196 @@
+{
+  "dataset": {
+    "total_vehicles": 428,
+    "missing_cylinders_imputed": 2,
+    "train_vehicles": 342,
+    "test_vehicles": 86,
+    "mean_msrp_usd": 32774.86,
+    "median_msrp_usd": 27635.0,
+    "mean_dealer_margin_pct": 8.06,
+    "mean_mpg_combined": 23.11
+  },
+  "features_used": [
+    "EngineSize",
+    "Cylinders",
+    "Horsepower",
+    "MPG_City",
+    "MPG_Highway",
+    "Weight",
+    "Wheelbase",
+    "Length",
+    "power_to_weight",
+    "mpg_combined",
+    "Type",
+    "Origin",
+    "DriveTrain"
+  ],
+  "models": {
+    "log_ridge_baseline": {
+      "point": {
+        "mae": 4826.7777,
+        "rmse": 7226.6463,
+        "mape": 0.1432,
+        "r2": 0.8403
+      },
+      "ci_95": {
+        "mae": [
+          3665.8565,
+          5988.4891
+        ],
+        "rmse": [
+          5201.5101,
+          8962.2372
+        ],
+        "mape": [
+          0.1186,
+          0.1685
+        ],
+        "r2": [
+          0.7115,
+          0.9122
+        ]
+      }
+    },
+    "gradient_boosting_regressor": {
+      "point": {
+        "mae": 4189.5376,
+        "rmse": 6621.1697,
+        "mape": 0.1228,
+        "r2": 0.8659
+      },
+      "ci_95": {
+        "mae": [
+          3176.5315,
+          5305.4137
+        ],
+        "rmse": [
+          4736.7758,
+          8302.6704
+        ],
+        "mape": [
+          0.0986,
+          0.1481
+        ],
+        "r2": [
+          0.7175,
+          0.9381
+        ]
+      }
+    }
+  },
+  "top_features": [
+    {
+      "feature": "Horsepower",
+      "importance_mean": 0.6949,
+      "importance_std": 0.1191
+    },
+    {
+      "feature": "Origin",
+      "importance_mean": 0.164,
+      "importance_std": 0.0248
+    },
+    {
+      "feature": "Weight",
+      "importance_mean": 0.109,
+      "importance_std": 0.0185
+    },
+    {
+      "feature": "Type",
+      "importance_mean": 0.0359,
+      "importance_std": 0.008
+    },
+    {
+      "feature": "MPG_Highway",
+      "importance_mean": 0.0262,
+      "importance_std": 0.0095
+    },
+    {
+      "feature": "Wheelbase",
+      "importance_mean": 0.0258,
+      "importance_std": 0.0065
+    },
+    {
+      "feature": "Length",
+      "importance_mean": 0.0202,
+      "importance_std": 0.0054
+    },
+    {
+      "feature": "EngineSize",
+      "importance_mean": 0.0103,
+      "importance_std": 0.0049
+    }
+  ],
+  "origin_segments": [
+    {
+      "Origin": "Europe",
+      "vehicles": 123,
+      "median_msrp_usd": 40590.0,
+      "mean_msrp_usd": 48349.8,
+      "mean_dealer_margin_pct": 8.03,
+      "mean_horsepower": 251.9,
+      "mean_mpg_combined": 22.01
+    },
+    {
+      "Origin": "USA",
+      "vehicles": 147,
+      "median_msrp_usd": 25520.0,
+      "mean_msrp_usd": 28377.44,
+      "mean_dealer_margin_pct": 8.22,
+      "mean_horsepower": 212.8,
+      "mean_mpg_combined": 22.2
+    },
+    {
+      "Origin": "Asia",
+      "vehicles": 158,
+      "median_msrp_usd": 23032.5,
+      "mean_msrp_usd": 24741.32,
+      "mean_dealer_margin_pct": 7.94,
+      "mean_horsepower": 190.7,
+      "mean_mpg_combined": 24.83
+    }
+  ],
+  "vehicle_type_segments": [
+    {
+      "Type": "Sports",
+      "vehicles": 49,
+      "median_msrp_usd": 40590.0,
+      "mean_dealer_margin_pct": 8.94,
+      "mean_mpg_combined": 21.59
+    },
+    {
+      "Type": "SUV",
+      "vehicles": 60,
+      "median_msrp_usd": 32062.5,
+      "mean_dealer_margin_pct": 8.64,
+      "mean_mpg_combined": 18.08
+    },
+    {
+      "Type": "Sedan",
+      "vehicles": 262,
+      "median_msrp_usd": 26432.5,
+      "mean_dealer_margin_pct": 7.77,
+      "mean_mpg_combined": 24.48
+    },
+    {
+      "Type": "Wagon",
+      "vehicles": 30,
+      "median_msrp_usd": 25545.0,
+      "mean_dealer_margin_pct": 7.38,
+      "mean_mpg_combined": 24.16
+    },
+    {
+      "Type": "Truck",
+      "vehicles": 24,
+      "median_msrp_usd": 22180.0,
+      "mean_dealer_margin_pct": 9.03,
+      "mean_mpg_combined": 18.53
+    },
+    {
+      "Type": "Hybrid",
+      "vehicles": 3,
+      "median_msrp_usd": 20140.0,
+      "mean_dealer_margin_pct": 7.46,
+      "mean_mpg_combined": 55.45
+    }
+  ]
+}
