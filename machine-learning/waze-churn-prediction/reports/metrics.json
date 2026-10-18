@@ -1,0 +1,188 @@
+{
+  "dataset": {
+    "total_rows": 14999,
+    "missing_label_dropped": 700,
+    "clean_rows": 14299,
+    "train_rows": 11439,
+    "test_rows": 2860,
+    "churn_rate": 0.1774,
+    "test_churn_rate": 0.1773
+  },
+  "models": {
+    "logistic_regression_baseline": {
+      "point": {
+        "pr_auc": 0.3785,
+        "roc_auc": 0.7447,
+        "brier_score": 0.1291,
+        "recall_at_10pct": 0.2682,
+        "recall_at_20pct": 0.43,
+        "precision_at_10pct": 0.4755,
+        "precision_at_20pct": 0.3811
+      },
+      "ci_95": {
+        "pr_auc": [
+          0.3381,
+          0.4195
+        ],
+        "roc_auc": [
+          0.7231,
+          0.7665
+        ],
+        "brier_score": [
+          0.1208,
+          0.1371
+        ],
+        "recall_at_10pct": [
+          0.2342,
+          0.2969
+        ],
+        "recall_at_20pct": [
+          0.3943,
+          0.4663
+        ],
+        "precision_at_10pct": [
+          0.4126,
+          0.528
+        ],
+        "precision_at_20pct": [
+          0.3382,
+          0.424
+        ]
+      }
+    },
+    "calibrated_random_forest": {
+      "point": {
+        "pr_auc": 0.3757,
+        "roc_auc": 0.7402,
+        "brier_score": 0.1297,
+        "recall_at_10pct": 0.2643,
+        "recall_at_20pct": 0.4221,
+        "precision_at_10pct": 0.4685,
+        "precision_at_20pct": 0.3741
+      },
+      "ci_95": {
+        "pr_auc": [
+          0.3361,
+          0.415
+        ],
+        "roc_auc": [
+          0.7198,
+          0.7628
+        ],
+        "brier_score": [
+          0.1213,
+          0.1376
+        ],
+        "recall_at_10pct": [
+          0.2318,
+          0.2889
+        ],
+        "recall_at_20pct": [
+          0.3925,
+          0.4635
+        ],
+        "precision_at_10pct": [
+          0.4056,
+          0.5158
+        ],
+        "precision_at_20pct": [
+          0.3382,
+          0.4161
+        ]
+      }
+    },
+    "calibrated_hist_gradient_boosting": {
+      "point": {
+        "pr_auc": 0.379,
+        "roc_auc": 0.7366,
+        "brier_score": 0.1298,
+        "recall_at_10pct": 0.2584,
+        "recall_at_20pct": 0.4201,
+        "precision_at_10pct": 0.458,
+        "precision_at_20pct": 0.3724
+      },
+      "ci_95": {
+        "pr_auc": [
+          0.3382,
+          0.4193
+        ],
+        "roc_auc": [
+          0.7145,
+          0.7598
+        ],
+        "brier_score": [
+          0.1214,
+          0.138
+        ],
+        "recall_at_10pct": [
+          0.2273,
+          0.2907
+        ],
+        "recall_at_20pct": [
+          0.3847,
+          0.4558
+        ],
+        "precision_at_10pct": [
+          0.3951,
+          0.5228
+        ],
+        "precision_at_20pct": [
+          0.3304,
+          0.4091
+        ]
+      }
+    }
+  },
+  "top_features": [
+    {
+      "feature": "activity_days",
+      "importance_mean": 0.1474,
+      "importance_std": 0.0109
+    },
+    {
+      "feature": "n_days_after_onboarding",
+      "importance_mean": 0.0407,
+      "importance_std": 0.009
+    },
+    {
+      "feature": "duration_minutes_drives",
+      "importance_mean": 0.0171,
+      "importance_std": 0.0039
+    },
+    {
+      "feature": "driving_days",
+      "importance_mean": 0.0138,
+      "importance_std": 0.0059
+    },
+    {
+      "feature": "total_navigations_fav1",
+      "importance_mean": 0.012,
+      "importance_std": 0.0042
+    },
+    {
+      "feature": "km_per_drive",
+      "importance_mean": 0.005,
+      "importance_std": 0.0018
+    },
+    {
+      "feature": "km_per_driving_day",
+      "importance_mean": 0.0047,
+      "importance_std": 0.0025
+    },
+    {
+      "feature": "drives_per_driving_day",
+      "importance_mean": 0.0036,
+      "importance_std": 0.0011
+    }
+  ],
+  "cohort_insights": {
+    "median_driving_days_churned": 6.0,
+    "median_driving_days_retained": 14.0,
+    "median_km_per_driving_day_churned": 407.6,
+    "median_km_per_driving_day_retained": 256.06,
+    "median_onboarding_days_churned": 1321.0,
+    "median_onboarding_days_retained": 1843.0,
+    "churn_rate_iphone": 0.1783,
+    "churn_rate_android": 0.1756
+  }
+}
