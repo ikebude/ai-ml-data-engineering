@@ -1,0 +1,55 @@
+{
+  "total_closed_loans": 55518,
+  "train_loans": 41638,
+  "test_loans": 13880,
+  "train_period": "2005-11-09 to 2011-09-19",
+  "test_period": "2011-09-19 to 2014-02-13",
+  "train_default_rate": 0.3199,
+  "test_default_rate": 0.3067,
+  "woe_scorecard": {
+    "roc_auc": 0.6673,
+    "pr_auc": 0.439,
+    "ks_statistic": 0.2413,
+    "ece": 0.043,
+    "brier_score": 0.1988
+  },
+  "calibrated_gbdt_ensemble": {
+    "roc_auc": 0.7065,
+    "roc_auc_95ci": [
+      0.6961,
+      0.7154
+    ],
+    "pr_auc": 0.4815,
+    "pr_auc_95ci": [
+      0.4664,
+      0.497
+    ],
+    "ks_statistic": 0.3047,
+    "ece": 0.0552,
+    "brier_score": 0.1943
+  },
+  "recommended_policy_at_25pct_pd": {
+    "max_pd_cutoff": 0.25,
+    "min_credit_score": 568,
+    "approval_rate": 0.4566,
+    "approved_count": 6338,
+    "observed_default_rate": 0.165,
+    "avg_borrower_rate": 0.1748,
+    "expected_loss_rate": 0.1073,
+    "net_expected_yield": 0.0675
+  },
+  "fairness_homeowner_slice": {
+    "False": {
+      "count": 6869,
+      "approval_rate": 0.4459,
+      "actual_default_rate": 0.3289,
+      "mean_predicted_pd": 0.2574
+    },
+    "True": {
+      "count": 7011,
+      "approval_rate": 0.4671,
+      "actual_default_rate": 0.285,
+      "mean_predicted_pd": 0.2532
+    }
+  }
+}

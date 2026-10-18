@@ -1,0 +1,51 @@
+customerID,Contract,tenure,MonthlyCharges,numTechTickets,churn_probability,expected_12m_value,revenue_at_risk_12m,top_risk_reasons
+1444-VVSGW,One year,70,115.65,7,0.9909,1387.8,1375.17,7 open tech tickets; Fiber optic tier
+5271-YNWVR,Two year,68,113.15,8,0.9909,1357.8,1345.44,8 open tech tickets; Fiber optic tier; Electronic check billing
+6664-FPDAC,One year,56,111.95,6,1.0,1343.4,1343.4,6 open tech tickets; Fiber optic tier; Electronic check billing
+2659-VXMWZ,One year,67,111.3,7,1.0,1335.6,1335.6,7 open tech tickets; Fiber optic tier; Electronic check billing
+9079-YEXQJ,Month-to-month,54,111.1,5,1.0,1333.2,1333.2,Month-to-month contract; 5 open tech tickets; Fiber optic tier
+6777-TGHTM,One year,53,106.95,5,1.0,1283.4,1283.4,5 open tech tickets; Fiber optic tier
+9710-ZUSHQ,Month-to-month,37,106.75,4,1.0,1281.0,1281.0,Month-to-month contract; 4 open tech tickets; Fiber optic tier
+2027-FECZV,Month-to-month,12,106.7,2,1.0,1280.4,1280.4,Month-to-month contract; 2 open tech tickets; Fiber optic tier
+5380-WJKOV,Month-to-month,34,106.35,4,1.0,1276.2,1276.2,Month-to-month contract; 4 open tech tickets; Fiber optic tier
+7067-KSAZT,One year,65,106.25,8,1.0,1275.0,1275.0,8 open tech tickets; Fiber optic tier; Electronic check billing
+5469-CTCWN,One year,61,106.0,6,1.0,1272.0,1272.0,6 open tech tickets; Fiber optic tier; Electronic check billing
+1400-MMYXY,Month-to-month,3,105.9,1,1.0,1270.8,1270.8,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+5052-PNLOS,Month-to-month,3,105.35,1,1.0,1264.2,1264.2,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+9221-OTIVJ,Month-to-month,14,104.85,1,1.0,1258.2,1258.2,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+6661-HBGWL,Month-to-month,42,104.75,4,1.0,1257.0,1257.0,Month-to-month contract; 4 open tech tickets; Fiber optic tier
+7124-UGSUR,One year,61,104.4,6,1.0,1252.8,1252.8,6 open tech tickets; Fiber optic tier
+1150-WFARN,Two year,67,108.75,6,0.9541,1305.0,1245.1,6 open tech tickets; Fiber optic tier
+3331-HQDTW,Month-to-month,34,109.8,3,0.9449,1317.6,1245.0,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+0363-QJVFX,Month-to-month,32,108.15,3,0.9541,1297.8,1238.23,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+6646-QVXLR,One year,62,103.75,6,0.9909,1245.0,1233.67,6 open tech tickets; Fiber optic tier; Electronic check billing
+4658-HCOHW,Month-to-month,21,102.8,4,1.0,1233.6,1233.6,Month-to-month contract; 4 open tech tickets; Fiber optic tier
+0871-URUWO,Month-to-month,13,102.25,2,1.0,1227.0,1227.0,Month-to-month contract; 2 open tech tickets; Fiber optic tier
+8884-ADFVN,Month-to-month,7,101.95,1,1.0,1223.4,1223.4,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+6892-XPFPU,Month-to-month,24,104.25,2,0.9617,1251.0,1203.09,Month-to-month contract; 2 open tech tickets; Fiber optic tier
+6543-XRMYR,Month-to-month,30,99.7,3,1.0,1196.4,1196.4,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+0979-PHULV,Month-to-month,69,99.45,7,1.0,1193.4,1193.4,Month-to-month contract; 7 open tech tickets; Fiber optic tier
+4817-VYYWS,Month-to-month,30,100.2,3,0.9909,1202.4,1191.46,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+0310-MVLET,Month-to-month,61,99.15,8,1.0,1189.8,1189.8,Month-to-month contract; 8 open tech tickets; Fiber optic tier
+8397-MVTAZ,Month-to-month,34,100.05,3,0.9909,1200.6,1189.67,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+6845-RGTYS,Month-to-month,47,98.75,6,1.0,1185.0,1185.0,Month-to-month contract; 6 open tech tickets; Fiber optic tier
+9420-LOJKX,Month-to-month,15,99.1,1,0.9909,1189.2,1178.38,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+0655-RBDUG,Month-to-month,7,98.05,2,1.0,1176.6,1176.6,Month-to-month contract; 2 open tech tickets; Fiber optic tier
+8840-DQLGN,Month-to-month,35,100.5,3,0.9712,1206.0,1171.27,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+4735-ASGMA,Month-to-month,26,98.35,2,0.9909,1180.2,1169.46,Month-to-month contract; 2 open tech tickets; Fiber optic tier
+7279-BUYWN,Month-to-month,41,113.2,3,0.8589,1358.4,1166.73,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+9057-SIHCH,Month-to-month,3,96.6,1,1.0,1159.2,1159.2,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+2748-MYRVK,One year,63,99.9,6,0.9643,1198.8,1156.0,6 open tech tickets; Fiber optic tier
+0963-ZBDRN,Month-to-month,32,96.2,3,1.0,1154.4,1154.4,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+6899-PPEEA,Month-to-month,37,96.55,3,0.9909,1158.6,1148.06,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+6328-ZPBGN,Month-to-month,11,95.15,1,1.0,1141.8,1141.8,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+7209-JCUDS,Month-to-month,10,94.9,3,1.0,1138.8,1138.8,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+3207-OYBWH,Month-to-month,57,95.25,6,0.9766,1143.0,1116.25,Month-to-month contract; 6 open tech tickets; Fiber optic tier
+8914-RBTSB,Month-to-month,31,93.8,3,0.9856,1125.6,1109.39,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+0576-WNXXC,Month-to-month,27,95.55,3,0.965,1146.6,1106.47,Month-to-month contract; 3 open tech tickets; Fiber optic tier
+4829-AUOAX,Month-to-month,46,96.05,4,0.9593,1152.6,1105.69,Month-to-month contract; 4 open tech tickets; Fiber optic tier
+5178-LMXOP,Month-to-month,1,95.1,0,0.965,1141.2,1101.26,Month-to-month contract; Fiber optic tier; Early tenure (1m)
+7218-HKQFK,Month-to-month,2,94.2,1,0.9702,1130.4,1096.71,Month-to-month contract; 1 open tech tickets; Fiber optic tier
+6270-OMFIW,One year,60,94.4,7,0.9637,1132.8,1091.68,7 open tech tickets; Fiber optic tier; Electronic check billing
+0295-PPHDO,Month-to-month,1,95.45,0,0.9468,1145.4,1084.46,Month-to-month contract; Fiber optic tier; Early tenure (1m)
+8393-DLHGA,Month-to-month,25,95.9,2,0.9396,1150.8,1081.29,Month-to-month contract; 2 open tech tickets; Fiber optic tier

@@ -1,56 +1,106 @@
-# In-depth Study of Prosper Company’s Loan Data
- ****
+# LoanLens — Out-of-Time Credit Default Scorecard, Calibrated GBDT & Policy Simulator
 
-## Background Information about the Task and the Dataset
-This project involves an exploratory analysis of loan data from Prosper, a San Francisco, California-based company in the peer-to-peer lending industry. Prosper provides unsecured loans and has facilitated over 21 billion dollars in loans to over 1.3M people. The dataset contains information on 81 variables, representing about 113,937 loans collected from the company, It slao provides information about various loan attributes such as borrower information, loan amounts, interest rates, loan statuses, and more.
+> **One-line result:** Scores consumer loan applications `300–850` using strictly pre-origination bureau features across `55,518` closed Prosper loans — reaching **out-of-time ROC-AUC 0.707** (95% CI `0.696–0.715`) and **KS 0.305** on future origination cohorts (`2011–2014`), cutting portfolio default rates from **30.67% to 16.50%** at a **25% Max-PD policy cutoff** (`+6.75%` net expected yield after 65% LGD).
 
-## Project Objectives
+| Product Workspace UI | Out-of-Time ROC & Policy Simulator (`img/hero.png`) |
+|---|---|
+| ![LoanLens UI](img/ui-preview.png) | ![LoanLens Benchmark](img/hero.png) |
 
-The main objective of this project is to analyze the dataset, focusing on the Lender yield as a tool for investors to select the best loan types for investment1. The project aims to provide insights into the factors that influence the lender yield and how it can be optimized.
+---
 
-The primary objectives of this project are:
+## Problem
 
-- To gain insights into the characteristics of loans facilitated by Prosper.
-- To identify patterns and trends within the loan data.
-- To explore relationships between different variables in the dataset.
-- To uncover any interesting or unexpected findings that could inform decision-making processes.
+Many credit-risk notebooks on the Prosper dataset report inflated `0.95+` accuracy or AUC because they accidentally include **post-origination payment columns** (`LP_CustomerPayments`, `LoanCurrentDaysDelinquent`, `ClosedDate`) or evaluate on a random split that mixes 2006 and 2013 macro regimes. Furthermore, credit committees do not make decisions from an ROC curve alone—they need a **calibrated probability of default (PD)**, an interpretable **300–850 scorecard**, and an **approval policy cutoff simulator** that trades off approval volume against expected credit loss.
 
-## Dataset Columns
-The dataset contains 81 columns. Some of the key columns analyzed in this project include:
-- LoanStatus: The current status of the loan (e.g., Completed, Chargedoff, Defaulted, etc.).
-- BorrowerRate: The interest rate assigned to the loan.
-- LoanOriginalAmount: The original loan amount requested by the borrower.
-- Term: The term length of the loan (e.g., 36 months, 60 months).
-- EmploymentStatus: The employment status of the borrower.
-- BorrowerState: The state of residence of the borrower.
-- ListingCategory: The category of the listing.
-- BorrowerAPR: The annual percentage rate (APR) assigned to the loan.
-- CreditScoreRangeLower: The lower range of the borrower's credit score.
-- CreditScoreRangeUpper: The upper range of the borrower's credit score.
+**LoanLens** upgrades our original Prosper exploratory analysis into a leak-free, out-of-time underwriting and policy simulation product.
 
-## Deliverables
-The deliverables for this project include:
+---
 
-- Jupyter Notebook containing the exploratory analysis code.
-- Visualization/pitch deck of key insights and findings.
-- A designated report containing Useful Findings on Churn Dataset.
+## Data
 
-## Summary of Findings
+- **Source:** Prosper Peer-to-Peer Lending Dataset (`Prosperloandata.csv` — `113,937` total listings, `81` columns).
+- **Closed-Loan Filtering (Preventing Censoring Bias):** Active `"Current"` loans whose 36- or 60-month term has not finished are excluded so recent cohorts are not falsely labelled as non-defaults. The filtered closed-loan cohort contains **`55,518` completed or defaulted loans**:
+  - `1` (**Bad / Default**): `Defaulted`, `Chargedoff`, `Past Due (>60 days)`
+  - `0` (**Good / Completed**): `Completed`
+- **Out-of-Time (OOT) Chronological Split:**
+  - **Training Cohort (75%):** `41,638` loans originated `2005-11-09` to `2011-09-19` (`31.99%` default rate).
+  - **Out-of-Time Test Cohort (25%):** `13,880` loans originated `2011-09-19` to `2014-02-13` (`30.67%` default rate).
+- **Strict Anti-Leakage Gate:** `tests/test_loanlens.py` verifies that all `14` post-origination payment/recovery fields (`LP_*`, `LoanCurrentDaysDelinquent`, `ClosedDate`, `LoanFirstDefaultedCycleNumber`) are excluded prior to feature engineering.
 
+---
 
-- The highest possible yield on any loan is 0.492500% on the loaned amount. 0.3% has been most earned by investors, followed closely by 0.15%.
-- On some loans, investors earned -0.010%. This means that as an investor, one could end up with losses. 
-- The higher an individual's income, the higher the loan amount that can be possibly accessed.
-- An investor is likely to have a lower percentage yield as the monthly income of the client increases.
-- Home owners are observed to collect significantly higher loan amounts on average, compared to non home owners, however, getting a high loan amount is still possible, without owning a home.
-- High risk rated(1.0) individuals were given significantly lower loan amounts compared to higher scored individuals.
-- The 36 month loan duration is prefered by individuals across all income ranges.
-- The loans of individuals with prosper rating 6 and 7 are the best for loan investment opportunities.
-- For both upper and lower credit score, owning a home and having a high credit score range was associated with a better lender yield, compared to individuals who do not own homes and have a lower credit range score.
+## Approach
 
+1. **Pre-Origination Feature Engineering (`src/loanlens.py`):**
+   - Harmonises pre-2009 `CreditGrade` and post-2009 `ProsperRating (numeric)` into a unified origination rating (`unified_rating`), computes `credit_score_mid` from bureau lower/upper bounds, and calculates monthly `payment_to_income` burden alongside 28 bureau and utilization attributes (`BankcardUtilization`, `InquiriesLast6Months`, `DebtToIncomeRatio`, `DelinquenciesLast7Years`).
+2. **Dual Architecture (Regulated Scorecard vs Calibrated GBDT):**
+   - **Monotonic Quantile/WoE Logistic Scorecard:** Transforms continuous bureau attributes into 10 quantile bins + L2-regularised logistic regression with isotonic calibration, mapped to a **`300–850` credit score** (`PDO = 20` points per doubling of odds at `600`).
+   - **Calibrated GBDT + Scorecard Ensemble:** Combines isotonic-calibrated `HistGradientBoostingClassifier` (70%) with the logistic scorecard (30%) for higher non-linear rank-ordering while preserving smooth probability calibration.
+3. **Approval Policy Cutoff Simulator:**
+   - Sweeps maximum allowable PD from `10%` to `100%` on the `13,880` out-of-time test loans, calculating approval rate, observed bad rate, expected loss (`Bad Rate × 65% LGD`), and net expected portfolio yield (`Average Borrower APR − Expected Loss`).
 
+---
 
-## Key Insights for Presentation
+## Results
 
-For the presentation, i will focus on the lender yield and its relationship with other metrics such as credit score, prosper rating, income level and employment status. The lender yield as a single metric may not inform an investor about the best prosper loan to invest in. Combining the lender yield with other known characteristics will help an investor make better choices on what loan to invest in and help the prosper company fund low risk loans.
-Prosper Company generates more gains than losses for its investors, making it a viable income source. Its previously generated output will prove this true.
+### 1. Out-of-Time Model Performance (`2011-09-19` to `2014-02-13`, `N = 13,880`)
+
+| Metric | WoE / Quantile Logistic Scorecard | Calibrated GBDT + Scorecard | 95% Bootstrap CI |
+|---|---:|---:|---:|
+| **Out-of-Time ROC-AUC** *(target `>= 0.70`)* | `0.6673` | **`0.7065`** | `0.6961 – 0.7154` |
+| **Out-of-Time KS Statistic** *(target `>= 0.30`)* | `0.2413` | **`0.3047`** | — |
+| **Out-of-Time PR-AUC** *(base rate `0.3067`)* | `0.4390` | **`0.4815`** | `0.4664 – 0.4970` |
+| **Expected Calibration Error (ECE)** | **`0.0430`** | `0.0552` | — |
+| **Brier Score** | `0.1988` | **`0.1943`** | — |
+
+> **Why OOT ROC-AUC is ~0.71 (and why that is realistic):** Prosper underwent a major structural shift between 2005–2008 (pre-SEC registration) and 2011–2014 (post-relaunch credit policy), and borrower credit scores are already pre-screened by Prosper's platform floor. On strictly pre-origination features across a multi-year macro shift, an out-of-time `ROC-AUC` of `0.707` and `KS` of `0.305` reflects genuine bureau signal without payment-history leakage.
+
+### 2. Approval Policy Simulator (`reports/policy_curve.csv`)
+
+| Max PD Cutoff | Min Credit Score (`300–850`) | Approval Rate | Approved Loans | Observed Default Rate | Avg Borrower APR | Expected Loss (`65%` LGD) | Net Expected Yield |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| `0.15` | `618` | `20.06%` | `2,785` | `8.76%` | `11.83%` | `5.69%` | **`+6.14%`** |
+| `0.20` | `591` | `32.57%` | `4,521` | `12.70%` | `14.69%` | `8.25%` | **`+6.43%`** |
+| **`0.25` (Recommended)** | **`568`** | **`45.66%`** | **`6,338`** | **`16.50%`** | **`17.48%`** | **`10.73%`** | **`+6.75%`** |
+| `0.30` | `549` | `60.26%` | `8,364` | `20.43%` | `20.07%` | `13.28%` | **`+6.79%`** |
+| `1.00` *(Approve All)* | `300` | `100.00%` | `13,880` | `30.67%` | `21.22%` | `19.94%` | `+1.28%` |
+
+### 3. Fairness & Proxy Slice Audit (at `25%` Max-PD Cutoff)
+
+Protected demographic attributes are excluded from training. Auditing the `25%` Max-PD policy across `IsBorrowerHomeowner` on the out-of-time test cohort shows an approval-rate gap of just **`2.12` percentage points** (`44.59%` non-homeowners vs `46.71%` homeowners), tracking the underlying default rate differential (`32.89%` vs `28.50%`).
+
+> **Deployment Governance Note:** This model is trained on US consumer peer-to-peer loans. Before deploying LoanLens for Nigerian microfinance banks or digital lenders, the scorecard must be retrained and recalibrated on local CRC/FirstCentral bureau data and NGN bank-statement cashflow features.
+
+---
+
+## What I'd Do Next
+
+1. **Reject Inference:** Incorporate declined/unfunded listing applications via parceling or fuzzy augmentation to correct for selection bias in funded loans.
+2. **Macroeconomic Covariates:** Join state-level unemployment rate and Federal Funds rate at origination month to stabilise calibration across credit cycles.
+3. **Bank-Statement Cashflow Module:** Combine bureau scorecard points with 90-day transaction cashflow volatility for thin-file emerging-market borrowers.
+
+---
+
+## How to Run
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run the out-of-time training, scorecard calibration & policy simulator
+python -m src.loanlens
+
+# 3. Run the anti-leakage and monotonic scorecard test suite
+python -m pytest -q
+
+# 4. Launch the interactive Streamlit underwriting & policy simulator app
+streamlit run app.py
+```
+
+---
+
+## Post Kit
+
+- [`POST_LINKEDIN.md`](POST_LINKEDIN.md) — Why 0.95+ AUC credit-risk notebooks are almost always leaking post-loan payments, and how an out-of-time policy simulator works.
+- [`POST_X.md`](POST_X.md) — 6-tweet thread on out-of-time scorecard calibration & policy simulation.
+- [`img/hero.png`](img/hero.png) & [`img/ui-preview.png`](img/ui-preview.png) — High-resolution visuals.

@@ -1,0 +1,58 @@
+{
+  "telco_churn": {
+    "dataset_rows": 7043,
+    "train_rows": 5634,
+    "test_rows": 1409,
+    "churn_rate": 0.2654,
+    "champion_model": "Calibrated HistGradientBoosting",
+    "baseline_logistic": {
+      "pr_auc": 0.8307,
+      "roc_auc": 0.9293,
+      "recall_at_20pct_budget": 0.607,
+      "precision_at_20pct_budget": 0.805,
+      "brier_score": 0.112
+    },
+    "calibrated_gbdt": {
+      "pr_auc": 0.8408,
+      "pr_auc_95ci": [
+        0.8064,
+        0.8703
+      ],
+      "roc_auc": 0.9328,
+      "roc_auc_95ci": [
+        0.9199,
+        0.9465
+      ],
+      "recall_at_10pct_budget": 0.3529,
+      "recall_at_20pct_budget": 0.6123,
+      "recall_at_20pct_95ci": [
+        0.5729,
+        0.655
+      ],
+      "precision_at_20pct_budget": 0.8121,
+      "brier_score": 0.0911
+    },
+    "action_list_summary": {
+      "top_50_total_revenue_at_risk_usd": 60352.53,
+      "top_50_mean_churn_prob": 0.9842
+    }
+  },
+  "retail_rfm_clv": {
+    "customers_evaluated": 1200,
+    "transactions_evaluated": 7351,
+    "churn_90d_rate": 0.87,
+    "churn_90d_roc_auc": 0.9428,
+    "churn_90d_pr_auc": 0.9904,
+    "clv_holdout_predicted_total_usd": 15716.04,
+    "clv_holdout_actual_total_usd": 15663.13,
+    "clv_holdout_pct_error": 0.34,
+    "rfm_segments": {
+      "Hibernating": 307,
+      "Champions": 243,
+      "Loyal": 241,
+      "Needs Attention": 211,
+      "Recent / Potential Loyalist": 116,
+      "At Risk (High Value)": 82
+    }
+  }
+}
