@@ -1,38 +1,75 @@
-# AI, ML & Data Engineering
+# AI, ML & Data Engineering — Portfolio Hub
 
-Projects by **Precious Ikebude** — Economist · Business Intelligence Analyst · Data Enthusiast.
+**Precious Ikebude** — **BI Scientist building AI/ML systems**  
+*BI · Data Science · Machine Learning · LLM Apps · MLOps · Data Engineering*
 
-This is the single hub for my applied machine-learning, analytics, and data-engineering work:
-personal products I've built end to end, case studies from client/consulting work, and the
-machine-learning and BI projects from my earlier portfolio, upgraded to a consistent engineering
-and reporting standard.
-
-## How this repo is organised
-
-| Folder | What's in it |
-|---|---|
-| [`products/`](products/) | Personal products I built and ship — short case study + link to the live product repo. |
-| [`industry-work/`](industry-work/) | Case studies from consulting/client engagements. Write-ups only — no client source code. |
-| [`machine-learning/`](machine-learning/) | Predictive modelling projects: pipelines, evaluation, and real numbers (no accuracy-only claims on imbalanced problems). |
-| [`analytics-and-bi/`](analytics-and-bi/) | SQL, dashboards, and exploratory analysis work. |
-| [`showcase/`](showcase/) | Deck, logo, and shareable assets. |
-| [`templates/`](templates/) | The README and post templates every project folder here follows. |
-
-## Ground rules this repo follows
-
-- **Real numbers only.** No invented metrics. If a model misses a target, the write-up says so.
-- **The right metric for the problem.** PR-AUC / recall-at-a-fixed-alert-rate over plain accuracy
-  for imbalanced classification — accuracy is misleading when fraud/churn/default is rare.
-- **No client source code.** Consulting case studies describe approach and results, never ship
-  the client's code.
-- **One README format.** Every project folder follows [`templates/PROJECT_README_TEMPLATE.md`](templates/PROJECT_README_TEMPLATE.md),
-  so results are easy to compare across projects.
-
-## Featured work
-
-_Coming soon — projects are being migrated in from their original repos with full history, one
-at a time, upgraded to this repo's standard as they move in._
+This repository is the central hub for my applied machine-learning, business-intelligence, and data-engineering work:
+- **Personal AI/ML products** I architected, trained, tested, and shipped end to end (`products/`),
+- **Industry case studies** from commercial platforms I helped build at **3Consulting Limited** (`industry-work/`),
+- **Machine learning & predictive modelling pipelines** (`machine-learning/`), and
+- **Analytics, SQL & Power BI systems** (`analytics-and-bi/`), imported with full Git history.
 
 ---
 
-Find me: [portfolio](https://www.datascienceportfol.io/ikebude) · [GitHub](https://github.com/ikebude)
+## 1. Personal AI & ML Products (`products/`)
+
+| Product | One-Line Summary & Measured Results | Stack | Links |
+|---|---|---|---|
+| [**Moniguard**](products/moniguard/) | Real-time e-commerce & PoD fraud scoring (`0–1000` + reason codes). Calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.877** (`95% CI: 0.845–0.905`), **Recall@5% alert rate = 0.892**, and **47.9 ms p95 scoring latency** on a 60k time-split benchmark. | Python, XGBoost, Scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case Study](products/moniguard/) · [Product Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
+| [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal, position-sizing risk engine, and educational AI performance coach. Built on my shipped desktop journal (**v1.1.0 — 521/521 unit tests & 25 Playwright E2E tests passing**) and full-stack NestJS + React + BullMQ monorepo. | TypeScript, React, NestJS, PostgreSQL, Redis, Electron, Playwright | [Case Study](products/lolos-ledger/) · [Desktop Repo](https://github.com/ikebude/FX-Trading-Journal) |
+| [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English analytics agent that queries CSV/Excel/Postgres data through a governed YAML semantic layer and read-only SQL guard, renders charts, monitors daily KPIs, and writes weekly executive summaries. | Python, FastAPI, DuckDB, SQLAlchemy, React, LLM Tool Loop | [Case Study](products/bi-operations-agent/) · [Product Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
+| [**AIOps Expense Tracker**](products/expense-tracker/) | NGN-first personal & SME finance app with TF-IDF + Logistic Regression auto-categorisation trained on user corrections, receipt OCR, robust z-score anomaly detection, and 3-month spend forecasting. | TypeScript, React, Vite, Python ML, IndexedDB | [Case Study](products/expense-tracker/) · [Product Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
+
+---
+
+## 2. Industry Case Studies — 3Consulting Limited (`industry-work/`)
+
+> *Shown as engineering case studies (problem, architecture, my role, and live links). Proprietary company source code is never published here.*
+
+| Platform | Domain | What It Does & My Role | Case Study & Live Link |
+|---|---|---|---|
+| [**SafeData (ADRS)**](industry-work/safedata/) | Data Retention & Consent Governance | Tracks record retention schedules, processes consent-withdrawal webhooks into disposal countdowns, enforces legal holds/dual approvals, and seals SHA-256 audit trails. *Role: retention/consent lifecycle logic, PostgreSQL test suite, GitHub Actions CI & security scanning.* | [Case Study](industry-work/safedata/) · [safedata.3consult-ng.com](https://safedata.3consult-ng.com) |
+| [**FraudGuard**](industry-work/fraudguard/) | Real-Time Transaction Fraud Prevention | Multi-service fraud intelligence platform (PostgreSQL outbox → Kafka → streaming inference → Flask analyst queue + SAR/governance + Airflow/MLflow retraining). *Role: feature engineering, ensemble pipeline, Airflow/MLflow MLOps, analyst dashboard.* | [Case Study](industry-work/fraudguard/) · [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) |
+| [**Africa Stablecoin Intelligence (ASI)**](industry-work/africa-stablecoin-intelligence/) | Market & Regulatory Intelligence | Tracks African stablecoin adoption, corridor metrics, central-bank regulatory posture by country, and editorial research dispatches. *Role: data source schema, Light/Dark/System UI across public & admin apps, launch indexing.* | [Case Study](industry-work/africa-stablecoin-intelligence/) · [africastablecoinintelligence.com](https://africastablecoinintelligence.com) |
+
+---
+
+## 3. Machine Learning Projects (`machine-learning/`)
+
+| Project | Focus | Folder |
+|---|---|---|
+| **Waze User Churn Prediction** | Behavioural churn classification, feature engineering (session velocity, streak ratios), and retention targeting | [`machine-learning/waze-churn-prediction/`](machine-learning/waze-churn-prediction/) |
+| **TLC CabFare Intelligence (NYC Taxi)** | Fare modelling and demand/anomaly analysis across NYC Yellow Taxi trip records | [`machine-learning/tlc-cab-fare-intelligence/`](machine-learning/tlc-cab-fare-intelligence/) |
+| **Customer Retention & Churn Analysis** | Cohort retention, churn driver identification, and segment risk profiling (foundation for **Customer Intelligence**) | [`machine-learning/customer-retention/`](machine-learning/customer-retention/) |
+| **Prosper Loan Credit Risk Analysis** | Borrower default risk, credit-grade behaviour, and yield vs. loss analysis across 113k+ P2P loans (foundation for **LoanLens**) | [`machine-learning/prosper-loan-risk/`](machine-learning/prosper-loan-risk/) |
+| **S&P 500 Financial Clustering & EDA** | SQL normalization + PCA dimensionality reduction + K-Means market segmentation across S&P 500 companies | [`machine-learning/sp500-analysis/`](machine-learning/sp500-analysis/) |
+| **Cars Model Analysis** | Multi-language (Python, R, Power BI) pricing and feature analysis | [`machine-learning/cars-model-analysis/`](machine-learning/cars-model-analysis/) |
+
+---
+
+## 4. Analytics, BI & SQL Projects (`analytics-and-bi/`)
+
+| Project | Focus | Folder |
+|---|---|---|
+| **CRM Sales Funnel Analysis** | B2B pipeline conversion rates, stage drop-off diagnostics, and deal velocity | [`analytics-and-bi/crm-sales-analysis/`](analytics-and-bi/crm-sales-analysis/) |
+| **Power BI Dashboard Portfolio** | Executive dashboards using DAX time intelligence, data modelling, and drill-through views | [`analytics-and-bi/power-bi-dashboards/`](analytics-and-bi/power-bi-dashboards/) |
+| **Strategic SQL Querying** | Complex MS SQL Server queries (CTEs, window functions, multi-table joins) for operational decision-making | [`analytics-and-bi/sql-querying/`](analytics-and-bi/sql-querying/) |
+| **BI Analytics Simulations** | End-to-end client data quality, segmentation, and executive reporting packages | [`analytics-and-bi/bi-analytics/`](analytics-and-bi/bi-analytics/) |
+| **Global Data Analytics Projects** | Exploratory data analysis and statistical reporting in Python and R | [`analytics-and-bi/global-data-analytics/`](analytics-and-bi/global-data-analytics/) |
+
+---
+
+## 5. Ground Rules This Repository Follows
+
+1. **Real numbers only.** Every metric reported comes from executing the code in the repository. No invented accuracy or synthetic business claims.
+2. **The right metric for imbalanced problems.** Fraud, churn, and loan default models report **PR-AUC**, **Recall at a fixed alert/contact budget**, **Precision**, and **95% bootstrap confidence intervals**—never raw accuracy alone.
+3. **Strict confidentiality.** Consulting case studies in `industry-work/` document problem framing, architecture, and my engineering contributions—never client or employer source code.
+4. **Automated CI verification.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) discovers and runs tests across ML/product folders on every push.
+
+---
+
+## Connect
+
+- **GitHub:** [github.com/ikebude](https://github.com/ikebude)
+- **Portfolio:** [datascienceportfol.io/ikebude](https://www.datascienceportfol.io/ikebude)
+- **Email:** [precious.ikebude@outlook.com](mailto:precious.ikebude@outlook.com)
