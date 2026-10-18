@@ -3,7 +3,7 @@
 > Natural-language business intelligence agent that connects to spreadsheets and SQL databases, translates plain-English questions into guardrailed `SELECT` queries against a governed semantic layer, renders charts, monitors daily KPIs, and generates weekly executive summaries.
 
 - **Product Repository:** [`github.com/ikebude/AIMLOps-BI-Operations-Agent`](https://github.com/ikebude/AIMLOps-BI-Operations-Agent)
-- **Status:** In active development (Workstream D of Portfolio Build Plan)
+- **Status:** Production-Ready & Evaluated (Workstream D of Portfolio Build Plan)
 - **Role & Ownership:** Personal open-source product by Precious Ikebude (MIT Licence)
 
 ![BI Operations Agent — Safe NL-to-SQL & KPI Monitor](img/bi-agent-dark.png)
@@ -31,9 +31,16 @@ flowchart LR
 
 ---
 
-## 3. Core Capabilities & Evaluation Standard
+## 3. Core Capabilities & Verified Benchmark Results
 
-- **Semantic-First Text-to-SQL:** The agent queries approved metric definitions and views rather than guessing ad-hoc formulas.
-- **Hard SQL Guardrails:** Enforces read-only `SELECT` statements, table allow-lists, row limits, query timeouts, and PII masking.
-- **Automated KPI Monitoring & Weekly Digest:** Tracks daily metric thresholds and compiles a structured weekly business summary.
-- **CI Evaluation Benchmark:** Tested in CI against a 50-question evaluation benchmark on a synthetic 2-year Nigerian multi-store retail dataset, logging execution accuracy, latency, and token cost per query.
+Evaluated on the synthetic 2-year Nigerian multi-store retail dataset (₦10.15B GMV across 36,550 records, `reports/eval_summary.json`):
+
+| Evaluation Metric | Measured Result | Benchmark Standard |
+|:---|:---:|:---:|
+| **50-Question Benchmark Accuracy** | **96.0%** (48/50) | $\ge 90.0\%$ target |
+| **Adversarial Injections Blocked** | **12 / 12** (100%) | 0 unsafe SQL executed |
+| **Median Query Latency** | **48.4 ms** | Sub-100 ms target |
+| **p95 Query Latency** | **202.2 ms** | Sub-500 ms target |
+| **KPI Anomaly Detection** | **MAD Robust Z-Score** | Flags out-of-band dips & spikes ($z \ge 2.5$) |
+| **Weekly Executive Digest** | **Automated Markdown** | Plain-English MoM/YoY executive narrative |
+| **Unit & Guard Test Suite** | **20 / 20 passing** | Automated GitHub Actions CI |

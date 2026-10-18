@@ -6,3 +6,5 @@ venv/
 .DS_Store
 *.log
 .ipynb_checkpoints/
+.pytest_cache/
+
