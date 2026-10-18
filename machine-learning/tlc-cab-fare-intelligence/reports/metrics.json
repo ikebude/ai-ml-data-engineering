@@ -1,0 +1,120 @@
+{
+  "dataset": {
+    "total_raw_rows": 22699,
+    "anomalous_nonpositive_fare_rows": 20,
+    "anomalous_zero_distance_rows": 148,
+    "clean_rows": 22441,
+    "train_rows": 17952,
+    "test_rows": 4489,
+    "train_period_start": "2017-01-01 00:08:25",
+    "train_period_end": "2017-10-19 19:02:16",
+    "test_period_start": "2017-10-19 19:32:56",
+    "test_period_end": "2017-12-31 23:45:30",
+    "mean_fare_usd": 12.91,
+    "median_fare_usd": 9.5,
+    "mean_distance_miles": 2.93,
+    "mean_duration_min": 14.45
+  },
+  "pre_trip_features": [
+    "trip_distance",
+    "pickup_hour",
+    "pickup_dayofweek",
+    "is_weekend",
+    "is_rush_hour",
+    "RatecodeID",
+    "PULocationID",
+    "DOLocationID",
+    "passenger_count"
+  ],
+  "fare_amount_models": {
+    "linear_ridge_baseline": {
+      "point": {
+        "mae": 2.0946,
+        "rmse": 3.3054,
+        "r2": 0.9071
+      },
+      "ci_95": {
+        "mae": [
+          2.0221,
+          2.1793
+        ],
+        "rmse": [
+          3.0369,
+          3.6015
+        ],
+        "r2": [
+          0.8951,
+          0.9182
+        ]
+      }
+    },
+    "hist_gradient_boosting": {
+      "point": {
+        "mae": 1.4789,
+        "rmse": 2.4376,
+        "r2": 0.9495
+      },
+      "ci_95": {
+        "mae": [
+          1.4224,
+          1.5406
+        ],
+        "rmse": [
+          2.2347,
+          2.6478
+        ],
+        "r2": [
+          0.9426,
+          0.9559
+        ]
+      }
+    },
+    "within_1_usd_rate_ridge": 0.3321,
+    "within_1_usd_rate_hgb": 0.5244,
+    "within_2_usd_rate_hgb": 0.7746
+  },
+  "trip_duration_min_models": {
+    "linear_ridge_baseline": {
+      "point": {
+        "mae": 5.0125,
+        "rmse": 7.494,
+        "r2": 0.6395
+      },
+      "ci_95": {
+        "mae": [
+          4.856,
+          5.1951
+        ],
+        "rmse": [
+          7.0954,
+          7.8943
+        ],
+        "r2": [
+          0.6163,
+          0.6597
+        ]
+      }
+    },
+    "hist_gradient_boosting": {
+      "point": {
+        "mae": 3.6255,
+        "rmse": 5.7935,
+        "r2": 0.7845
+      },
+      "ci_95": {
+        "mae": [
+          3.4984,
+          3.7667
+        ],
+        "rmse": [
+          5.4218,
+          6.1602
+        ],
+        "r2": [
+          0.767,
+          0.8006
+        ]
+      }
+    }
+  }
+}
