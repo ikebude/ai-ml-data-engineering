@@ -5,6 +5,10 @@
 - **Product Repository:** [`github.com/ikebude/MLOps-Fraud-Detection`](https://github.com/ikebude/MLOps-Fraud-Detection)
 - **Role & Ownership:** Personal open-source product built by Precious Ikebude (MIT Licence).
 
+| Dark Mode — Analyst Overview | Light Mode — Analyst Overview |
+|---|---|
+| ![Moniguard Dark](img/moniguard-dark.png) | ![Moniguard Light](img/moniguard-light.png) |
+
 ---
 
 ## 1. Problem

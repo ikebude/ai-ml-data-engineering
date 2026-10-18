@@ -8,6 +8,10 @@
 - **Product URL:** [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com)
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here. *(For my personal, open-source implementation of this problem with reproducible benchmarks, see [`products/moniguard`](../../products/moniguard/).)*
 
+| Public Product Site (`fraudguard.3consult-ng.com`) | Real-Time Risk Scoring & SAR Analyst Queue |
+|---|---|
+| ![FraudGuard Public](img/fraudguard-public.png) | ![FraudGuard Dashboard](img/fraudguard-dashboard.png) |
+
 ---
 
 ## 1. Problem & Why It Matters

@@ -6,6 +6,8 @@
 - **Status:** In active development (Workstream D of Portfolio Build Plan)
 - **Role & Ownership:** Personal open-source product by Precious Ikebude (MIT Licence)
 
+![BI Operations Agent — Safe NL-to-SQL & KPI Monitor](img/bi-agent-dark.png)
+
 ---
 
 ## 1. Problem

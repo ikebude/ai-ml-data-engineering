@@ -8,6 +8,8 @@
 - **Live URL:** [africastablecoinintelligence.com](https://africastablecoinintelligence.com)
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 
+![Africa Stablecoin Intelligence Platform](img/asi-dark.png)
+
 ---
 
 ## 1. Problem & Why It Matters

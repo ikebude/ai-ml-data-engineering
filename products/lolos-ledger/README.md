@@ -6,6 +6,8 @@
 - **Web/Cloud Monorepo:** [`github.com/ikebude/AI-Trading-Intelligence`](https://github.com/ikebude/AI-Trading-Intelligence) *(transitioning to `lolos-ledger`)*
 - **Role & Ownership:** Personal product built by Precious Ikebude (MIT Licence).
 
+![Lolo's Ledger — Trading Journal, Risk Engine & AI Coach](img/lolos-ledger-dark.png)
+
 ---
 
 ## 1. Problem

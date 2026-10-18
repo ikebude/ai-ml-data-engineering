@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Manrope;font-weight:800;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-800-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:700;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-700-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:500;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-500-normal.woff2)}
+body{margin:0;width:1600px;font-family:Inter;background:#F7F7F5;color:#0B1220}
+.row{display:flex;gap:40px;padding:48px;align-items:center}
+.dark{background:#0B1220;color:#fff}
+.mk{width:180px;height:180px}
+.lock{display:flex;align-items:center;gap:22px}.lock img{width:88px;height:88px}
+.nm{font:800 52px/1 Manrope;letter-spacing:-.02em}.tg{font:600 15px Inter;letter-spacing:.18em;color:#64748B;margin-top:10px}
+.dark .tg{color:#94A3B8}
+.sw{width:150px}.sw div{height:90px;border-radius:14px}.sw p{font:600 14px Inter;margin:8px 0 0}.sw span{font:500 13px Inter;color:#64748B}
+.small img{width:32px;height:32px}.small{display:flex;gap:18px;align-items:center}
+</style></head><body>
+<div class="row"><img class="mk" src="./ci-mark.svg"><img class="mk" src="./pi-mark.svg"><img class="mk" src="./ci-mark-light.svg" style="box-shadow:0 0 0 1px #0B122022;border-radius:40px">
+<div class="small"><img src="./ci-mark.svg"><img src="./pi-mark.svg"><span style="font:500 14px Inter;color:#64748B">32 px</span></div></div>
+<div class="row"><div class="lock"><img src="./ci-mark.svg"><div><div class="nm">Chidi Ikebude</div><div class="tg">BI SCIENTIST · BUILDING AI/ML SYSTEMS</div></div></div></div>
+<div class="row dark"><div class="lock"><img src="./pi-glyph-light.svg" style="width:88px"><div><div class="nm">Precious Ikebude</div><div class="tg">BI SCIENTIST · BUILDING AI/ML SYSTEMS</div></div></div></div>
+<div class="row" id="sw"></div>
+<script>
+const c=[["Ink","#0B1220"],["Ink 2","#111A2E"],["Paper","#F7F7F5"],["Brand emerald","#10B981"],["BI blue","#3B82F6"],["Analysis violet","#8B5CF6"],["SQL cyan","#06B6D4"],["Training orange","#FF914D"]];
+document.getElementById('sw').innerHTML=c.map(([n,h])=>'<div class=sw><div style="background:'+h+';border:1px solid #0001"></div><p>'+n+'</p><span>'+h+'</span></div>').join('');
+</script></body></html>

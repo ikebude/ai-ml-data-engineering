@@ -8,6 +8,10 @@
 - **Product URL:** [safedata.3consult-ng.com](https://safedata.3consult-ng.com)
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 
+| Public Product Site (`safedata.3consult-ng.com`) | Compliance & Retention Governance Console |
+|---|---|
+| ![SafeData Public](img/safedata-public.png) | ![SafeData Dashboard](img/safedata-dashboard.png) |
+
 ---
 
 ## 1. Problem & Why It Matters

@@ -5,6 +5,8 @@
 - **Product Repository:** [`github.com/ikebude/AIOps_Expense_Tracker`](https://github.com/ikebude/AIOps_Expense_Tracker)
 - **Role & Ownership:** Personal open-source project by Precious Ikebude (MIT Licence). *Started from the Code with Mosh Claude Code course starter; rebuilt and extended by me.*
 
+![AIOps Expense Tracker — NGN-First Finance & ML Categoriser](img/expense-tracker-dark.png)
+
 ---
 
 ## 1. Problem
