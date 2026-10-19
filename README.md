@@ -11,6 +11,25 @@ This repository is the central hub for my applied machine-learning, business-int
 
 ---
 
+## 📑 LinkedIn Case Study Carousels (PDF Downloads)
+
+Each of the 9 platforms has a dedicated 6-slide executive case study carousel (16:9 widescreen, verified metrics, system architecture, and production UI mockups):
+
+### 🏢 3Consulting Limited (Enterprise Solutions)
+- [**SafeData Case Study Carousel (PDF)**](showcase/carousels/01-SafeData-Case-Study-Carousel.pdf) — Automated NDPA & GDPR Consent Disposal
+- [**FraudGuard Case Study Carousel (PDF)**](showcase/carousels/02-FraudGuard-Case-Study-Carousel.pdf) — Sub-50ms Transaction Risk Engine & SAR Queue
+- [**Africa Stablecoin Intelligence Case Study Carousel (PDF)**](showcase/carousels/03-Africa-Stablecoin-Intelligence-Case-Study-Carousel.pdf) — Pan-African FX Peg & Policy Matrix
+
+### 🔬 Precious Ikebude (Open-Source AI & ML Products)
+- [**Moniguard v2 Case Study Carousel (PDF)**](showcase/carousels/04-Moniguard-v2-Case-Study-Carousel.pdf) — Nigerian PoD Fraud Scoring Engine (PR-AUC 0.877)
+- [**Lolo's Ledger Case Study Carousel (PDF)**](showcase/carousels/05-Lolos-Ledger-Case-Study-Carousel.pdf) — Multi-Asset Quant Risk & Tilt Detector (-19.6R drag)
+- [**BI Operations Agent Case Study Carousel (PDF)**](showcase/carousels/06-BI-Operations-Agent-Case-Study-Carousel.pdf) — Governed Semantic Layer & AST Guarded SQL (96.0% accuracy)
+- [**LoanLens Case Study Carousel (PDF)**](showcase/carousels/07-LoanLens-Case-Study-Carousel.pdf) — Chronological Prosper Default Scorecard (ROC-AUC 0.707)
+- [**Customer Intelligence Case Study Carousel (PDF)**](showcase/carousels/08-Customer-Intelligence-Case-Study-Carousel.pdf) — Calibrated Churn & Priority Call Queue ($60.3k protected)
+- [**AIOps Expense Tracker Case Study Carousel (PDF)**](showcase/carousels/09-AIOps-Expense-Tracker-Case-Study-Carousel.pdf) — NGN Expense NLP (0.9204 Macro-F1) & ETS Forecast
+
+---
+
 ## 1. Personal AI & ML Products (`products/`)
 
 | Product | One-Line Summary & Measured Results | Stack | Links |
