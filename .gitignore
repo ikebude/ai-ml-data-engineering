@@ -8,3 +8,6 @@ venv/
 .ipynb_checkpoints/
 .pytest_cache/
 
+*.backup
+__MACOSX/
+._*
