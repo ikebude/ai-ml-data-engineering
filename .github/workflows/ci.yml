@@ -9,6 +9,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   discover:
@@ -16,7 +17,7 @@ jobs:
     outputs:
       projects: ${{ steps.find.outputs.projects }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - id: find
         run: |
           projects=$(find machine-learning products -mindepth 1 -maxdepth 1 -type d \
@@ -33,17 +34,18 @@ jobs:
       matrix:
         project: ${{ fromJson(needs.discover.outputs.projects) }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Install dependencies
         working-directory: ${{ matrix.project }}
         run: |
-          [ -f requirements.txt ] && pip install -r requirements.txt || true
-          [ -f pyproject.toml ] && pip install . || true
-          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f pyproject.toml ]; then pip install .; fi
       - name: Run tests
         working-directory: ${{ matrix.project }}
         run: |
-          if [ -d tests ]; then pytest -q; else echo "no tests/ in ${{ matrix.project }}, skipping"; fi
+          if [ -d tests ]; then python -m pytest -q; else echo "no tests/ in ${{ matrix.project }}, skipping"; fi
+      - name: Fail if tests changed tracked files
+        run: git diff --exit-code -- . ':!**/__pycache__'
