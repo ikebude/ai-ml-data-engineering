@@ -22,11 +22,11 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 
 ### 🔬 Precious Ikebude (Personal AI & ML Products)
 - [**Moniguard v2 Case Study Carousel (PDF)**](showcase/carousels/04-Moniguard-v2-Case-Study-Carousel.pdf) — Nigerian PoD Fraud Scoring Engine (PR-AUC 0.877)
-- [**Lolo's Ledger Case Study Carousel (PDF)**](showcase/carousels/05-Lolos-Ledger-Case-Study-Carousel.pdf) — Multi-Asset Quant Risk & Tilt Detector (-19.6R drag)
-- [**BI Operations Agent Case Study Carousel (PDF)**](showcase/carousels/06-BI-Operations-Agent-Case-Study-Carousel.pdf) — Governed Semantic Layer & AST Guarded SQL (96.0% accuracy)
+- [**Lolo's Ledger Case Study Carousel (PDF)**](showcase/carousels/05-Lolos-Ledger-Case-Study-Carousel.pdf) — Multi-Asset Quant Risk & Tilt Detector (-19.6R tilt drag, synthetic benchmark)
+- [**BI Operations Agent Case Study Carousel (PDF)**](showcase/carousels/06-BI-Operations-Agent-Case-Study-Carousel.pdf) — Governed Semantic Layer & AST Guarded SQL (96.0% in-sample, 56.0% held-out)
 - [**LoanLens Case Study Carousel (PDF)**](showcase/carousels/07-LoanLens-Case-Study-Carousel.pdf) — Chronological Prosper Default Scorecard (ROC-AUC 0.705)
 - [**Customer Intelligence Case Study Carousel (PDF)**](showcase/carousels/08-Customer-Intelligence-Case-Study-Carousel.pdf) — Calibrated Churn & Priority Call Queue
-- [**AIOps Expense Tracker Case Study Carousel (PDF)**](showcase/carousels/09-AIOps-Expense-Tracker-Case-Study-Carousel.pdf) — NGN Expense NLP (0.9204 Macro-F1) & ETS Forecast
+- [**AIOps Expense Tracker Case Study Carousel (PDF)**](showcase/carousels/09-AIOps-Expense-Tracker-Case-Study-Carousel.pdf) — NGN Expense NLP (0.9204 Macro-F1, synthetic data) & ETS Forecast
 
 ---
 
@@ -35,9 +35,9 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 | Product | One-Line Summary & Measured Results | Stack | Links |
 |---|---|---|---|
 | [**Moniguard**](products/moniguard/) | Real-time e-commerce & PoD fraud scoring (`0–1000` + reason codes). Calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.877** (`95% CI: 0.845–0.905`), **Recall@5% alert rate = 0.892**, and **47.9 ms p95 scoring latency** on a 60k **synthetic** time-split benchmark. | Python, XGBoost, Scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case Study](products/moniguard/) · [Product Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
-| [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal, position-sizing risk engine, and educational AI performance coach. Built on my archived desktop predecessor (FXLedger v1.1.0) (**v1.1.0 — 521/521 unit tests & 25 Playwright E2E tests passing**) and full-stack NestJS + React + BullMQ monorepo. | TypeScript, React, NestJS, PostgreSQL, Redis, Electron, Playwright | [Case Study](products/lolos-ledger/) · *Source private* |
-| [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English analytics agent that queries CSV/Excel/Postgres data through a governed YAML semantic layer and read-only SQL guard, renders charts, monitors daily KPIs, and writes weekly executive summaries. | Python, FastAPI, DuckDB, SQLAlchemy, React, LLM Tool Loop | [Case Study](products/bi-operations-agent/) · [Product Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
-| [**AIOps Expense Tracker**](products/expense-tracker/) | NGN-first personal & SME finance app with TF-IDF + Logistic Regression auto-categorisation trained on user corrections, receipt OCR, robust z-score anomaly detection, and 3-month spend forecasting. | TypeScript, React, Vite, Python ML, IndexedDB | [Case Study](products/expense-tracker/) · [Product Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
+| [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal, position-sizing risk engine, and educational AI performance coach. Full-stack NestJS + React + BullMQ monorepo built on the engine of my archived desktop predecessor (FXLedger v1.1.0): **363 core** (349 ported from FXLedger v1.1.0) **+ 155 API + 25 web + 7 Python tests** and **14 Playwright e2e runs** (7 tests × 2 viewports). | TypeScript, React, NestJS, PostgreSQL, Redis, Electron, Playwright | [Case Study](products/lolos-ledger/) · *Source private* |
+| [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English analytics agent that queries a read-only SQLite store through a governed YAML semantic layer and AST SQL guard, monitors daily KPIs, and writes weekly executive summaries. On **synthetic** retail data: **96.0% (48/50)** in-sample, **56.0% (14/25)** held-out, **12/12** adversarial prompts blocked, **36.6 ms p95**. | Python, FastAPI, SQLite, sqlglot, Streamlit | [Case Study](products/bi-operations-agent/) · [Product Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
+| [**AIOps Expense Tracker**](products/expense-tracker/) | NGN-first personal & SME finance app with TF-IDF + Logistic Regression auto-categorisation retrained on user corrections (**0.9204 Macro-F1**), receipt-text parsing (no OCR), MAD anomaly detection (**F1 0.973**), and a 3-month ETS forecast (**8.1% holdout WAPE**), all on **synthetic** data. | Python, Scikit-learn, FastAPI, React, Vite | [Case Study](products/expense-tracker/) · [Product Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
 
 ---
 

@@ -73,7 +73,7 @@ scikit-learn 1.8.0 and 1.7.2 fail one prosper test, so ≥1.9 is required. The r
 - **Done when:** every changed metric value appears in docs only in its regenerated form, and a second test run leaves a clean tree. Note: `showcase/carousels/*.pdf` and `showcase/*.pdf/.pptx` cannot be edited. List any stale numbers in them under Builder notes for the owner.
 
 ### Item 3. FX-Trading-Journal / private-repo links → public case study
-- **Why:** `README.md:38` "[Desktop Repo](https://github.com/ikebude/FX-Trading-Journal)". `products/lolos-ledger/README.md:3` and `:5` link FX-Trading-Journal, which will be archived or deleted. `:6` links `ikebude/AI-Trading-Intelligence`, which is **private** (`gh api repos/ikebude/AI-Trading-Intelligence -q .visibility` → `private`), so visitors get a 404.
+- **Why:** `README.md:38` `[Desktop Repo](https://github.com/ikebude/FX-Trading-Journal)`. `products/lolos-ledger/README.md:3` and `:5` link FX-Trading-Journal, which will be archived or deleted. `:6` links `ikebude/AI-Trading-Intelligence`, which is **private** (`gh api repos/ikebude/AI-Trading-Intelligence -q .visibility` → `private`), so visitors get a 404.
 - **Change:**
   - `README.md:38` Links cell: `[Case Study](products/lolos-ledger/) · *Source private*`. Change "Built on my shipped desktop journal" to "Built on my archived desktop predecessor (FXLedger v1.1.0)". Keep the test counts (lead-owned, §2 Item 7).
   - `products/lolos-ledger/README.md:3`: change the `[FX-Trading-Journal v1.1.0](...)` link to plain text `FXLedger v1.1.0 (archived desktop predecessor)`.

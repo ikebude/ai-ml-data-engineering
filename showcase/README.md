@@ -45,10 +45,10 @@
 17. **Section II:** *Personal Products Hub*
 18. **Moniguard v2 (`ikebude/MLOps-Fraud-Detection`):** Nigerian PoD & mobile-money fraud MLOps platform
 19. **Moniguard v2 Benchmark:** `PR-AUC 0.877` (95% CI `0.845–0.905`), `ROC-AUC 0.943`, `Recall@5% = 0.892`, `47.9 ms` p95 latency on 60,000 **synthetic** chronological transactions
-20. **Lolo's Ledger:** Multi-asset trading journal, live position-size calculator, and rule-based AI coach (`521/521` unit tests passing)
+20. **Lolo's Ledger:** Multi-asset trading journal, live position-size calculator, and rule-based AI coach (deck slide still cites the desktop predecessor's `521/521` tests; the current monorepo has 363 core + 155 API + 25 web + 7 Python tests)
 21. **Lolo's Ledger Risk Engine:** Pre-trade account risk guardrails (`0.25%–2.0%`), expectancy (`E[R]`), and Tilt Index detection
 22. **BI Operations Agent (`ikebude/AIMLOps-BI-Operations-Agent`):** Read-only NL-to-SQL copilot with AST validation and anomaly z-score cards
-23. **Credit, Retention & Finance ML:** LoanLens (Prosper WoE + LightGBM), Customer Intelligence (RFM + Churn + BG/NBD CLV), and AIOps Expense Tracker (NGN categoriser + OCR)
+23. **Credit, Retention & Finance ML:** LoanLens (Prosper WoE + LightGBM), Customer Intelligence (RFM + Churn + BG/NBD CLV), and AIOps Expense Tracker (NGN categoriser + receipt-text parsing; the deck says OCR, which the product does not do)
 24. **Portfolio Hub Gallery (`ikebude/ai-ml-data-engineering`):** 11 ML, SQL, and Power BI repositories with full commit history
 25. **How I Build:** Honest time-based evaluation, CI/CD + Docker reproducibility, and strict IP/security boundaries
 26. **Contact:** Direct links, credentials, and availability

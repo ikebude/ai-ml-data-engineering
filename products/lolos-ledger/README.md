@@ -1,6 +1,6 @@
 # Lolo's Ledger — Multi-Asset Trading Journal, Risk Engine & AI Performance Coach
 
-> Combines my local-first desktop trading journal (FXLedger v1.1.0, archived desktop predecessor — **521/521 unit tests + 25 Playwright e2e tests passing**) with a full-stack NestJS + React + BullMQ monorepo featuring position-sizing risk guards, automated OHLC trade snapshots, and an educational AI journaling coach.
+> Ports the engine of my local-first desktop trading journal (FXLedger v1.1.0, archived desktop predecessor) into a full-stack NestJS + React + BullMQ monorepo (**363 core** (349 ported from FXLedger v1.1.0) **+ 155 API + 25 web + 7 Python tests** and **14 Playwright e2e runs** (7 tests × 2 viewports), per the private repo's README) featuring position-sizing risk guards, automated OHLC trade snapshots, and an educational AI journaling coach.
 
 - **Desktop predecessor (archived):** FXLedger v1.1.0 — repository archived; not linked.
 - **Current codebase:** Lolo's Ledger (private repository; this page is the public case study).
@@ -50,6 +50,6 @@ flowchart LR
 
 ## 3. Verification & Engineering Highlights
 
-- **521 Passing Unit Tests & 25 Playwright E2E Tests (Desktop v1.1.0):** Covers R-multiple expectancy with 95% confidence intervals, Sharpe/Sortino/Calmar ratios, MAE/MFE excursion tracking, prop-firm daily-loss circuit breakers, fuzzy-header CSV importers, and tamper-evident SHA-256 audit-log sealing.
+- **Test suites (current monorepo):** **363 core** (349 ported from FXLedger v1.1.0) **+ 155 API + 25 web + 7 Python tests** and **14 Playwright e2e runs** (7 tests × 2 viewports). The core suite, largely ported from FXLedger v1.1.0, covers R-multiple expectancy with 95% confidence intervals, Sharpe/Sortino/Calmar ratios, MAE/MFE excursion tracking, prop-firm daily-loss circuit breakers, fuzzy-header CSV importers, and tamper-evident SHA-256 audit-log sealing.
 - **Full-Stack Monorepo (`pnpm` + `Turborepo`):** Shared TypeScript `@ll/core` math/risk package, NestJS REST + webhook API (`services/api`), BullMQ background worker, PostgreSQL + Redis (`docker-compose`), and React + TanStack Router web UI (`apps/web`).
 - **Offline-First & Model-Gated AI:** Local Whisper voice-memo transcription and local screenshot OCR degrade gracefully when offline; the LLM coach strictly reviews user journal data with `"Educational, not financial advice"` guardrails.
