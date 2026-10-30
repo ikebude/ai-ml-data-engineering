@@ -1,6 +1,6 @@
 # Automotive Hedonic Pricing & Powertrain Analysis
 
-> Predicts vehicle MSRP from physical specifications and regional origin without dealer-invoice leakage: $R^2 = 0.8659$, MAPE `12.28%`, and MAE `\$4,189.54` (13.2% lower error than log-linear Ridge baseline).
+> Predicts vehicle MSRP from physical specifications and regional origin without dealer-invoice leakage: $R^2 = 0.8660$, MAPE `12.27%`, and MAE `\$4,186.99` (13.3% lower error than log-linear Ridge baseline).
 
 ![Hero chart](img/hero.png)
 
@@ -23,21 +23,23 @@ Automotive valuation and fleet procurement teams need to benchmark whether a veh
    - `mpg_combined = 0.55 * MPG_City + 0.45 * MPG_Highway` (EPA combined cycle formula)
    - `dealer_margin_pct = ((MSRP - Invoice) / MSRP) * 100` (computed for descriptive segment auditing only; **strictly excluded** alongside `Invoice` from all model predictors).
 3. **Log-MSRP transformation & model comparison:** Because luxury and exotic trims create strong positive skewness in `MSRP`, both the `Ridge` baseline and `GradientBoostingRegressor` are trained in $\log(\text{MSRP})$ space inside a `ColumnTransformer` (`StandardScaler` + `OneHotEncoder`) and evaluated in raw USD ($\exp(\hat{y})$) on a stratified 80/20 split with 500 bootstrap iterations.
-4. **Why Gradient Boosting outperforms Log-Ridge:** `GradientBoostingRegressor` captures non-linear horsepower-to-weight thresholds in `Sports` and `Europe` luxury segments, lowering MAE from `\$4,826.78` to `\$4,189.54` (`-13.2%`) and MAPE from `14.32%` to `12.28%`.
+4. **Why Gradient Boosting outperforms Log-Ridge:** `GradientBoostingRegressor` captures non-linear horsepower-to-weight thresholds in `Sports` and `Europe` luxury segments, lowering MAE from `\$4,826.78` to `\$4,186.99` (`-13.3%`) and MAPE from `14.32%` to `12.27%`.
 
 ## Results
+
+Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `reports/`).
 
 All metrics are computed on the held-out 20% stratified test split (`n = 86` vehicles) and verified against [`reports/metrics.json`](reports/metrics.json):
 
 | Metric | Log-Ridge Baseline | Gradient Boosting Regressor | 95% CI (Gradient Boosting) |
 |---|---:|---:|---:|
-| **MAE (\$ USD)** | \$4,826.78 | **\$4,189.54** | `[$3,176.53, $5,305.41]` |
-| **RMSE (\$ USD)** | \$7,226.65 | **\$6,621.17** | `[$4,736.78, $8,302.67]` |
-| **MAPE (%)** | 14.32% | **12.28%** | `[9.86%, 14.81%]` |
-| **$R^2$** | 0.8403 | **0.8659** | `[0.7175, 0.9381]` |
+| **MAE (\$ USD)** | \$4,826.78 | **\$4,186.99** | `[$3,175.32, $5,301.53]` |
+| **RMSE (\$ USD)** | \$7,226.65 | **\$6,620.31** | `[$4,735.00, $8,301.95]` |
+| **MAPE (%)** | 14.32% | **12.27%** | `[9.84%, 14.77%]` |
+| **$R^2$** | 0.8403 | **0.8660** | `[0.7175, 0.9381]` |
 
 ### Key Hedonic Pricing & Margin Findings
-1. **Top 3 MSRP predictors (Permutation $R^2$ drop):** `Horsepower` (`0.6949 ± 0.1191` $R^2$ drop) dominates valuation, followed by `Origin` (`0.1640 ± 0.0248`) and `Weight` (`0.1090 ± 0.0185`).
+1. **Top 3 MSRP predictors (Permutation $R^2$ drop):** `Horsepower` (`0.6922 ± 0.1193` $R^2$ drop) dominates valuation, followed by `Origin` (`0.1641 ± 0.0248`) and `Weight` (`0.1091 ± 0.0185`).
 2. **European brand premium:** European models command a median MSRP of **\$40,590** (`mean \$48,349.80`), which is **59.1% higher** than US models (`median \$25,520`) and **76.2% higher** than Asian models (`median \$23,032.50`), even after controlling for powertrain size.
 3. **Dealer gross margins by body type:** Across all 428 vehicles, average dealer gross margin between `Invoice` and `MSRP` is **8.06%**, peaking in `Truck` (**9.03%**) and `Sports` (**8.94%**, median MSRP `\$40,590`) and compressing in `Wagon` (**7.38%**) and `Hybrid` (**7.46%**, combined MPG `55.45`).
 

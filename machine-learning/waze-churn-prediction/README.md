@@ -1,6 +1,6 @@
 # Waze User Churn Prediction
 
-> Predicts monthly user churn on 14,299 Waze navigators: PR-AUC 0.3790 (2.14x lift over the 17.73% base rate) and 43.00% churn recall at a 20% retention contact budget.
+> Predicts monthly user churn on 14,299 Waze navigators: PR-AUC 0.3785 (2.13x lift over the 17.73% base rate) and 43.00% churn recall at a 20% retention contact budget.
 
 ![Hero chart](img/hero.png)
 
@@ -25,21 +25,23 @@ Monthly retention campaigns on mobile navigation apps face strict notification b
    - `pct_sessions_fav = (total_navigations_fav1 + total_navigations_fav2) / total_sessions`
    - `device_encoded` (`iPhone = 1`, `Android = 0`)
 3. **Model comparison & probability calibration:** Compared a `StandardScaler + LogisticRegression` baseline against 5-fold isotonic-calibrated `RandomForestClassifier` and `HistGradientBoostingClassifier` pipelines. Evaluated ranking and calibration using 500-iteration bootstrap 95% confidence intervals on the held-out test split (`n = 2,860`).
-4. **Why linear and tree models converge here:** Permutation importance reveals that two monotonic features—`activity_days` (`0.1474 ± 0.0109` PR-AUC drop) and `n_days_after_onboarding` (`0.0407 ± 0.0090` PR-AUC drop)—dominate the signal. Because log-odds of churn decay nearly linearly with active days (`median 6.0` driving days for churned users vs `14.0` for retained users), `Calibrated HistGradientBoosting` (`PR-AUC 0.3790`) and `Logistic Regression` (`PR-AUC 0.3785`) achieve virtually identical discrimination, with Logistic Regression slightly edging top-decile recall (`26.82%` vs `25.84%`).
+4. **Why linear and tree models converge here:** Permutation importance reveals that two monotonic features—`activity_days` (`0.1450 ± 0.0110` PR-AUC drop) and `n_days_after_onboarding` (`0.0398 ± 0.0090` PR-AUC drop)—dominate the signal. Because log-odds of churn decay nearly linearly with active days (`median 6.0` driving days for churned users vs `14.0` for retained users), `Calibrated HistGradientBoosting` (`PR-AUC 0.3755`) and `Logistic Regression` (`PR-AUC 0.3785`) achieve virtually identical discrimination (the 95% intervals overlap almost entirely), and the Logistic Regression baseline is at least as good on every reported metric, including top-decile recall (`26.82%` vs `25.44%`).
 
 ## Results
+
+Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `reports/`).
 
 All metrics below are computed on the held-out 20% stratified test split (`n = 2,860`, base churn rate `0.1773`) and verified against [`reports/metrics.json`](reports/metrics.json):
 
 | Metric | Logistic Regression Baseline | Calibrated Random Forest | Calibrated HistGradientBoosting | 95% CI (HistGB) |
 |---|---:|---:|---:|---:|
-| **PR-AUC** | 0.3785 | 0.3757 | **0.3790** | `[0.3382, 0.4193]` |
-| **ROC-AUC** | **0.7447** | 0.7402 | 0.7366 | `[0.7145, 0.7598]` |
-| **Brier Score** (lower is better) | **0.1291** | 0.1297 | 0.1298 | `[0.1214, 0.1380]` |
-| **Recall @ 10% Contact Rate** | **0.2682** | 0.2643 | 0.2584 | `[0.2273, 0.2907]` |
-| **Recall @ 20% Contact Rate** | **0.4300** | 0.4221 | 0.4201 | `[0.3847, 0.4558]` |
-| **Precision @ 10% Contact Rate** | **0.4755** | 0.4685 | 0.4580 | `[0.3951, 0.5228]` |
-| **Precision @ 20% Contact Rate** | **0.3811** | 0.3741 | 0.3724 | `[0.3304, 0.4091]` |
+| **PR-AUC** | **0.3785** | 0.3757 | 0.3755 | `[0.3346, 0.4169]` |
+| **ROC-AUC** | **0.7447** | 0.7402 | 0.7363 | `[0.7139, 0.7595]` |
+| **Brier Score** (lower is better) | **0.1291** | 0.1297 | 0.1299 | `[0.1216, 0.1381]` |
+| **Recall @ 10% Contact Rate** | **0.2682** | 0.2643 | 0.2544 | `[0.2271, 0.2889]` |
+| **Recall @ 20% Contact Rate** | **0.4300** | 0.4221 | 0.4280 | `[0.3897, 0.4640]` |
+| **Precision @ 10% Contact Rate** | **0.4755** | 0.4685 | 0.4510 | `[0.3951, 0.5210]` |
+| **Precision @ 20% Contact Rate** | **0.3811** | 0.3741 | 0.3794 | `[0.3365, 0.4196]` |
 
 ### Key Behavioral Cohort Insights
 - **Hyper-marathoner churn paradox:** Churned users drive **59.2% more kilometers per driving day** (`median 407.60 km/day`) than retained users (`median 256.06 km/day`), indicating that long-haul/irregular drivers churn at much higher rates than daily urban commuters (`median 14.0` driving days vs `6.0` for churned users).

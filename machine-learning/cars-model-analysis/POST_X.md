@@ -9,13 +9,13 @@ I built a leak-free hedonic pricing pipeline on 428 vehicles. Here's what drives
 
 3/6 Out-of-sample test results (80/20 origin-stratified split, n=86):
 • Log-Ridge Baseline: MAE $4,826.78 | RMSE $7,226.65 | MAPE 14.32% | R² 0.8403
-• Gradient Boosting: MAE $4,189.54 (95% CI [$3,177, $5,305]) | MAPE 12.28% | R² 0.8659
-13.2% reduction in dollar MAE.
+• Gradient Boosting: MAE $4,186.99 (95% CI [$3,175, $5,302]) | MAPE 12.27% | R² 0.8660
+13.3% reduction in dollar MAE.
 
 4/6 What actually drives vehicle sticker price? (Permutation R² drop on test set):
-1. Horsepower: -0.6949 R²
-2. Regional Origin: -0.1640 R²
-3. Curb Weight: -0.1090 R²
+1. Horsepower: -0.6922 R²
+2. Regional Origin: -0.1641 R²
+3. Curb Weight: -0.1091 R²
 4. Vehicle Type: -0.0359 R²
 5. Highway MPG: -0.0262 R²
 

@@ -11,8 +11,8 @@ iPhone churn is 17.83% vs 17.56% on Android. And `device_encoded` has near-zero 
 
 4/6 Third, Baseline vs Gradient Boosting (20% stratified test split, n=2,860):
 • Logistic Regression: PR-AUC 0.3785 | ROC-AUC 0.7447 | Brier 0.1291
-• Isotonic HistGradientBoosting: PR-AUC 0.3790 (95% CI [0.3382, 0.4193])
-Why so close? `activity_days` (-0.1474 PR-AUC when permuted) and tenure (-0.0407) act almost monotonically in log-odds space.
+• Isotonic HistGradientBoosting: PR-AUC 0.3755 (95% CI [0.3346, 0.4169])
+Why so close? `activity_days` (-0.1450 PR-AUC when permuted) and tenure (-0.0398) act almost monotonically in log-odds space.
 
 5/6 Decision impact at fixed marketing budgets:
 • Top 10% contact budget → 47.55% precision (2.68x lift over 17.73% base rate), capturing 26.82% of all churners.

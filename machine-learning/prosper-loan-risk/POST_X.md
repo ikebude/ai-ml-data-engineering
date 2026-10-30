@@ -16,15 +16,15 @@ Rule 3: Chronological split — train on `2005–2011` (`41,638` loans), test ou
 **3/6**
 Out-of-time results on the 13,880 future loans (`30.67%` base default rate):
 - WoE/Quantile Logistic Scorecard (`300–850` scale, PDO=20): ROC-AUC `0.667`, ECE `0.043`
-- Calibrated GBDT + Scorecard Ensemble: **ROC-AUC `0.707`** (95% CI `0.696–0.715`), **KS `0.305`**, **PR-AUC `0.482`**
+- Calibrated GBDT + Scorecard Ensemble: **ROC-AUC `0.705`** (95% CI `0.694–0.714`), **KS `0.303`**, **PR-AUC `0.479`**
 
 **4/6**
 An ROC curve isn't a lending policy. Credit committees need an **Approval Policy Simulator**:
-- Approve all (`PD <= 100%`): `30.67%` default rate -> `+1.28%` net yield (at 65% LGD)
-- **Cutoff at `PD <= 25%` (`Score >= 568`)**: approves `45.7%` of loans, cuts defaults to **`16.50%`**, and lifts net expected yield to **`+6.75%`**.
+- Approve all (`PD <= 100%`): `30.67%` default rate -> `+2.22%` net yield (at 65% LGD)
+- **Cutoff at `PD <= 25%` (`Score >= 568`)**: approves `46.4%` of loans, cuts defaults to **`16.92%`**, and lifts net expected yield to **`+6.61%`**.
 
 **5/6**
-We also audit proxy slices at the `25%` PD cutoff: homeowner vs non-homeowner approval rates differ by just `2.12` percentage points (`46.7%` vs `44.6%`), tracking true default differences (`28.5%` vs `32.9%`).
+We also audit proxy slices at the `25%` PD cutoff: homeowner vs non-homeowner approval rates differ by just `1.82` percentage points (`47.3%` vs `45.5%`), tracking true default differences (`28.5%` vs `32.9%`).
 
 **6/6**
 Code, Streamlit policy simulator, and CI tests:

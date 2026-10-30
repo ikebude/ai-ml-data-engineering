@@ -7,7 +7,7 @@ To look beneath standard sector labels, I ran a quantitative factor clustering a
    - **70 High-Multiple Compounders:** Median market cap `\$131.89B`, Price/EBITDA `43.15x`, and `+15.10%` median YoY revenue growth.
    - **371 Core Cash-Flow Constituents:** Median market cap `\$36.90B`, Price/EBITDA `12.39x`, and `+4.50%` revenue growth.
    - **61 Deep-Value / Labor-Intensive Cyclicals:** Median market cap `\$16.09B`, Price/EBITDA `5.55x`, and `+1.30%` revenue growth.
-3. **Non-Linear Fundamental Scaling:** Predicting market-cap tier strictly from operational fundamentals (excluding market cap and index weight) jumped from **0.6505 Macro-F1** (Logistic Regression) to **0.8749 Macro-F1** (Random Forest, 95% CI `[0.8492, 0.9038]`).
+3. **Non-Linear Fundamental Scaling:** Predicting market-cap tier strictly from operational fundamentals (excluding market cap and index weight) jumped from **0.6562 Macro-F1** (Logistic Regression) to **0.8692 Macro-F1** (Random Forest, 95% CI `[0.8405, 0.8996]`).
 
 Visual: 2D PCA factor projection & GICS sector market-cap distribution (`img/hero.png`).
 

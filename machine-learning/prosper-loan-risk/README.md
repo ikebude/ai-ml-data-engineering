@@ -1,6 +1,6 @@
 # LoanLens — Out-of-Time Credit Default Scorecard, Calibrated GBDT & Policy Simulator
 
-> **One-line result:** Scores consumer loan applications `300–850` using strictly pre-origination bureau features across `55,518` closed Prosper loans — reaching **out-of-time ROC-AUC 0.707** (95% CI `0.696–0.715`) and **KS 0.305** on future origination cohorts (`2011–2014`), cutting portfolio default rates from **30.67% to 16.50%** at a **25% Max-PD policy cutoff** (`+6.75%` net expected yield after 65% LGD).
+> **One-line result:** Scores consumer loan applications `300–850` using strictly pre-origination bureau features across `55,518` closed Prosper loans — reaching **out-of-time ROC-AUC 0.705** (95% CI `0.694–0.714`) and **KS 0.303** on future origination cohorts (`2011–2014`), cutting portfolio default rates from **30.67% to 16.92%** at a **25% Max-PD policy cutoff** (`+6.61%` net expected yield after 65% LGD).
 
 | Product Workspace UI | Out-of-Time ROC & Policy Simulator (`img/hero.png`) |
 |---|---|
@@ -19,6 +19,8 @@ Many credit-risk notebooks on the Prosper dataset report inflated `0.95+` accura
 ## Data
 
 - **Source:** Prosper Peer-to-Peer Lending Dataset (`Prosperloandata.csv` — `113,937` total listings, `81` columns).
+
+> Note: the raw 84 MB CSV is tracked in git history; it is kept as is (no history rewrite). New large data should use Git LFS or a download script.
 - **Closed-Loan Filtering (Preventing Censoring Bias):** Active `"Current"` loans whose 36- or 60-month term has not finished are excluded so recent cohorts are not falsely labelled as non-defaults. The filtered closed-loan cohort contains **`55,518` completed or defaulted loans**:
   - `1` (**Bad / Default**): `Defaulted`, `Chargedoff`, `Past Due (>60 days)`
   - `0` (**Good / Completed**): `Completed`
@@ -43,31 +45,33 @@ Many credit-risk notebooks on the Prosper dataset report inflated `0.95+` accura
 
 ## Results
 
+Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `reports/`).
+
 ### 1. Out-of-Time Model Performance (`2011-09-19` to `2014-02-13`, `N = 13,880`)
 
 | Metric | WoE / Quantile Logistic Scorecard | Calibrated GBDT + Scorecard | 95% Bootstrap CI |
 |---|---:|---:|---:|
-| **Out-of-Time ROC-AUC** *(target `>= 0.70`)* | `0.6673` | **`0.7065`** | `0.6961 – 0.7154` |
-| **Out-of-Time KS Statistic** *(target `>= 0.30`)* | `0.2413` | **`0.3047`** | — |
-| **Out-of-Time PR-AUC** *(base rate `0.3067`)* | `0.4390` | **`0.4815`** | `0.4664 – 0.4970` |
-| **Expected Calibration Error (ECE)** | **`0.0430`** | `0.0552` | — |
-| **Brier Score** | `0.1988` | **`0.1943`** | — |
+| **Out-of-Time ROC-AUC** *(target `>= 0.70`)* | `0.6673` | **`0.7049`** | `0.6944 – 0.7137` |
+| **Out-of-Time KS Statistic** *(target `>= 0.30`)* | `0.2413` | **`0.3034`** | — |
+| **Out-of-Time PR-AUC** *(base rate `0.3067`)* | `0.4390` | **`0.4791`** | `0.4643 – 0.4950` |
+| **Expected Calibration Error (ECE)** | **`0.0430`** | `0.0565` | — |
+| **Brier Score** | `0.1988` | **`0.1946`** | — |
 
-> **Why OOT ROC-AUC is ~0.71 (and why that is realistic):** Prosper underwent a major structural shift between 2005–2008 (pre-SEC registration) and 2011–2014 (post-relaunch credit policy), and borrower credit scores are already pre-screened by Prosper's platform floor. On strictly pre-origination features across a multi-year macro shift, an out-of-time `ROC-AUC` of `0.707` and `KS` of `0.305` reflects genuine bureau signal without payment-history leakage.
+> **Why OOT ROC-AUC is ~0.70 (and why that is realistic):** Prosper underwent a major structural shift between 2005–2008 (pre-SEC registration) and 2011–2014 (post-relaunch credit policy), and borrower credit scores are already pre-screened by Prosper's platform floor. On strictly pre-origination features across a multi-year macro shift, an out-of-time `ROC-AUC` of `0.705` and `KS` of `0.303` reflects genuine bureau signal without payment-history leakage.
 
 ### 2. Approval Policy Simulator (`reports/policy_curve.csv`)
 
 | Max PD Cutoff | Min Credit Score (`300–850`) | Approval Rate | Approved Loans | Observed Default Rate | Avg Borrower APR | Expected Loss (`65%` LGD) | Net Expected Yield |
 |---:|---:|---:|---:|---:|---:|---:|---:|
-| `0.15` | `618` | `20.06%` | `2,785` | `8.76%` | `11.83%` | `5.69%` | **`+6.14%`** |
-| `0.20` | `591` | `32.57%` | `4,521` | `12.70%` | `14.69%` | `8.25%` | **`+6.43%`** |
-| **`0.25` (Recommended)** | **`568`** | **`45.66%`** | **`6,338`** | **`16.50%`** | **`17.48%`** | **`10.73%`** | **`+6.75%`** |
-| `0.30` | `549` | `60.26%` | `8,364` | `20.43%` | `20.07%` | `13.28%` | **`+6.79%`** |
-| `1.00` *(Approve All)* | `300` | `100.00%` | `13,880` | `30.67%` | `21.22%` | `19.94%` | `+1.28%` |
+| `0.15` | `587` | `18.51%` | `2,569` | `7.55%` | `12.31%` | `4.91%` | **`+7.40%`** |
+| `0.20` | `577` | `31.64%` | `4,391` | `12.62%` | `15.10%` | `8.20%` | **`+6.90%`** |
+| **`0.25` (Recommended)** | **`568`** | **`46.41%`** | **`6,442`** | **`16.92%`** | **`17.61%`** | **`11.00%`** | **`+6.61%`** |
+| `0.30` | `561` | `63.36%` | `8,794` | `21.59%` | `19.65%` | `14.04%` | **`+5.61%`** |
+| `1.00` *(Approve All)* | `300` | `100.00%` | `13,880` | `30.67%` | `22.15%` | `19.94%` | `+2.22%` |
 
 ### 3. Fairness & Proxy Slice Audit (at `25%` Max-PD Cutoff)
 
-Protected demographic attributes are excluded from training. Auditing the `25%` Max-PD policy across `IsBorrowerHomeowner` on the out-of-time test cohort shows an approval-rate gap of just **`2.12` percentage points** (`44.59%` non-homeowners vs `46.71%` homeowners), tracking the underlying default rate differential (`32.89%` vs `28.50%`).
+Protected demographic attributes are excluded from training. Auditing the `25%` Max-PD policy across `IsBorrowerHomeowner` on the out-of-time test cohort shows an approval-rate gap of just **`1.82` percentage points** (`45.49%` non-homeowners vs `47.31%` homeowners), tracking the underlying default rate differential (`32.89%` vs `28.50%`).
 
 > **Deployment Governance Note:** This model is trained on US consumer peer-to-peer loans. Before deploying LoanLens for Nigerian microfinance banks or digital lenders, the scorecard must be retrained and recalibrated on local CRC/FirstCentral bureau data and NGN bank-statement cashflow features.
 

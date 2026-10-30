@@ -1,6 +1,6 @@
 # NYC TLC Cab Fare & Duration Intelligence
 
-> Predicts NYC Yellow Taxi metered fares strictly prior to dispatch: MAE \$1.48 ($R^2 = 0.9495$, 29.4% lower error than linear baseline) on an out-of-time test split of 4,489 trips.
+> Predicts NYC Yellow Taxi metered fares strictly prior to dispatch: MAE \$1.47 ($R^2 = 0.9499$, 29.6% lower error than linear baseline) on an out-of-time test split of 4,489 trips.
 
 ![Hero chart](img/hero.png)
 
@@ -20,9 +20,11 @@ Ride-hailing and taxi dispatch platforms must quote upfront fares and arrival es
 1. **Strict pre-trip feature firewall (zero leakage):** Explicitly banned all post-trip settlement and timestamp columns (`total_amount`, `tip_amount`, `tolls_amount`, `extra`, `mta_tax`, `improvement_surcharge`, `payment_type`, and `tpep_dropoff_datetime`). Only nine pre-dispatch features enter the model: `trip_distance`, `pickup_hour`, `pickup_dayofweek`, `is_weekend`, `is_rush_hour`, `RatecodeID`, `PULocationID`, `DOLocationID`, and `passenger_count`.
 2. **Chronological out-of-time validation:** Sorted all 22,441 clean trips by `tpep_pickup_datetime` and trained on the first 80% (`Jan 1 – Oct 19, 2017`), testing on the final 20% (`Oct 19 – Dec 31, 2017`, covering Q4 holiday congestion).
 3. **Model comparison:** Benchmarked a `StandardScaler + Ridge` linear model against `HistGradientBoostingRegressor` for both metered fare (`fare_amount`) and trip duration (`trip_duration_min`), with 500-iteration bootstrap 95% confidence intervals.
-4. **Why Gradient Boosting wins:** While distance is roughly linear with base fare, NYC TLC airport flat rates (`RatecodeID = 2` JFK \$52 flat fare) and rush-hour Manhattan congestion create sharp non-linear interactions between `RatecodeID`, `PULocationID`, `DOLocationID`, and `pickup_hour`. `HistGradientBoostingRegressor` captures these regime shifts, cutting Fare MAE from `\$2.09` to `\$1.48` (`-29.4%`) and Duration MAE from `5.01 min` to `3.63 min` (`-27.7%`).
+4. **Why Gradient Boosting wins:** While distance is roughly linear with base fare, NYC TLC airport flat rates (`RatecodeID = 2` JFK \$52 flat fare) and rush-hour Manhattan congestion create sharp non-linear interactions between `RatecodeID`, `PULocationID`, `DOLocationID`, and `pickup_hour`. `HistGradientBoostingRegressor` captures these regime shifts, cutting Fare MAE from `\$2.09` to `\$1.47` (`-29.6%`) and Duration MAE from `5.01 min` to `3.64 min` (`-27.4%`).
 
 ## Results
+
+Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `reports/`).
 
 All metrics are computed on the chronological out-of-time test split (`n = 4,489`, mean fare `\$12.91`, median fare `\$9.50`, mean duration `14.45 min`) from [`reports/metrics.json`](reports/metrics.json):
 
@@ -30,19 +32,19 @@ All metrics are computed on the chronological out-of-time test split (`n = 4,489
 
 | Metric | Linear Ridge Baseline | HistGradientBoosting | 95% CI (HistGB) |
 |---|---:|---:|---:|
-| **MAE (\$ USD)** | \$2.0946 | **\$1.4789** | `[$1.4224, $1.5406]` |
-| **RMSE (\$ USD)** | \$3.3054 | **\$2.4376** | `[$2.2347, $2.6478]` |
-| **$R^2$** | 0.9071 | **0.9495** | `[0.9426, 0.9559]` |
-| **Quotes within ±\$1.00** | 33.21% | **52.44%** | — |
-| **Quotes within ±\$2.00** | — | **77.46%** | — |
+| **MAE (\$ USD)** | \$2.0946 | **\$1.4739** | `[$1.4178, $1.5356]` |
+| **RMSE (\$ USD)** | \$3.3054 | **\$2.4279** | `[$2.2307, $2.6341]` |
+| **$R^2$** | 0.9071 | **0.9499** | `[0.9431, 0.9563]` |
+| **Quotes within ±\$1.00** | 33.21% | **53.22%** | — |
+| **Quotes within ±\$2.00** | — | **77.23%** | — |
 
 ### 2. Pre-Trip Duration Estimation (`trip_duration_min`, Minutes)
 
 | Metric | Linear Ridge Baseline | HistGradientBoosting | 95% CI (HistGB) |
 |---|---:|---:|---:|
-| **MAE (Minutes)** | 5.0125 | **3.6255** | `[3.4984, 3.7667]` |
-| **RMSE (Minutes)** | 7.4940 | **5.7935** | `[5.4218, 6.1602]` |
-| **$R^2$** | 0.6395 | **0.7845** | `[0.7670, 0.8006]` |
+| **MAE (Minutes)** | 5.0125 | **3.6377** | `[3.5092, 3.7778]` |
+| **RMSE (Minutes)** | 7.4940 | **5.8181** | `[5.4340, 6.1929]` |
+| **$R^2$** | 0.6395 | **0.7827** | `[0.7641, 0.8004]` |
 
 ## What I'd do next
 

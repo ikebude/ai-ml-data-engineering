@@ -1,6 +1,6 @@
 # Customer Intelligence — Churn Prediction, RFM Segmentation & CLV Backtesting
 
-> Scores telecom subscribers and retail cohorts for churn risk and 12-month revenue at risk — reaching **PR-AUC 0.841** (95% CI `0.806–0.870`), **ROC-AUC 0.933**, and **81.2% call precision at a 20% contact budget** (`$60,353` annualised revenue at risk across the top 50 accounts), paired with an analytical **BG/NBD-style CLV backtest within +0.34% of actual 6-month holdout revenue**.
+> Scores telecom subscribers and retail cohorts for churn risk and 12-month revenue at risk — reaching **PR-AUC 0.841** (95% CI `0.807–0.871`), **ROC-AUC 0.933**, and **80.5% call precision at a 20% contact budget** (`$60,669` annualised revenue at risk across the top 50 accounts), paired with an analytical **BG/NBD-style CLV backtest within +1.19% of actual 6-month holdout revenue**.
 
 - **Full Code, Tests & Streamlit App:** [`machine-learning/customer-retention/`](../../machine-learning/customer-retention/)
 - **Benchmark Report:** [`machine-learning/customer-retention/reports/metrics.json`](../../machine-learning/customer-retention/reports/metrics.json)

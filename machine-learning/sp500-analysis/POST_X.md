@@ -16,9 +16,9 @@ Evaluating k ∈ {3,4,5,6} via Silhouette score peaks at k=3 (0.3700; 2D PCA cap
 • Cluster 2 (n=61): Deep-Value Cyclicals — Median MCap $16.09B | P/EBITDA 5.55x | Rev Growth +1.30%
 
 5/6 Robust MAD Z-Score Outliers:
-Using Median Absolute Deviation (scale = 1.4826 × MAD) flags structural outliers like unsplit share-price leaders (NVR Z=81.35, BKNG Z=49.16, AZO Z=31.26) and hyper-valuation tech names (SMCI Z=17.07, PLTR Z=16.52, CRWD Z=16.52).
+Using Median Absolute Deviation (scale = 1.4826 × MAD) flags structural outliers like unsplit share-price leaders (NVR Z=81.35, BKNG Z=49.16, AZO Z=31.26) and outlier names (SMCI Z=17.07, CRWD Z=16.52, JPM Z=16.52).
 
 6/6 Supervised benchmark: predicting Market-Cap Tercile purely from operational fundamentals (5-fold CV):
-• Logistic Regression: 0.6505 Macro-F1
-• Random Forest: 0.8749 Macro-F1 (95% CI [0.8492, 0.9038])
+• Logistic Regression: 0.6562 Macro-F1
+• Random Forest: 0.8692 Macro-F1 (95% CI [0.8405, 0.8996])
 Code & tests in `machine-learning/sp500-analysis`.
