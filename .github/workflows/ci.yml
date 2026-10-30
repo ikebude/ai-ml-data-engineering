@@ -12,6 +12,13 @@ on:
   workflow_dispatch:
 
 jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check relative links
+        run: python3 scripts/check_links.py .
+
   discover:
     runs-on: ubuntu-latest
     outputs:

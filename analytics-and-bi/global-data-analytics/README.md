@@ -12,7 +12,7 @@ Data teams frequently need to benchmark time-series, spatial, and catalog datase
 |---|---|---:|---|
 | **[`Housing Data Analysis/`](Housing%20Data%20Analysis)** | [`HouseData.csv`](Housing%20Data%20Analysis/HouseData.csv) (London Borough Monthly Housing & Crime, `1995–2019`) | `13,549 × 6` | Python (`.py`, `.ipynb`), R (`.R`), HTML/PDF Reports |
 | **[`Weather Data Analysis/`](Weather%20Data%20Analysis)** | [`WeatherDataset.csv`](Weather%20Data%20Analysis/WeatherDataset.csv) (Full-Year Hourly Synoptic Telemetry, `366 days`) | `8,784 × 8` | Python (`.py`), R (`.R`, `.Rmd`, `.RData`), LaTeX/PDF |
-| **[`Netflix Data Analytics/`](Netflix%20Data%20Analytics)** | [`Netflix-Dataset.csv`](Netflix%20Data%20Analysis/Netflix-Dataset.csv) (Global Streaming Catalog Metadata) | `7,789 × 11` | Python (`.py`, `.ipynb`), R (`.R`), Power BI (`.pbix`) |
+| **[`Netflix Data Analytics/`](Netflix%20Data%20Analytics)** | [`Netflix-Dataset.csv`](Netflix%20Data%20Analytics/Netflix-Dataset.csv) (Global Streaming Catalog Metadata) | `7,789 × 11` | Python (`.py`, `.ipynb`), R (`.R`), Power BI (`.pbix`) |
 | **[`Cars Data Analysis/`](Cars%20Data%20Analysis)** | [`CarsDataset.csv`](Cars%20Data%20Analysis/CarsDataset.csv) (Multi-Origin Vehicle MSRP, Invoice & Specs) | `428 × 15` | Python (`.py`, `.ipynb`), R (`.R`), Power BI (`.pbix`), PDF |
 | **[`Covid 19 Data Analysis/`](Covid%2019%20Data%20Analysis)** | [`CovidData.csv`](Covid%2019%20Data%20Analysis/CovidData.csv) (Early-Wave Regional Case & Mortality Snapshot) | `321 × 6` | Python (`.py`), R (`.R`, `.Rmd`), Power BI (`.pbix`), HTML |
 
