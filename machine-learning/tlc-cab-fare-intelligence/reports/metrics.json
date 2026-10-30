@@ -50,28 +50,28 @@
     },
     "hist_gradient_boosting": {
       "point": {
-        "mae": 1.4789,
-        "rmse": 2.4376,
-        "r2": 0.9495
+        "mae": 1.4739,
+        "rmse": 2.4279,
+        "r2": 0.9499
       },
       "ci_95": {
         "mae": [
-          1.4224,
-          1.5406
+          1.4178,
+          1.5356
         ],
         "rmse": [
-          2.2347,
-          2.6478
+          2.2307,
+          2.6341
         ],
         "r2": [
-          0.9426,
-          0.9559
+          0.9431,
+          0.9563
         ]
       }
     },
     "within_1_usd_rate_ridge": 0.3321,
-    "within_1_usd_rate_hgb": 0.5244,
-    "within_2_usd_rate_hgb": 0.7746
+    "within_1_usd_rate_hgb": 0.5322,
+    "within_2_usd_rate_hgb": 0.7723
   },
   "trip_duration_min_models": {
     "linear_ridge_baseline": {
@@ -97,22 +97,22 @@
     },
     "hist_gradient_boosting": {
       "point": {
-        "mae": 3.6255,
-        "rmse": 5.7935,
-        "r2": 0.7845
+        "mae": 3.6377,
+        "rmse": 5.8181,
+        "r2": 0.7827
       },
       "ci_95": {
         "mae": [
-          3.4984,
-          3.7667
+          3.5092,
+          3.7778
         ],
         "rmse": [
-          5.4218,
-          6.1602
+          5.434,
+          6.1929
         ],
         "r2": [
-          0.767,
-          0.8006
+          0.7641,
+          0.8004
         ]
       }
     }

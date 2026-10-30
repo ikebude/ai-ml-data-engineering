@@ -56,19 +56,19 @@
       "price_to_ebitda"
     ],
     "logistic_regression_baseline": {
-      "accuracy": 0.6554,
-      "macro_f1": 0.6505,
+      "accuracy": 0.6633,
+      "macro_f1": 0.6562,
       "macro_f1_ci_95": [
-        0.6074,
-        0.6926
+        0.6211,
+        0.6992
       ]
     },
     "random_forest_classifier": {
-      "accuracy": 0.8745,
-      "macro_f1": 0.8749,
+      "accuracy": 0.8685,
+      "macro_f1": 0.8692,
       "macro_f1_ci_95": [
-        0.8492,
-        0.9038
+        0.8405,
+        0.8996
       ]
     }
   },
@@ -116,11 +116,11 @@
       "marketcap_bn": 18.5
     },
     {
-      "Symbol": "PLTR",
-      "Shortname": "Palantir Technologies Inc.",
+      "Symbol": "CRWD",
+      "Shortname": "CrowdStrike Holdings, Inc.",
       "Sector": "Technology",
       "robust_z_max": 16.52,
-      "marketcap_bn": 183.49
+      "marketcap_bn": 89.24
     },
     {
       "Symbol": "INCY",
@@ -130,18 +130,18 @@
       "marketcap_bn": 13.26
     },
     {
-      "Symbol": "CRWD",
-      "Shortname": "CrowdStrike Holdings, Inc.",
-      "Sector": "Technology",
+      "Symbol": "JPM",
+      "Shortname": "JP Morgan Chase & Co.",
+      "Sector": "Financial Services",
       "robust_z_max": 16.52,
-      "marketcap_bn": 89.24
+      "marketcap_bn": 668.92
     },
     {
-      "Symbol": "TTWO",
-      "Shortname": "Take-Two Interactive Software, ",
-      "Sector": "Communication Services",
+      "Symbol": "CSGP",
+      "Shortname": "CoStar Group, Inc.",
+      "Sector": "Real Estate",
       "robust_z_max": 16.52,
-      "marketcap_bn": 31.96
+      "marketcap_bn": 29.29
     }
   ],
   "sector_concentration": [

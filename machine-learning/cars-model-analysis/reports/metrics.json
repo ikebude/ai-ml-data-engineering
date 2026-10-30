@@ -53,23 +53,23 @@
     },
     "gradient_boosting_regressor": {
       "point": {
-        "mae": 4189.5376,
-        "rmse": 6621.1697,
-        "mape": 0.1228,
-        "r2": 0.8659
+        "mae": 4186.9906,
+        "rmse": 6620.3067,
+        "mape": 0.1227,
+        "r2": 0.866
       },
       "ci_95": {
         "mae": [
-          3176.5315,
-          5305.4137
+          3175.3217,
+          5301.5294
         ],
         "rmse": [
-          4736.7758,
-          8302.6704
+          4735.0006,
+          8301.9482
         ],
         "mape": [
-          0.0986,
-          0.1481
+          0.0984,
+          0.1477
         ],
         "r2": [
           0.7175,
@@ -81,17 +81,17 @@
   "top_features": [
     {
       "feature": "Horsepower",
-      "importance_mean": 0.6949,
-      "importance_std": 0.1191
+      "importance_mean": 0.6922,
+      "importance_std": 0.1193
     },
     {
       "feature": "Origin",
-      "importance_mean": 0.164,
+      "importance_mean": 0.1641,
       "importance_std": 0.0248
     },
     {
       "feature": "Weight",
-      "importance_mean": 0.109,
+      "importance_mean": 0.1091,
       "importance_std": 0.0185
     },
     {
@@ -102,7 +102,7 @@
     {
       "feature": "MPG_Highway",
       "importance_mean": 0.0262,
-      "importance_std": 0.0095
+      "importance_std": 0.0094
     },
     {
       "feature": "Wheelbase",
@@ -116,7 +116,7 @@
     },
     {
       "feature": "EngineSize",
-      "importance_mean": 0.0103,
+      "importance_mean": 0.0104,
       "importance_std": 0.0049
     }
   ],

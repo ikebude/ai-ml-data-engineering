@@ -74,61 +74,61 @@
           0.1376
         ],
         "recall_at_10pct": [
-          0.2318,
-          0.2889
+          0.2317,
+          0.2893
         ],
         "recall_at_20pct": [
-          0.3925,
-          0.4635
+          0.392,
+          0.4629
         ],
         "precision_at_10pct": [
           0.4056,
-          0.5158
+          0.514
         ],
         "precision_at_20pct": [
           0.3382,
-          0.4161
+          0.417
         ]
       }
     },
     "calibrated_hist_gradient_boosting": {
       "point": {
-        "pr_auc": 0.379,
-        "roc_auc": 0.7366,
-        "brier_score": 0.1298,
-        "recall_at_10pct": 0.2584,
-        "recall_at_20pct": 0.4201,
-        "precision_at_10pct": 0.458,
-        "precision_at_20pct": 0.3724
+        "pr_auc": 0.3755,
+        "roc_auc": 0.7363,
+        "brier_score": 0.1299,
+        "recall_at_10pct": 0.2544,
+        "recall_at_20pct": 0.428,
+        "precision_at_10pct": 0.451,
+        "precision_at_20pct": 0.3794
       },
       "ci_95": {
         "pr_auc": [
-          0.3382,
-          0.4193
+          0.3346,
+          0.4169
         ],
         "roc_auc": [
-          0.7145,
-          0.7598
+          0.7139,
+          0.7595
         ],
         "brier_score": [
-          0.1214,
-          0.138
+          0.1216,
+          0.1381
         ],
         "recall_at_10pct": [
-          0.2273,
-          0.2907
+          0.2271,
+          0.2889
         ],
         "recall_at_20pct": [
-          0.3847,
-          0.4558
+          0.3897,
+          0.464
         ],
         "precision_at_10pct": [
           0.3951,
-          0.5228
+          0.521
         ],
         "precision_at_20pct": [
-          0.3304,
-          0.4091
+          0.3365,
+          0.4196
         ]
       }
     }
@@ -136,43 +136,43 @@
   "top_features": [
     {
       "feature": "activity_days",
-      "importance_mean": 0.1474,
-      "importance_std": 0.0109
+      "importance_mean": 0.145,
+      "importance_std": 0.011
     },
     {
       "feature": "n_days_after_onboarding",
-      "importance_mean": 0.0407,
+      "importance_mean": 0.0398,
       "importance_std": 0.009
     },
     {
       "feature": "duration_minutes_drives",
-      "importance_mean": 0.0171,
-      "importance_std": 0.0039
+      "importance_mean": 0.0174,
+      "importance_std": 0.0052
     },
     {
       "feature": "driving_days",
-      "importance_mean": 0.0138,
-      "importance_std": 0.0059
+      "importance_mean": 0.0146,
+      "importance_std": 0.0056
     },
     {
       "feature": "total_navigations_fav1",
-      "importance_mean": 0.012,
-      "importance_std": 0.0042
-    },
-    {
-      "feature": "km_per_drive",
-      "importance_mean": 0.005,
-      "importance_std": 0.0018
-    },
-    {
-      "feature": "km_per_driving_day",
-      "importance_mean": 0.0047,
-      "importance_std": 0.0025
+      "importance_mean": 0.0079,
+      "importance_std": 0.0041
     },
     {
       "feature": "drives_per_driving_day",
-      "importance_mean": 0.0036,
-      "importance_std": 0.0011
+      "importance_mean": 0.0056,
+      "importance_std": 0.0019
+    },
+    {
+      "feature": "km_per_drive",
+      "importance_mean": 0.0026,
+      "importance_std": 0.0017
+    },
+    {
+      "feature": "sessions",
+      "importance_mean": 0.0014,
+      "importance_std": 0.004
     }
   ],
   "cohort_insights": {
