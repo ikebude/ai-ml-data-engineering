@@ -28,7 +28,7 @@
 
 1. **Cover:** *Solutions I've designed, built and shipped — BI Scientist · AI/ML Engineer · Python Developer*
 2. **About Me:** How BI thinking + production ML engineering fit together
-3. **Map of Work:** Company platforms (case studies only, zero proprietary code) vs. Personal open-source products
+3. **Map of Work:** Company platforms (case studies only, zero proprietary code) vs. Personal products
 4. **Section I:** *Industry Work at 3Consulting Limited*
 5. **SafeData (`safedata.3consult-ng.com`):** NDPA/GDPR data-retention & consent-withdrawal disposal platform
 6. **SafeData Architecture:** Policy engine, automated SLA timers, and cryptographic disposal certificates
@@ -42,9 +42,9 @@
 14. **Africa Stablecoin Intelligence (`africastablecoinintelligence.com`):** Pan-African stablecoin market & regulatory tracker
 15. **Africa Stablecoin Coverage:** Corridor metrics, 54-country regulatory posture, and editorial CMS
 16. **Africa Stablecoin Takeaway:** Separating market signal from regulatory policy across African corridors
-17. **Section II:** *Personal Products & Open-Source Hub*
+17. **Section II:** *Personal Products Hub*
 18. **Moniguard v2 (`ikebude/MLOps-Fraud-Detection`):** Nigerian PoD & mobile-money fraud MLOps platform
-19. **Moniguard v2 Benchmark:** `PR-AUC 0.877` (95% CI `0.845–0.905`), `ROC-AUC 0.943`, `Recall@5% = 0.892`, `47.9 ms` p95 latency on 60,000 chronological transactions
+19. **Moniguard v2 Benchmark:** `PR-AUC 0.877` (95% CI `0.845–0.905`), `ROC-AUC 0.943`, `Recall@5% = 0.892`, `47.9 ms` p95 latency on 60,000 **synthetic** chronological transactions
 20. **Lolo's Ledger:** Multi-asset trading journal, live position-size calculator, and rule-based AI coach (`521/521` unit tests passing)
 21. **Lolo's Ledger Risk Engine:** Pre-trade account risk guardrails (`0.25%–2.0%`), expectancy (`E[R]`), and Tilt Index detection
 22. **BI Operations Agent (`ikebude/AIMLOps-BI-Operations-Agent`):** Read-only NL-to-SQL copilot with AST validation and anomaly z-score cards

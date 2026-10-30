@@ -5,7 +5,7 @@
 
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
 - **My Role:** Junior Data Analyst — data source research, market metrics pipeline, public/admin UI theme engineering (Light/Dark/System), deployment & search-console indexing
-- **Live URL:** [africastablecoinintelligence.com](https://africastablecoinintelligence.com)
+- **Public site:** [africastablecoinintelligence.com](https://africastablecoinintelligence.com) *(deployment pending verification)*
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 
 ![Africa Stablecoin Intelligence Platform](img/asi-dark.png)

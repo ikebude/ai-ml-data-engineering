@@ -5,7 +5,7 @@
 
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
 - **My Role:** Junior Data Analyst (AI Assurance & Solutions) — backend data workflows, retention-engine scheduling logic, PostgreSQL migration & test suite, CI security/lint pipeline
-- **Product URL:** [safedata.3consult-ng.com](https://safedata.3consult-ng.com)
+- **Public site (planned):** [safedata.3consult-ng.com](https://safedata.3consult-ng.com) *(deployment pending verification)*
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 
 | Public Product Site (`safedata.3consult-ng.com`) | Compliance & Retention Governance Console |

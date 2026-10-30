@@ -5,7 +5,7 @@
 
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
 - **My Role:** Junior Data Analyst (AI Assurance & Solutions) — feature engineering, ensemble scoring pipeline, MLflow/Airflow MLOps workflows, analyst dashboard & governance reporting
-- **Product URL:** [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com)
+- **Public site (planned):** [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) *(deployment pending verification)*
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here. *(For my personal, open-source implementation of this problem with reproducible benchmarks, see [`products/moniguard`](../../products/moniguard/).)*
 
 | Public Product Site (`fraudguard.3consult-ng.com`) | Real-Time Risk Scoring & SAR Analyst Queue |

@@ -20,7 +20,7 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 - [**FraudGuard Case Study Carousel (PDF)**](showcase/carousels/02-FraudGuard-Case-Study-Carousel.pdf) — Sub-50ms Transaction Risk Engine & SAR Queue
 - [**Africa Stablecoin Intelligence Case Study Carousel (PDF)**](showcase/carousels/03-Africa-Stablecoin-Intelligence-Case-Study-Carousel.pdf) — Pan-African FX Peg & Policy Matrix
 
-### 🔬 Precious Ikebude (Open-Source AI & ML Products)
+### 🔬 Precious Ikebude (Personal AI & ML Products)
 - [**Moniguard v2 Case Study Carousel (PDF)**](showcase/carousels/04-Moniguard-v2-Case-Study-Carousel.pdf) — Nigerian PoD Fraud Scoring Engine (PR-AUC 0.877)
 - [**Lolo's Ledger Case Study Carousel (PDF)**](showcase/carousels/05-Lolos-Ledger-Case-Study-Carousel.pdf) — Multi-Asset Quant Risk & Tilt Detector (-19.6R drag)
 - [**BI Operations Agent Case Study Carousel (PDF)**](showcase/carousels/06-BI-Operations-Agent-Case-Study-Carousel.pdf) — Governed Semantic Layer & AST Guarded SQL (96.0% accuracy)
@@ -34,7 +34,7 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 
 | Product | One-Line Summary & Measured Results | Stack | Links |
 |---|---|---|---|
-| [**Moniguard**](products/moniguard/) | Real-time e-commerce & PoD fraud scoring (`0–1000` + reason codes). Calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.877** (`95% CI: 0.845–0.905`), **Recall@5% alert rate = 0.892**, and **47.9 ms p95 scoring latency** on a 60k time-split benchmark. | Python, XGBoost, Scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case Study](products/moniguard/) · [Product Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
+| [**Moniguard**](products/moniguard/) | Real-time e-commerce & PoD fraud scoring (`0–1000` + reason codes). Calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.877** (`95% CI: 0.845–0.905`), **Recall@5% alert rate = 0.892**, and **47.9 ms p95 scoring latency** on a 60k **synthetic** time-split benchmark. | Python, XGBoost, Scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case Study](products/moniguard/) · [Product Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
 | [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal, position-sizing risk engine, and educational AI performance coach. Built on my archived desktop predecessor (FXLedger v1.1.0) (**v1.1.0 — 521/521 unit tests & 25 Playwright E2E tests passing**) and full-stack NestJS + React + BullMQ monorepo. | TypeScript, React, NestJS, PostgreSQL, Redis, Electron, Playwright | [Case Study](products/lolos-ledger/) · *Source private* |
 | [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English analytics agent that queries CSV/Excel/Postgres data through a governed YAML semantic layer and read-only SQL guard, renders charts, monitors daily KPIs, and writes weekly executive summaries. | Python, FastAPI, DuckDB, SQLAlchemy, React, LLM Tool Loop | [Case Study](products/bi-operations-agent/) · [Product Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
 | [**AIOps Expense Tracker**](products/expense-tracker/) | NGN-first personal & SME finance app with TF-IDF + Logistic Regression auto-categorisation trained on user corrections, receipt OCR, robust z-score anomaly detection, and 3-month spend forecasting. | TypeScript, React, Vite, Python ML, IndexedDB | [Case Study](products/expense-tracker/) · [Product Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
@@ -43,13 +43,13 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 
 ## 2. Industry Case Studies — 3Consulting Limited (`industry-work/`)
 
-> *Shown as engineering case studies (problem, architecture, my role, and live links). Proprietary company source code is never published here.*
+> *Shown as engineering case studies (problem, architecture, my role, and planned public sites). Proprietary company source code is never published here.*
 
-| Platform | Domain | What It Does & My Role | Case Study & Live Link |
+| Platform | Domain | What It Does & My Role | Case Study & Public Site |
 |---|---|---|---|
-| [**SafeData (ADRS)**](industry-work/safedata/) | Data Retention & Consent Governance | Tracks record retention schedules, processes consent-withdrawal webhooks into disposal countdowns, enforces legal holds/dual approvals, and seals SHA-256 audit trails. *Role: retention/consent lifecycle logic, PostgreSQL test suite, GitHub Actions CI & security scanning.* | [Case Study](industry-work/safedata/) · [safedata.3consult-ng.com](https://safedata.3consult-ng.com) |
-| [**FraudGuard**](industry-work/fraudguard/) | Real-Time Transaction Fraud Prevention | Multi-service fraud intelligence platform (PostgreSQL outbox → Kafka → streaming inference → Flask analyst queue + SAR/governance + Airflow/MLflow retraining). *Role: feature engineering, ensemble pipeline, Airflow/MLflow MLOps, analyst dashboard.* | [Case Study](industry-work/fraudguard/) · [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) |
-| [**Africa Stablecoin Intelligence (ASI)**](industry-work/africa-stablecoin-intelligence/) | Market & Regulatory Intelligence | Tracks African stablecoin adoption, corridor metrics, central-bank regulatory posture by country, and editorial research dispatches. *Role: data source schema, Light/Dark/System UI across public & admin apps, launch indexing.* | [Case Study](industry-work/africa-stablecoin-intelligence/) · [africastablecoinintelligence.com](https://africastablecoinintelligence.com) |
+| [**SafeData (ADRS)**](industry-work/safedata/) | Data Retention & Consent Governance | Tracks record retention schedules, processes consent-withdrawal webhooks into disposal countdowns, enforces legal holds/dual approvals, and seals SHA-256 audit trails. *Role: retention/consent lifecycle logic, PostgreSQL test suite, GitHub Actions CI & security scanning.* | [Case Study](industry-work/safedata/) · [safedata.3consult-ng.com](https://safedata.3consult-ng.com) *(deployment pending verification)* |
+| [**FraudGuard**](industry-work/fraudguard/) | Real-Time Transaction Fraud Prevention | Multi-service fraud intelligence platform (PostgreSQL outbox → Kafka → streaming inference → Flask analyst queue + SAR/governance + Airflow/MLflow retraining). *Role: feature engineering, ensemble pipeline, Airflow/MLflow MLOps, analyst dashboard.* | [Case Study](industry-work/fraudguard/) · [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) *(deployment pending verification)* |
+| [**Africa Stablecoin Intelligence (ASI)**](industry-work/africa-stablecoin-intelligence/) | Market & Regulatory Intelligence | Tracks African stablecoin adoption, corridor metrics, central-bank regulatory posture by country, and editorial research dispatches. *Role: data source schema, Light/Dark/System UI across public & admin apps, launch indexing.* | [Case Study](industry-work/africa-stablecoin-intelligence/) · [africastablecoinintelligence.com](https://africastablecoinintelligence.com) *(deployment pending verification)* |
 
 ---
 
@@ -80,7 +80,7 @@ Each of the 9 platforms has a dedicated 6-slide executive case study carousel (1
 
 ## 5. Ground Rules This Repository Follows
 
-1. **Real numbers only.** Every metric reported comes from executing the code in the repository. No invented accuracy or synthetic business claims.
+1. **Real numbers only.** Every metric reported comes from executing the code in the repository. No invented accuracy or synthetic business claims (Moniguard and other product metrics are on synthetic data where stated).
 2. **The right metric for imbalanced problems.** Fraud, churn, and loan default models report **PR-AUC**, **Recall at a fixed alert/contact budget**, **Precision**, and **95% bootstrap confidence intervals**—never raw accuracy alone.
 3. **Strict confidentiality.** Consulting case studies in `industry-work/` document problem framing, architecture, and my engineering contributions—never client or employer source code.
 4. **Automated CI verification.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) discovers and runs tests across ML/product folders on every push.
