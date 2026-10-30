@@ -1,10 +1,10 @@
 # Lolo's Ledger — Multi-Asset Trading Journal, Risk Engine & AI Performance Coach
 
-> Combines my shipped local-first desktop trading journal ([`FX-Trading-Journal` v1.1.0](https://github.com/ikebude/FX-Trading-Journal) — **521/521 unit tests + 25 Playwright e2e tests passing**) with a full-stack NestJS + React + BullMQ monorepo featuring position-sizing risk guards, automated OHLC trade snapshots, and an educational AI journaling coach.
+> Combines my local-first desktop trading journal (FXLedger v1.1.0, archived desktop predecessor — **521/521 unit tests + 25 Playwright e2e tests passing**) with a full-stack NestJS + React + BullMQ monorepo featuring position-sizing risk guards, automated OHLC trade snapshots, and an educational AI journaling coach.
 
-- **Desktop Release (Shipped v1.1.0):** [`github.com/ikebude/FX-Trading-Journal`](https://github.com/ikebude/FX-Trading-Journal)
-- **Web/Cloud Monorepo:** [`github.com/ikebude/AI-Trading-Intelligence`](https://github.com/ikebude/AI-Trading-Intelligence) *(transitioning to `lolos-ledger`)*
-- **Role & Ownership:** Personal product built by Precious Ikebude (MIT Licence).
+- **Desktop predecessor (archived):** FXLedger v1.1.0 — repository archived; not linked.
+- **Current codebase:** Lolo's Ledger (private repository; this page is the public case study).
+- **Role & Ownership:** Personal product built by Precious Ikebude (source private).
 
 ![Lolo's Ledger — Trading Journal, Risk Engine & AI Coach](img/lolos-ledger-dark.png)
 
