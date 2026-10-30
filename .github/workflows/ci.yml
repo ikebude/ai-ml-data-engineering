@@ -54,7 +54,30 @@ jobs:
         working-directory: ${{ matrix.project }}
         run: |
           if [ -d tests ]; then python -m pytest -q; else echo "no tests/ in ${{ matrix.project }}, skipping"; fi
-      # Report-only: outputs are bit-identical across two local runs, but CI hardware/BLAS can
-      # differ in the last digit. Tests are the gate; the diff is printed for inspection.
-      - name: Report if tests changed tracked files
-        run: git diff --stat -- . ':!**/__pycache__'
+      # The tests regenerate reports/ and img/. tests/conftest.py pins BLAS kernels, numpy SIMD
+      # paths and thread counts, and requirements.txt pins every package, so the committed
+      # outputs must be reproduced byte for byte on the runner.
+      - name: Fail if tests changed tracked files
+        working-directory: ${{ matrix.project }}
+        run: git diff --exit-code -- . ':!**/__pycache__'
+      - name: Explain changed images (diagnostic)
+        if: failure()
+        working-directory: ${{ matrix.project }}
+        run: |
+          for f in $(git diff --name-only --relative -- '*.png'); do
+            git show "HEAD:./$f" > /tmp/committed.png
+            python - "$f" <<'PY'
+          import sys
+          import numpy as np
+          from PIL import Image
+          a = np.asarray(Image.open("/tmp/committed.png").convert("RGBA"), dtype=int)
+          b = np.asarray(Image.open(sys.argv[1]).convert("RGBA"), dtype=int)
+          if a.shape != b.shape:
+              print(sys.argv[1], "size", a.shape, "->", b.shape)
+          else:
+              d = np.abs(a - b).max(axis=2)
+              ys, xs = np.nonzero(d)
+              box = (xs.min(), ys.min(), xs.max(), ys.max()) if len(xs) else None
+              print(sys.argv[1], "pixels differing:", len(xs), "max delta:", d.max(), "bbox:", box)
+          PY
+          done

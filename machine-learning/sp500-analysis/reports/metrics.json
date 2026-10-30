@@ -116,6 +116,13 @@
       "marketcap_bn": 18.5
     },
     {
+      "Symbol": "AXON",
+      "Shortname": "Axon Enterprise, Inc.",
+      "Sector": "Industrials",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 48.17
+    },
+    {
       "Symbol": "CRWD",
       "Shortname": "CrowdStrike Holdings, Inc.",
       "Sector": "Technology",
@@ -123,25 +130,18 @@
       "marketcap_bn": 89.24
     },
     {
-      "Symbol": "INCY",
-      "Shortname": "Incyte Corporation",
-      "Sector": "Healthcare",
-      "robust_z_max": 16.52,
-      "marketcap_bn": 13.26
-    },
-    {
-      "Symbol": "JPM",
-      "Shortname": "JP Morgan Chase & Co.",
-      "Sector": "Financial Services",
-      "robust_z_max": 16.52,
-      "marketcap_bn": 668.92
-    },
-    {
       "Symbol": "CSGP",
       "Shortname": "CoStar Group, Inc.",
       "Sector": "Real Estate",
       "robust_z_max": 16.52,
       "marketcap_bn": 29.29
+    },
+    {
+      "Symbol": "INCY",
+      "Shortname": "Incyte Corporation",
+      "Sector": "Healthcare",
+      "robust_z_max": 16.52,
+      "marketcap_bn": 13.26
     }
   ],
   "sector_concentration": [

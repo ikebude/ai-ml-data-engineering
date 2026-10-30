@@ -71,7 +71,7 @@ def bootstrap_ci(
 
 def recall_at_budget(y_true: np.ndarray, y_score: np.ndarray, budget_frac: float = 0.20) -> float:
     k = max(1, int(round(len(y_true) * budget_frac)))
-    top_idx = np.argsort(y_score)[::-1][:k]
+    top_idx = np.argsort(-y_score, kind="stable")[:k]
     total_pos = float(np.sum(y_true))
     if total_pos == 0:
         return 0.0
@@ -80,7 +80,7 @@ def recall_at_budget(y_true: np.ndarray, y_score: np.ndarray, budget_frac: float
 
 def precision_at_budget(y_true: np.ndarray, y_score: np.ndarray, budget_frac: float = 0.20) -> float:
     k = max(1, int(round(len(y_true) * budget_frac)))
-    top_idx = np.argsort(y_score)[::-1][:k]
+    top_idx = np.argsort(-y_score, kind="stable")[:k]
     return float(np.mean(y_true[top_idx]))
 
 
@@ -237,7 +237,7 @@ def train_and_evaluate_telco(df: pd.DataFrame) -> Tuple[Dict[str, Any], pd.DataF
     test_df["top_risk_reasons"] = test_df.apply(explain_row, axis=1)
     action_list = (
         test_df[test_df["churn_probability"] >= 0.35]
-        .sort_values("revenue_at_risk_12m", ascending=False)
+        .sort_values("revenue_at_risk_12m", ascending=False, kind="stable")
         .head(50)[
             [
                 "customerID",

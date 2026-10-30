@@ -324,7 +324,9 @@ def run_pipeline(seed: int = 42) -> dict[str, Any]:
     )
 
     outliers = (
-        df.sort_values("robust_z_max", ascending=False)
+        # Several tickers tie at the same robust Z; break ties by Symbol so the top 10 does not
+        # depend on numpy's CPU-specific (AVX-512 vs AVX2) unstable sort.
+        df.sort_values(["robust_z_max", "Symbol"], ascending=[False, True], kind="mergesort")
         .head(10)[["Symbol", "Shortname", "Sector", "Marketcap", "robust_z_max"]]
         .to_dict(orient="records")
     )

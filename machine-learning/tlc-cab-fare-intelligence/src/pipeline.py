@@ -78,7 +78,7 @@ def load_and_clean_data(csv_path: Path = DATA_PATH) -> pd.DataFrame:
         & (df["RatecodeID"].isin([1, 2, 3, 4, 5]))
     )
     clean_df = df.loc[mask].copy()
-    clean_df = clean_df.sort_values("pickup_dt").reset_index(drop=True)
+    clean_df = clean_df.sort_values("pickup_dt", kind="stable").reset_index(drop=True)
     return clean_df
 
 
@@ -99,7 +99,7 @@ def chronological_split(
     df: pd.DataFrame, train_frac: float = 0.80
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Perform an 80/20 chronological split ordered by pickup_dt."""
-    ordered = df.sort_values("pickup_dt").reset_index(drop=True)
+    ordered = df.sort_values("pickup_dt", kind="stable").reset_index(drop=True)
     split_idx = int(np.floor(len(ordered) * train_frac))
     return ordered.iloc[:split_idx].copy(), ordered.iloc[split_idx:].copy()
 

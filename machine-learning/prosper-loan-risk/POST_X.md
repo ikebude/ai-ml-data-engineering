@@ -16,7 +16,7 @@ Rule 3: Chronological split — train on `2005–2011` (`41,638` loans), test ou
 **3/6**
 Out-of-time results on the 13,880 future loans (`30.67%` base default rate):
 - WoE/Quantile Logistic Scorecard (`300–850` scale, PDO=20): ROC-AUC `0.667`, ECE `0.043`
-- Calibrated GBDT + Scorecard Ensemble: **ROC-AUC `0.705`** (95% CI `0.694–0.714`), **KS `0.303`**, **PR-AUC `0.479`**
+- Calibrated GBDT + Scorecard Ensemble: **ROC-AUC `0.705`** (95% CI `0.6945–0.7137`), **KS `0.303`**, **PR-AUC `0.479`**
 
 **4/6**
 An ROC curve isn't a lending policy. Credit committees need an **Approval Policy Simulator**:

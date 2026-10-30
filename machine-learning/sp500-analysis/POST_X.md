@@ -16,7 +16,7 @@ Evaluating k ∈ {3,4,5,6} via Silhouette score peaks at k=3 (0.3700; 2D PCA cap
 • Cluster 2 (n=61): Deep-Value Cyclicals — Median MCap $16.09B | P/EBITDA 5.55x | Rev Growth +1.30%
 
 5/6 Robust MAD Z-Score Outliers:
-Using Median Absolute Deviation (scale = 1.4826 × MAD) flags structural outliers like unsplit share-price leaders (NVR Z=81.35, BKNG Z=49.16, AZO Z=31.26) and outlier names (SMCI Z=17.07, CRWD Z=16.52, JPM Z=16.52).
+Using Median Absolute Deviation (scale = 1.4826 × MAD) flags structural outliers like unsplit share-price leaders (NVR Z=81.35, BKNG Z=49.16, AZO Z=31.26) then SW (Z=19.57), SMCI (Z=17.07) and seven names tied at Z=16.52 (AXON, CRWD, CSGP, INCY, JPM, PLTR, TTWO).
 
 6/6 Supervised benchmark: predicting Market-Cap Tercile purely from operational fundamentals (5-fold CV):
 • Logistic Regression: 0.6562 Macro-F1

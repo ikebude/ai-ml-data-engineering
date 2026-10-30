@@ -167,7 +167,7 @@ def load_closed_loans(path: Path = DATA_PATH) -> pd.DataFrame:
 
     # Parse creation timestamp for strict chronological out-of-time split
     df["ListingCreationDate"] = pd.to_datetime(df["ListingCreationDate"], errors="coerce")
-    df = df.dropna(subset=["ListingCreationDate"]).sort_values("ListingCreationDate").reset_index(drop=True)
+    df = df.dropna(subset=["ListingCreationDate"]).sort_values("ListingCreationDate", kind="stable").reset_index(drop=True)
 
     # Engineer unified credit rating across pre-2009 CreditGrade and post-2009 ProsperRating
     grade_map = {"AA": 7, "A": 6, "B": 5, "C": 4, "D": 3, "E": 2, "HR": 1, "NC": 0}

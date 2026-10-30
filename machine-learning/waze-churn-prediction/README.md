@@ -38,10 +38,10 @@ All metrics below are computed on the held-out 20% stratified test split (`n = 2
 | **PR-AUC** | **0.3785** | 0.3757 | 0.3755 | `[0.3346, 0.4169]` |
 | **ROC-AUC** | **0.7447** | 0.7402 | 0.7363 | `[0.7139, 0.7595]` |
 | **Brier Score** (lower is better) | **0.1291** | 0.1297 | 0.1299 | `[0.1216, 0.1381]` |
-| **Recall @ 10% Contact Rate** | **0.2682** | 0.2643 | 0.2544 | `[0.2271, 0.2889]` |
-| **Recall @ 20% Contact Rate** | **0.4300** | 0.4221 | 0.4280 | `[0.3897, 0.4640]` |
-| **Precision @ 10% Contact Rate** | **0.4755** | 0.4685 | 0.4510 | `[0.3951, 0.5210]` |
-| **Precision @ 20% Contact Rate** | **0.3811** | 0.3741 | 0.3794 | `[0.3365, 0.4196]` |
+| **Recall @ 10% Contact Rate** | **0.2682** | 0.2623 | 0.2544 | `[0.2271, 0.2889]` |
+| **Recall @ 20% Contact Rate** | **0.4300** | 0.4221 | 0.4280 | `[0.3897, 0.4639]` |
+| **Precision @ 10% Contact Rate** | **0.4755** | 0.4650 | 0.4510 | `[0.3951, 0.5210]` |
+| **Precision @ 20% Contact Rate** | **0.3811** | 0.3741 | 0.3794 | `[0.3357, 0.4196]` |
 
 ### Key Behavioral Cohort Insights
 - **Hyper-marathoner churn paradox:** Churned users drive **59.2% more kilometers per driving day** (`median 407.60 km/day`) than retained users (`median 256.06 km/day`), indicating that long-haul/irregular drivers churn at much higher rates than daily urban commuters (`median 14.0` driving days vs `6.0` for churned users).

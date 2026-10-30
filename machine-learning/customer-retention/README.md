@@ -51,7 +51,7 @@ Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `repo
 |---|---:|---:|---:|
 | **PR-AUC** | `0.8307` | **`0.8412`** | `0.8071 – 0.8712` |
 | **ROC-AUC** | `0.9293` | **`0.9330`** | `0.9199 – 0.9463` |
-| **Recall @ 20% Contact Budget** *(max possible: `0.7536`)* | `0.6070` | **`0.6070`** | `0.5722 – 0.6528` |
+| **Recall @ 20% Contact Budget** *(max possible: `0.7536`)* | `0.6070` | **`0.6070`** | `0.5723 – 0.6525` |
 | **Precision @ 20% Contact Budget** *(base rate: `0.2654`)* | `0.8050` | **`0.8050`** | — |
 | **Recall @ 10% Contact Budget** | — | **`0.3583`** | — |
 | **Brier Score** *(calibration; lower is better)* | `0.1120` | **`0.0910`** | — |

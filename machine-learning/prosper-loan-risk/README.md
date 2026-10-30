@@ -1,6 +1,6 @@
 # LoanLens — Out-of-Time Credit Default Scorecard, Calibrated GBDT & Policy Simulator
 
-> **One-line result:** Scores consumer loan applications `300–850` using strictly pre-origination bureau features across `55,518` closed Prosper loans — reaching **out-of-time ROC-AUC 0.705** (95% CI `0.694–0.714`) and **KS 0.303** on future origination cohorts (`2011–2014`), cutting portfolio default rates from **30.67% to 16.92%** at a **25% Max-PD policy cutoff** (`+6.61%` net expected yield after 65% LGD).
+> **One-line result:** Scores consumer loan applications `300–850` using strictly pre-origination bureau features across `55,518` closed Prosper loans — reaching **out-of-time ROC-AUC 0.705** (95% CI `0.6945–0.7137`) and **KS 0.303** on future origination cohorts (`2011–2014`), cutting portfolio default rates from **30.67% to 16.92%** at a **25% Max-PD policy cutoff** (`+6.61%` net expected yield after 65% LGD).
 
 | Product Workspace UI | Out-of-Time ROC & Policy Simulator (`img/hero.png`) |
 |---|---|
@@ -51,7 +51,7 @@ Reproduce: python3.11, pinned `requirements.txt`, `pytest -q` (regenerates `repo
 
 | Metric | WoE / Quantile Logistic Scorecard | Calibrated GBDT + Scorecard | 95% Bootstrap CI |
 |---|---:|---:|---:|
-| **Out-of-Time ROC-AUC** *(target `>= 0.70`)* | `0.6673` | **`0.7049`** | `0.6944 – 0.7137` |
+| **Out-of-Time ROC-AUC** *(target `>= 0.70`)* | `0.6673` | **`0.7049`** | `0.6945 – 0.7137` |
 | **Out-of-Time KS Statistic** *(target `>= 0.30`)* | `0.2413` | **`0.3034`** | — |
 | **Out-of-Time PR-AUC** *(base rate `0.3067`)* | `0.4390` | **`0.4791`** | `0.4643 – 0.4950` |
 | **Expected Calibration Error (ECE)** | **`0.0430`** | `0.0565` | — |

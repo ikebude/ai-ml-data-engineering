@@ -94,7 +94,7 @@ def recall_at_k(y_true: np.ndarray, y_score: np.ndarray, k_fraction: float) -> f
     """Compute recall of positive class when contacting top k_fraction of scored users."""
     n = len(y_true)
     top_k = max(1, int(np.floor(n * k_fraction)))
-    order = np.argsort(y_score)[::-1][:top_k]
+    order = np.argsort(-y_score, kind="stable")[:top_k]
     total_pos = np.sum(y_true)
     if total_pos == 0:
         return 0.0
@@ -105,7 +105,7 @@ def precision_at_k(y_true: np.ndarray, y_score: np.ndarray, k_fraction: float) -
     """Compute precision in the top k_fraction of scored users."""
     n = len(y_true)
     top_k = max(1, int(np.floor(n * k_fraction)))
-    order = np.argsort(y_score)[::-1][:top_k]
+    order = np.argsort(-y_score, kind="stable")[:top_k]
     return float(np.mean(y_true[order]))
 
 

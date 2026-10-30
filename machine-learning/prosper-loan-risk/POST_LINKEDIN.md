@@ -10,7 +10,7 @@ I rebuilt my Prosper loan EDA into **LoanLens** — an out-of-time credit underw
 
 What happens when you remove all 14 post-loan payment columns, exclude unfinished "Current" loans, and train strictly on `2005–2011` to test on future `2011–2014` originations (`N = 13,880`)?
 
-1. **Honest out-of-time rank-ordering:** A monotonic quantile/WoE logistic scorecard + isotonic-calibrated GBDT reaches **ROC-AUC 0.705** (95% CI `0.694–0.714`) and **KS 0.303**, with Expected Calibration Error (ECE) of **0.043–0.057**.
+1. **Honest out-of-time rank-ordering:** A monotonic quantile/WoE logistic scorecard + isotonic-calibrated GBDT reaches **ROC-AUC 0.705** (95% CI `0.6945–0.7137`) and **KS 0.303**, with Expected Calibration Error (ECE) of **0.043–0.057**.
 2. **From probabilities to lending policy:** Approving every funded loan in the 2011–2014 test cohort yields a `30.67%` default rate and just `+2.22%` net yield (assuming 65% LGD). Setting a policy cutoff at **Max PD <= 25% (Credit Score >= 568)** approves **46.4% of applicants**, cuts the default rate nearly in half to **16.92%**, and lifts net expected portfolio yield to **+6.61%**.
 3. **Governance & slice auditing:** Automated tests in CI block any post-origination column from entering the feature pipeline and audit approval-rate parity across borrower slices.
 
