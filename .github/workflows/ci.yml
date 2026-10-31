@@ -54,12 +54,12 @@ jobs:
         working-directory: ${{ matrix.project }}
         run: |
           if [ -d tests ]; then python -m pytest -q; else echo "no tests/ in ${{ matrix.project }}, skipping"; fi
-      # The tests regenerate reports/ and img/. tests/conftest.py pins BLAS kernels, numpy SIMD
-      # paths and thread counts, and requirements.txt pins every package, so the committed
-      # outputs must be reproduced byte for byte on the runner.
-      - name: Fail if tests changed tracked files
+      # The tests regenerate reports/ and img/. Numbers must match the committed ones within a
+      # tolerance far below what the READMEs quote; byte-for-byte comparison was flaky because
+      # GitHub runners differ in CPU (the same commit passed and failed on two runs).
+      - name: Fail if committed results are stale
         working-directory: ${{ matrix.project }}
-        run: git diff --exit-code -- . ':!**/__pycache__'
+        run: python "$GITHUB_WORKSPACE/scripts/check_outputs.py"
       - name: Explain changed images (diagnostic)
         if: failure()
         working-directory: ${{ matrix.project }}
