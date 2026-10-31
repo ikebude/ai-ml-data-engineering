@@ -44,7 +44,7 @@
 16. **Africa Stablecoin Takeaway:** Separating market signal from regulatory policy across African corridors
 17. **Section II:** *Personal Products Hub*
 18. **Moniguard v2 (`ikebude/MLOps-Fraud-Detection`):** Nigerian PoD & mobile-money fraud MLOps platform
-19. **Moniguard v2 Benchmark:** `PR-AUC 0.877` (95% CI `0.845–0.905`), `ROC-AUC 0.943`, `Recall@5% = 0.892`, `47.9 ms` p95 latency on 60,000 **synthetic** chronological transactions
+19. **Moniguard v2 Benchmark:** `PR-AUC 0.875` (95% CI `0.841–0.898`), `ROC-AUC 0.945`, `Recall@5% = 0.895`, `13.0 ms` p95 latency on 60,000 **synthetic** chronological transactions
 20. **Lolo's Ledger:** Multi-asset trading journal, live position-size calculator, and rule-based AI coach (deck slide still cites the desktop predecessor's `521/521` tests; the current monorepo has 363 core + 155 API + 25 web + 7 Python tests)
 21. **Lolo's Ledger Risk Engine:** Pre-trade account risk guardrails (`0.25%–2.0%`), expectancy (`E[R]`), and Tilt Index detection
 22. **BI Operations Agent (`ikebude/AIMLOps-BI-Operations-Agent`):** Read-only NL-to-SQL copilot with AST validation and anomaly z-score cards

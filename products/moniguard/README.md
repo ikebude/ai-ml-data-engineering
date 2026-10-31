@@ -1,6 +1,6 @@
 # Moniguard — Real-Time Fraud Detection for Nigerian E-Commerce
 
-> Scores pay-on-delivery and digital transactions 0–1000 for fraud risk. On the repo's 60,000-transaction time-split benchmark, the calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.877** (95% CI 0.845–0.905) and **Recall@5% alert rate of 0.892**, served via FastAPI at **47.9 ms p95 latency**.
+> Scores pay-on-delivery and digital transactions 0–1000 for fraud risk. On the repo's 60,000-transaction time-split benchmark, the calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.875** (95% CI 0.841–0.898) and **Recall@5% alert rate of 0.895**, served via FastAPI at **13.0 ms p95 latency**.
 
 - **Product Repository:** [`github.com/ikebude/MLOps-Fraud-Detection`](https://github.com/ikebude/MLOps-Fraud-Detection)
 - **Role & Ownership:** Personal open-source product built by Precious Ikebude (MIT Licence).
@@ -36,7 +36,7 @@ flowchart LR
     C1 --> D["70/30 Ensemble Blend"]
     C2 --> D
     D --> E["Isotonic Calibration<br/>Score 0–1000"]
-    E --> F["FastAPI POST /v1/score<br/>p95 = 47.9 ms"]
+    E --> F["FastAPI POST /v1/score<br/>p95 = 13.0 ms"]
 ```
 
 - **Zero training/serving skew:** `src/utils/feature_engineering.FeatureEngineer` computes the exact same 74 features (velocity windows, amount z-scores, device/IP/phone sharing counts, `fraud_ring_score`) in both offline training and live FastAPI scoring.
@@ -48,11 +48,11 @@ flowchart LR
 
 | Metric | Value | 95% Bootstrap CI | Notes |
 |---|---|---|---|
-| **PR-AUC (held-out time-split test)** | **0.877** | `0.845 – 0.905` | Primary metric for imbalanced fraud (`2.62%` positive rate) |
-| **ROC-AUC (held-out time-split test)** | **0.943** | `0.927 – 0.958` | — |
-| **Recall @ 1% alert rate** | **0.377** | — | Catches 37.7% of fraud if analysts only review top 1% of traffic |
-| **Recall @ 5% alert rate** | **0.892** | — | Catches 89.2% of fraud at a 5% review budget |
-| **p95 Scoring Latency (`POST /v1/score`)** | **47.9 ms** | — | Single-transaction FastAPI scoring + reason codes |
+| **PR-AUC (held-out time-split test)** | **0.875** | `0.841 – 0.898` | Primary metric for imbalanced fraud (`2.90%` positive rate) |
+| **ROC-AUC (held-out time-split test)** | **0.945** | `0.930 – 0.956` | — |
+| **Recall @ 1% alert rate** | **0.341** | — | Catches 34.1% of fraud if analysts only review top 1% of traffic |
+| **Recall @ 5% alert rate** | **0.895** | — | Catches 89.5% of fraud at a 5% review budget |
+| **p95 Scoring Latency (`POST /v1/score`)** | **13.0 ms** | — | Single-transaction FastAPI scoring + reason codes |
 
 ---
 
