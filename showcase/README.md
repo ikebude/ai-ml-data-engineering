@@ -10,21 +10,21 @@
 
 ## Known issues in these files (audit 2026-11-01)
 
-The PDFs and the PPTX are images rendered elsewhere; their generator is not in this repository, so they cannot be corrected here. Until they are re-rendered, do not share the items marked **do not share**.
+The PDFs and the PPTX are images rendered from a generator kept in the owner's private working repository. The nine case-study carousels were corrected and re-rendered on 2026-11-01; the deck and the LinkedIn carousel were not. Until they are re-rendered, do not share the items marked **do not share**.
 
-| File | Problem | Status |
+| File | What changed on 2026-11-01 | Status |
 |---|---|---|
-| `carousels/01-SafeData-…pdf` | Says "Live Platform", "Production governance metrics", "Full compliance with NDPA"; quotes 85% audit time saved and 1M+ rows, which no report supports | **do not share** |
-| `carousels/02-FraudGuard-…pdf` | Says "Live Platform" and "Production benchmarks"; quotes <50 ms, −65% analyst load, −48% false positives, which no report supports | **do not share** |
-| `carousels/03-Africa-Stablecoin-Intelligence-…pdf` | Says "Live Platform" and "Live exchange scrapers"; "verified market visibility" and 12+ currencies are unsupported | **do not share** |
-| `carousels/04-Moniguard-v2-…pdf` | Numbers match the product report, but the data is never called synthetic; "Production ML" and "over 60% of Nigerian e-commerce" are unsupported | fix before sharing |
-| `carousels/05-Lolos-Ledger-…pdf` | Links the private `AI-Trading-Intelligence` repo; quotes expectancy and profit factor from a synthetic sample journal as "verified results" | **do not share** |
-| `carousels/07-LoanLens-…pdf` | Net yield +6.75% (report: +6.61%), default rate 16.5% on one line (report: 16.92%), homeowner gap 2.1 pts (report: 1.82) | fix before sharing |
-| `carousels/08-Customer-Intelligence-…pdf` | Slide 2 shows broken LaTeX (`ext{churn}`); the CLV backtest is not labelled synthetic | fix before sharing |
-| `Precious-Ikebude-Solutions.pptx` / `.pdf` | Speaker notes say "Live at africastablecoinintelligence.com", "Junior Data Analyst" (now BI Scientist / AI/ML Engineer), 521/521 tests, LoanLens "LightGBM" (it uses HistGradientBoosting) and "receipt OCR" (the product parses text) | fix before sharing |
-| `Precious-Ikebude-LinkedIn-Carousel.pdf` (12 slides, Oct 2026) | Old Moniguard numbers (PR-AUC 0.877, 47.9 ms p95), 521/521 tests, LightGBM and receipt OCR, the retired datascienceportfol.io link, a second (Gmail) address, and "Microsoft Azure AI Engineer (In View)", which is now only planned | **do not share** |
-
-Carousels 06 (BI Operations Agent) and 09 (Expense Tracker) were not reviewed slide by slide in this audit.
+| `carousels/01-SafeData-…pdf` | "Live Platform", "Production", "Full compliance", 85% and 1M+ removed; says deployment pending verification and shows what is built | fixed |
+| `carousels/02-FraudGuard-…pdf` | "Live Platform", "Production", <50 ms, −65%, −48% removed; architecture now matches the case study (outbox, Kafka, ensemble); deployment pending verification | fixed |
+| `carousels/03-Africa-Stablecoin-Intelligence-…pdf` | "Live Platform", "Live exchange scrapers", 54/54 and 12+ removed; describes the market, country and editorial features; deployment pending verification | fixed |
+| `carousels/04-Moniguard-v2-…pdf` | Labelled synthetic throughout; shows batch PR-AUC 0.959 and API-path PR-AUC 0.837 from `reports/metrics.json` on the Moniguard audit branch; "Production ML", "60% of Nigerian e-commerce", SHAP and PSI claims removed | fixed (numbers assume the Moniguard audit branch is merged) |
+| `carousels/05-Lolos-Ledger-…pdf` | No link to the private repository; sample-journal P&L removed; shows the risk engine's worked examples, labelled synthetic | fixed |
+| `carousels/06-BI-Operations-Agent-…pdf` | Latency updated to the report (18.8 ms median, 39.1 ms p95); dataset labelled synthetic | fixed |
+| `carousels/07-LoanLens-…pdf` | Net yield +6.61%, approved-loan default 16.9%, homeowner gap 1.8 points, as in the report | fixed |
+| `carousels/08-Customer-Intelligence-…pdf` | Broken LaTeX fixed; CLV backtest labelled synthetic | fixed |
+| `carousels/09-AIOps-Expense-Tracker-…pdf` | "OCR" removed (the product parses text), Moniepoint removed (not a supported bank), data labelled synthetic | fixed |
+| `Precious-Ikebude-Solutions.pptx` / `.pdf` | Speaker notes say "Live at africastablecoinintelligence.com", "Junior Data Analyst" (now BI Scientist / AI/ML Engineer), 521/521 tests, LoanLens "LightGBM" (it uses HistGradientBoosting) and "receipt OCR" (the product parses text); Moniguard slide has the older numbers | fix before sharing |
+| `Precious-Ikebude-LinkedIn-Carousel.pdf` (12 slides, Oct 2026) | Old Moniguard numbers (PR-AUC 0.877, 47.9 ms p95), 521/521 tests, LightGBM and receipt OCR, a second (Gmail) address, and "Microsoft Azure AI Engineer (In View)", which is now only planned | **do not share** |
 
 ## Preview Slides
 
