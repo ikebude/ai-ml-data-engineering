@@ -4,7 +4,7 @@
 > Automated data-lifecycle governance platform that tracks retention schedules, processes consent withdrawals via API/webhooks, enforces legal holds and dual approvals, and produces auditable disposal records.
 
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
-- **My Role:** Junior Data Analyst (AI Assurance & Solutions) — backend data workflows, retention-engine scheduling logic, PostgreSQL migration & test suite, CI security/lint pipeline
+- **My Role:** Junior Data Analyst (Jun – Nov 2025) — backend data workflows, retention-engine scheduling logic, PostgreSQL migration & test suite, CI security/lint pipeline
 - **Public site (planned):** [safedata.3consult-ng.com](https://safedata.3consult-ng.com) *(deployment pending verification)*
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 
@@ -71,6 +71,6 @@ flowchart LR
 |---|---|
 | **Backend & API** | Python, FastAPI (ASGI), SQLAlchemy, Alembic, Pydantic |
 | **Frontend UI** | Jinja2 Server-Rendered Templates, Responsive CSS (Light/Dark/System themes) |
-| **Database** | PostgreSQL (production/CI), SQLite (local development) |
+| **Database** | PostgreSQL (deployment target and CI), SQLite (local development) |
 | **Security & Auth** | Role-Based Access Control (Admin, DPO, Data Owner), TOTP 2FA, HMAC Webhook Signatures, SHA-256 Audit Hashing |
 | **DevOps & CI** | Docker, GitHub Actions (lint, PostgreSQL test matrix, secret & dependency scanning), cPanel / Linux VPS deployment |

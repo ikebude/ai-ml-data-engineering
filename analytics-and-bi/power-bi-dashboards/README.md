@@ -1,6 +1,6 @@
 # Executive Power BI Decision Suite: Telecom Retention, Contact Center SLA & Workforce Diversity
 
-> Three enterprise Power BI workbooks built on 12,543 operational records (`7,043` telecom subscribers, `5,000` contact-center calls, and `500` HR promotion/attrition records): pinpoints \$139.13k/month in at-risk MRR, a 7.69x technical-ticket churn multiplier, and an 18.92% contact-center call abandonment gap.
+> Three enterprise Power BI workbooks built on 12,543 operational records (`7,043` telecom subscribers, `5,000` contact-center calls, and `500` HR promotion/attrition records): pinpoints \$139.13k/month in at-risk MRR, churned customers logging 7.69x more technical tickets than retained ones, and an 18.92% contact-center call abandonment gap.
 
 ![Customer Churn Dashboard](Churn_Dashboard.png)
 

@@ -1,6 +1,6 @@
 # Moniguard — Real-Time Fraud Detection for Nigerian E-Commerce
 
-> Scores pay-on-delivery and digital transactions 0–1000 for fraud risk. On the repo's 60,000-transaction time-split benchmark, the calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.875** (95% CI 0.841–0.898) and **Recall@5% alert rate of 0.895**, served via FastAPI at **13.0 ms p95 latency**.
+> Scores pay-on-delivery and digital transactions 0–1000 for fraud risk. On the repo's 60,000-transaction **synthetic** time-split benchmark, the calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.875** (95% CI 0.841–0.898) and **Recall@5% alert rate of 0.895**, served via FastAPI at **13.0 ms p95 latency**.
 
 - **Product Repository:** [`github.com/ikebude/MLOps-Fraud-Detection`](https://github.com/ikebude/MLOps-Fraud-Detection)
 - **Role & Ownership:** Personal open-source product built by Precious Ikebude (MIT Licence).
