@@ -61,6 +61,8 @@ ORDER BY customer_id;
 | **Customer C** | Non-Member (`NULL`) | 2 days | 3 items | \$36 (3 items) | \$0 | **\$36** | 360 pts | — |
 | **Total** | **2 Members / 1 Non-Member** | **12 customer-days** | **15 items** | **\$101** | **\$85** | **\$186** | **2,160 pts** | — |
 
+> With three customers and 15 orders these are descriptive facts about this sample, not evidence that the loyalty programme causes higher spend.
+
 - **Loyalty members spend 2.08x more than non-members:** Enrolled members `A` (`\$76`) and `B` (`\$74`) average **\$75.00 in total spend** and **5.0 visit days**, compared to **\$36.00** and **2 visit days** for non-member `C`.
 - **Post-enrollment spend acceleration for Customer A:** Prior to joining on `2021-01-07`, Customer A spent `\$25` across 2 items (`sushi` + `curry` on `Jan 1`). After joining, Customer A spent **\$51** across 4 items (`curry` on `Jan 7` + three `ramen` bowls on `Jan 10–11`)—a **2.04x post-membership spend increase**.
 
@@ -72,6 +74,13 @@ ORDER BY customer_id;
 
 1. **Convert Non-Member Repeat Ramen Buyers (`Customer C` Profile) at Visit #2:** Non-member `Customer C` ordered `ramen` three times across two visits (`\$36` spend). Offering an instant 2x first-week points bonus at the second visit captures high-propensity repeat diners into the `members` table.
 2. **Use `Sushi` (`2x` Points) as a Basket-Expander Add-On:** Because `sushi` (`\$10`) represents only `20%` of unit volume (`3/15` items) despite its permanent `2x` points multiplier, bundle a half-price `sushi` starter with `ramen` orders to raise average check size above `\$18`.
+
+## Fixes made on review (2026-11-01)
+
+- The file now runs top to bottom with `psql -v ON_ERROR_STOP=1 -f`: schema and seed data come first, and every query ends with `;`.
+- Q6 counts the join date as a member day (`>=`), consistent with Q8, Q10 and the table above.
+- Q8 returns one row per member (items and spend) instead of one row per product and day.
+- Q10 used a 9-day window (`join_date - 1` to `join_date + 7`), had no January filter and included non-member C, which gave B `1,060` points. It now uses the join date plus 6 days, members only, orders up to 31 January: A `1,370`, B `820`.
 
 ## How to Open / Run
 

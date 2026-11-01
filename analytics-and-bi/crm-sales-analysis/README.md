@@ -1,6 +1,6 @@
 # B2B Hardware CRM Sales Pipeline & Territory Performance Analysis
 
-> Audits 8,800 B2B hardware opportunities (\$10.01M closed-won revenue across 85 enterprise accounts and 35 reps): uncovers a 63.15% overall win rate, a 51.8-day average sales cycle, and a 34.4% revenue concentration in a single flagship SKU (`GTX Plus Pro`).
+> Audits 8,800 B2B hardware opportunities (\$10.01M closed-won revenue across 85 enterprise accounts and 35 reps): uncovers a 63.15% overall win rate, a 51.8-day average sales cycle, and 35.09% of closed-won revenue coming from a single SKU (`GTXPro`).
 
 ## Problem
 
@@ -19,7 +19,7 @@ B2B sales leadership lacked visibility into why quarterly bookings varied across
 
 1. **Funnel Stage Normalization:** Segmented all 8,800 pipeline records into Closed-Won (`4,238` deals, `48.16%` of total pipeline), Closed-Lost (`2,473` deals, `28.10%`), Active Engaging (`1,589` deals, `18.06%`), and Prospecting (`500` deals, `5.68%`). Defined **Closed-Deal Win Rate** strictly on resolved opportunities:
    $$\text{Win Rate} = \frac{\text{Won Deals}}{\text{Won Deals} + \text{Lost Deals}} = \frac{4,238}{4,238 + 2,473} = 63.15\%$$
-2. **Price Realization vs List Price Audit:** Joined `sales_pipeline.product` to `products.sales_price` to measure realized ASP ($\text{mean close\_value}$) against catalog list price per SKU.
+2. **Price Realization vs List Price Audit:** Joined `sales_pipeline.product` to `products.sales_price` to measure realized ASP ($\text{mean close\_value}$) against catalog list price per SKU. Note: the pipeline spells one SKU `GTXPro` while `products.csv` spells it `GTX Pro`, so a plain join silently drops 1,147 resolved deals. Normalise the name before joining; the per-SKU figures below use the pipeline spelling.
 3. **Sales Velocity & Cycle Time:** Calculated `cycle_days = close_date - engage_date` across all 4,238 closed-won opportunities (`mean = 51.78 days`, `median = 57.0 days`).
 
 ```sql
@@ -56,7 +56,7 @@ ORDER BY total_won_revenue_usd DESC;
 | **Total / Overall** | **6 Managers (35 Reps)** | **6,711** | **63.15%** | **\$10,005,534** | **100.00%** |
 
 - **West leads territory bookings (\$3,568,647; 35.67% share)** with the highest regional win rate (**63.94%** across 2,249 resolved deals), followed by **Central** (`\$3,346,293`, `62.56%` win rate) and **East** (`\$3,090,594`, `63.02%` win rate).
-- **Intra-region ticket-size divergence:** Within the `Central` office, Melvin Marxen's pod generates **2.06x the revenue** of Dustin Brinkmann's pod (`\$2.25M` vs `\$1.09M`) despite similar deal volume (`1,418` vs `1,186`) and win rates (`62.20%` vs `62.98%`), driven entirely by upper-tier SKU mix (`GTX Plus Pro` and `GTK 500` vs entry-level `MG Special`).
+- **Intra-region ticket-size divergence:** Within the `Central` office, Melvin Marxen's pod generates **2.06x the revenue** of Dustin Brinkmann's pod (`\$2.25M` vs `\$1.09M`) despite similar deal volume (`1,418` vs `1,186`) and win rates (`62.20%` vs `62.98%`), explained by SKU mix rather than conversion (`GTX Plus Pro` and `GTK 500` vs entry-level `MG Special`).
 
 ### 2. Product Portfolio Mix & Activity Trap
 
