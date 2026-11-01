@@ -4,7 +4,7 @@
 > Market data, on-chain stablecoin metrics, country-by-country regulatory tracking, and editorial publishing platform covering stablecoin adoption across Africa.
 
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
-- **My Role:** BI Scientist / AI/ML Engineer (Nov 2025 – present) — data source research, market metrics pipeline, public/admin UI theme engineering (Light/Dark/System), deployment & search-console indexing
+- **My Role:** BI Scientist || AI/ML Engineer (Nov 2025 – present) — data source research, market metrics pipeline, public/admin UI theme engineering (Light/Dark/System), deployment & search-console indexing
 - **Public site (planned):** [africastablecoinintelligence.com](https://africastablecoinintelligence.com) *(deployment pending verification)*
 - **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here.
 

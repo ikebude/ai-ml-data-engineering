@@ -23,7 +23,7 @@ The PDFs and the PPTX are images rendered from a generator kept in the owner's p
 | `carousels/07-LoanLens-…pdf` | Net yield +6.61%, approved-loan default 16.9%, homeowner gap 1.8 points, as in the report | fixed |
 | `carousels/08-Customer-Intelligence-…pdf` | Broken LaTeX fixed; CLV backtest labelled synthetic | fixed |
 | `carousels/09-AIOps-Expense-Tracker-…pdf` | "OCR" removed (the product parses text), Moniepoint removed (not a supported bank), data labelled synthetic | fixed |
-| `Precious-Ikebude-Solutions.pptx` / `.pdf` | Speaker notes say "Live at africastablecoinintelligence.com", "Junior Data Analyst" (now BI Scientist / AI/ML Engineer), 521/521 tests, LoanLens "LightGBM" (it uses HistGradientBoosting) and "receipt OCR" (the product parses text); Moniguard slide has the older numbers | fix before sharing |
+| `Precious-Ikebude-Solutions.pptx` / `.pdf` | Speaker notes say "Live at africastablecoinintelligence.com", "Junior Data Analyst" (now BI Scientist || AI/ML Engineer), 521/521 tests, LoanLens "LightGBM" (it uses HistGradientBoosting) and "receipt OCR" (the product parses text); Moniguard slide has the older numbers | fix before sharing |
 | `Precious-Ikebude-LinkedIn-Carousel.pdf` (12 slides, Oct 2026) | Old Moniguard numbers (PR-AUC 0.877, 47.9 ms p95), 521/521 tests, LightGBM and receipt OCR, a second (Gmail) address, and "Microsoft Azure AI Engineer (In View)", which is now only planned | **do not share** |
 
 ## Preview Slides

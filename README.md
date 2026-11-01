@@ -2,7 +2,7 @@
 
 **Precious Chidiebere Ikebude** · BI Scientist building AI/ML systems · Lagos, Nigeria
 
-I turn business data into dashboards, models and small production-style services. I have 3+ years of data, BI and finance-analytics work (since Nov 2022), and I am currently BI Scientist / AI/ML Engineer at 3Consulting Limited (Junior Data Analyst there from Jun 2025, promoted Nov 2025).
+I turn business data into dashboards, models and small production-style services. I have 3+ years of data, BI and finance-analytics work (since Nov 2022), and I am currently BI Scientist || AI/ML Engineer at 3Consulting Limited (Junior Data Analyst there from Jun 2025, promoted Nov 2025).
 
 **Open to:** BI Analyst, Data Analyst, Data Scientist and junior ML Engineer roles. Remote (Nigeria or worldwide), full-time or contract.
 **Contact:** [precious.ikebude@outlook.com](mailto:precious.ikebude@outlook.com) · [WhatsApp +234 813 678 7181](https://wa.me/2348136787181) · [ikebude.github.io](https://ikebude.github.io) · [github.com/ikebude](https://github.com/ikebude)
