@@ -1,6 +1,6 @@
 # NYC TLC Cab Fare & Duration Intelligence
 
-> Predicts NYC Yellow Taxi metered fares strictly prior to dispatch: MAE \$1.47 ($R^2 = 0.9499$, 29.6% lower error than linear baseline) on an out-of-time test split of 4,489 trips.
+> Predicts NYC Yellow Taxi metered fares from pre-trip fields plus trip distance (see Limitations): MAE \$1.47 ($R^2 = 0.9499$, 29.6% lower error than linear baseline) on an out-of-time test split of 4,489 trips.
 
 ![Hero chart](img/hero.png)
 
@@ -43,8 +43,13 @@ All metrics are computed on the chronological out-of-time test split (`n = 4,489
 | Metric | Linear Ridge Baseline | HistGradientBoosting | 95% CI (HistGB) |
 |---|---:|---:|---:|
 | **MAE (Minutes)** | 5.0125 | **3.6377** | `[3.5092, 3.7778]` |
-| **RMSE (Minutes)** | 7.4940 | **5.8181** | `[5.4340, 6.1929]` |
+| **RMSE (Minutes)** | 7.4940 | **5.8181** | `[5.4342, 6.1929]` |
 | **$R^2$** | 0.6395 | **0.7827** | `[0.7641, 0.8004]` |
+
+## Limitations
+
+- `trip_distance` is the distance the meter recorded at the end of the trip. A real upfront quote would use a routed estimate, which is noisier, so the errors here are a lower bound on what a live quoting system would see.
+- The data is a 22,699-trip sample of 2017 trips, and the test window (19 Oct–31 Dec) is one season. No check across years or fare-rule changes.
 
 ## What I'd do next
 

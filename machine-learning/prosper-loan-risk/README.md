@@ -77,6 +77,14 @@ Protected demographic attributes are excluded from training. Auditing the `25%` 
 
 ---
 
+## Limitations
+
+- Only loans that had closed by the data snapshot are used. For the 2011–2014 test cohort this keeps loans that ended early (early defaults and early payoffs), so the test default rate and AUC describe that subset, not every loan originated then.
+- `BorrowerRate`, `ProsperRating` and `ProsperScore` are Prosper's own risk pricing at origination. They are legitimately pre-origination, but part of the lift comes from reusing Prosper's model rather than raw bureau data.
+- The GBDT ensemble ranks better but is less well calibrated than the scorecard (ECE `0.0565` vs `0.0430`). PD cutoffs from the ensemble should be recalibrated before being treated as true default probabilities.
+- Net expected yield is `average APR − default rate × 65% LGD`. It ignores interest collected before default, the timing of recoveries, fees and funding cost, so it compares policies with each other; it is not a forecast of portfolio return.
+- `IsBorrowerHomeowner` is a proxy slice, not a protected attribute; the dataset has none, so this is not a full fair-lending review.
+
 ## What I'd Do Next
 
 1. **Reject Inference:** Incorporate declined/unfunded listing applications via parceling or fuzzy augmentation to correct for selection bias in funded loans.

@@ -12,7 +12,7 @@ I built a leak-free, out-of-time upfront fare & duration estimator on 22,441 NYC
 • HistGradientBoosting: MAE $1.47 (95% CI [$1.42, $1.54]) | RMSE $2.43 | R² 0.9499
 That's a 29.6% reduction in MAE.
 
-4/6 Why does tree boosting beat linear regression by $0.61/trip when distance is linear?
+4/6 Why does tree boosting beat linear regression by $0.62/trip when distance is linear?
 1) JFK flat-rate rules (`RatecodeID = 2`) break linear distance scaling.
 2) Rush-hour traffic makes time-on-meter dominate distance-on-meter in Midtown corridors.
 

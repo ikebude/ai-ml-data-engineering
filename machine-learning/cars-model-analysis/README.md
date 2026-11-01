@@ -40,8 +40,13 @@ All metrics are computed on the held-out 20% stratified test split (`n = 86` veh
 
 ### Key Hedonic Pricing & Margin Findings
 1. **Top 3 MSRP predictors (Permutation $R^2$ drop):** `Horsepower` (`0.6922 ± 0.1193` $R^2$ drop) dominates valuation, followed by `Origin` (`0.1641 ± 0.0248`) and `Weight` (`0.1091 ± 0.0185`).
-2. **European brand premium:** European models command a median MSRP of **\$40,590** (`mean \$48,349.80`), which is **59.1% higher** than US models (`median \$25,520`) and **76.2% higher** than Asian models (`median \$23,032.50`), even after controlling for powertrain size.
+2. **European brand premium:** European models command a median MSRP of **\$40,590** (`mean \$48,349.80`), which is **59.1% higher** than US models (`median \$25,520`) and **76.2% higher** than Asian models (`median \$23,032.50`). These are raw medians, not adjusted for engine size or body type.
 3. **Dealer gross margins by body type:** Across all 428 vehicles, average dealer gross margin between `Invoice` and `MSRP` is **8.06%**, peaking in `Truck` (**9.03%**) and `Sports` (**8.94%**, median MSRP `\$40,590`) and compressing in `Wagon` (**7.38%**) and `Hybrid` (**7.46%**, combined MPG `55.45`).
+
+## Limitations
+
+- Small sample: 86 test vehicles, so the 95% intervals are wide (R² `0.7175–0.9381` for the boosted model, `0.7115–0.9122` for the baseline). The two models' intervals overlap; the gain is suggestive, not proven.
+- One cross-sectional catalogue from a single model year, split at random (stratified by origin). There is no out-of-time test, so the model says nothing about pricing new model years.
 
 ## What I'd do next
 

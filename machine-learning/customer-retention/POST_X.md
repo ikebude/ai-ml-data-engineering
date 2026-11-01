@@ -23,7 +23,7 @@ To rank outreach by `Expected 12m Revenue at Risk = 12 * MonthlyCharges * P(Chur
 The top 50 holdout accounts alone represent **$60,669** in annualised revenue at risk.
 
 **5/6**
-For non-contract retail, we run RFM quartile segmentation (`Champions`, `Loyal`, `At Risk High Value`, `Hibernating`) + 180-day out-of-time CLV backtesting.
+For non-contract retail (a synthetic cohort generated in code), we run RFM quartile segmentation (`Champions`, `Loyal`, `At Risk High Value`, `Hibernating`) + 180-day out-of-time CLV backtesting.
 Holdout total revenue error: **+1.19%** (`$15,849` predicted vs `$15,663` actual).
 
 **6/6**

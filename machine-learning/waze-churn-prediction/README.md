@@ -48,6 +48,12 @@ All metrics below are computed on the held-out 20% stratified test split (`n = 2
 - **Onboarding tenure gap:** Churned users have a median tenure of `1,321 days` vs `1,843 days` for retained users.
 - **OS parity:** Churn rates are virtually identical across platforms (`17.83%` on iPhone vs `17.56%` on Android), confirming that retention defects are behavioral rather than OS-specific.
 
+## Limitations
+
+- The test split is a stratified random 20% holdout. The dataset is one month of telemetry with no event dates, so there is no out-of-time test.
+- Discrimination is modest (PR-AUC `0.3785`, ROC-AUC `0.7447`): useful for ranking a contact list, weak for individual decisions. Gradient boosting and random forest did not beat the logistic baseline.
+- The main drivers (`activity_days`, `n_days_after_onboarding`) describe the same month as the label, so they flag users already disengaging rather than predicting churn far ahead.
+
 ## What I'd do next
 
 1. **Longitudinal week-over-week velocity features:** Replace single-month aggregates with weekly deltas ($\Delta \text{driving\_days}_{t - (t-1)}$) to detect sudden engagement drop-offs before a user hits zero monthly sessions.
