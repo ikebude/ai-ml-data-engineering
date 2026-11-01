@@ -17,7 +17,7 @@ I turn business data into dashboards, models and small production-style services
 | [**LoanLens**](machine-learning/prosper-loan-risk/) · credit default scorecard | Careful data science: leakage gate in tests, out-of-time split, calibration, a policy simulator and its limits | Out-of-time ROC-AUC **0.705** (95% CI 0.695–0.714), KS **0.303** on 13,880 later Prosper loans (public data) |
 | [**BI Operations Agent**](products/bi-operations-agent/) · plain-English analytics | BI plus LLM tooling: governed semantic layer, read-only SQL guard, KPI anomaly monitor | **96.0%** (48/50) in-sample and **56.0%** (14/25) held-out questions answered correctly, **12/12** unsafe prompts blocked, 36.6 ms p95, on **synthetic** retail data |
 
-**Stack:** Python (pandas, scikit-learn, XGBoost), SQL (PostgreSQL, SQLite), Power BI (DAX), Tableau, R, FastAPI, MLflow, Airflow, Docker, GitHub Actions; TypeScript/React for product front ends.
+**Stack:** Python (pandas, scikit-learn, XGBoost), SQL (PostgreSQL, SQL Server, SQLite), Power BI (DAX), Tableau, R, FastAPI, MLflow, Airflow, Docker, GitHub Actions; TypeScript/React for product front ends.
 
 ---
 
