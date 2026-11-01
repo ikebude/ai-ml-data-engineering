@@ -1,94 +1,84 @@
-# AI, ML & Data Engineering — Portfolio Hub
+# AI, ML & Data Engineering Portfolio
 
-**Precious Ikebude** — **BI Scientist building AI/ML systems**  
-*BI · Data Science · Machine Learning · LLM Apps · MLOps · Data Engineering*
+**Precious Chidiebere Ikebude** · BI Scientist building AI/ML systems · Lagos, Nigeria
 
-This repository is the central hub for my applied machine-learning, business-intelligence, and data-engineering work:
-- **Personal AI/ML products** I architected, trained, tested, and shipped end to end (`products/`),
-- **Industry case studies** from commercial platforms I helped build at **3Consulting Limited** (`industry-work/`),
-- **Machine learning & predictive modelling pipelines** (`machine-learning/`), and
-- **Analytics, SQL & Power BI systems** (`analytics-and-bi/`), imported with full Git history.
+I turn business data into dashboards, models and small production-style services. I have 3+ years of data, BI and finance-analytics work (since Nov 2022), and I am currently BI Scientist / AI/ML Engineer at 3Consulting Limited (Junior Data Analyst there from Jun 2025, promoted Nov 2025).
+
+**Open to:** BI Analyst, Data Analyst, Data Scientist and junior ML Engineer roles. Remote (Nigeria or worldwide), full-time or contract.
+**Contact:** [precious.ikebude@outlook.com](mailto:precious.ikebude@outlook.com) · [WhatsApp +234 813 678 7181](https://wa.me/2348136787181) · [ikebude.github.io](https://ikebude.github.io) · [github.com/ikebude](https://github.com/ikebude)
 
 ---
 
-## 📑 LinkedIn Case Study Carousels (PDF Downloads)
+## Start here: three projects
 
-Each of the 9 platforms has a dedicated 6-slide executive case study carousel (16:9 widescreen, verified metrics, system architecture, and production UI mockups):
+| Project | What it shows | Result (from the repo's `reports/*.json`) |
+|---|---|---|
+| [**Moniguard**](products/moniguard/) · fraud scoring service | ML engineering end to end: feature pipeline shared by training and serving, calibrated XGBoost + Isolation Forest, FastAPI, MLflow, Airflow, Docker | PR-AUC **0.875** (95% CI 0.841–0.898), recall **0.895** at a 5% alert rate, **13.0 ms** p95 scoring latency, on 60,000 **synthetic** transactions with a time-based split |
+| [**LoanLens**](machine-learning/prosper-loan-risk/) · credit default scorecard | Careful data science: leakage gate in tests, out-of-time split, calibration, a policy simulator and its limits | Out-of-time ROC-AUC **0.705** (95% CI 0.695–0.714), KS **0.303** on 13,880 later Prosper loans (public data) |
+| [**BI Operations Agent**](products/bi-operations-agent/) · plain-English analytics | BI plus LLM tooling: governed semantic layer, read-only SQL guard, KPI anomaly monitor | **96.0%** (48/50) in-sample and **56.0%** (14/25) held-out questions answered correctly, **12/12** unsafe prompts blocked, 36.6 ms p95, on **synthetic** retail data |
 
-### 🏢 3Consulting Limited (Enterprise Solutions)
-- [**SafeData Case Study Carousel (PDF)**](showcase/carousels/01-SafeData-Case-Study-Carousel.pdf) — Automated NDPA & GDPR Consent Disposal
-- [**FraudGuard Case Study Carousel (PDF)**](showcase/carousels/02-FraudGuard-Case-Study-Carousel.pdf) — Sub-50ms Transaction Risk Engine & SAR Queue
-- [**Africa Stablecoin Intelligence Case Study Carousel (PDF)**](showcase/carousels/03-Africa-Stablecoin-Intelligence-Case-Study-Carousel.pdf) — Pan-African FX Peg & Policy Matrix
-
-### 🔬 Precious Ikebude (Personal AI & ML Products)
-- [**Moniguard v2 Case Study Carousel (PDF)**](showcase/carousels/04-Moniguard-v2-Case-Study-Carousel.pdf) — Nigerian PoD Fraud Scoring Engine (PR-AUC 0.875)
-- [**Lolo's Ledger Case Study Carousel (PDF)**](showcase/carousels/05-Lolos-Ledger-Case-Study-Carousel.pdf) — Multi-Asset Quant Risk & Tilt Detector (-19.6R tilt drag, synthetic benchmark)
-- [**BI Operations Agent Case Study Carousel (PDF)**](showcase/carousels/06-BI-Operations-Agent-Case-Study-Carousel.pdf) — Governed Semantic Layer & AST Guarded SQL (96.0% in-sample, 56.0% held-out)
-- [**LoanLens Case Study Carousel (PDF)**](showcase/carousels/07-LoanLens-Case-Study-Carousel.pdf) — Chronological Prosper Default Scorecard (ROC-AUC 0.705)
-- [**Customer Intelligence Case Study Carousel (PDF)**](showcase/carousels/08-Customer-Intelligence-Case-Study-Carousel.pdf) — Calibrated Churn & Priority Call Queue
-- [**AIOps Expense Tracker Case Study Carousel (PDF)**](showcase/carousels/09-AIOps-Expense-Tracker-Case-Study-Carousel.pdf) — NGN Expense NLP (0.9204 Macro-F1, synthetic data) & ETS Forecast
+**Stack:** Python (pandas, scikit-learn, XGBoost), SQL (PostgreSQL, SQLite), Power BI (DAX), Tableau, R, FastAPI, MLflow, Airflow, Docker, GitHub Actions; TypeScript/React for product front ends.
 
 ---
 
-## 1. Personal AI & ML Products (`products/`)
+## 1. Personal products (`products/`)
 
-| Product | One-Line Summary & Measured Results | Stack | Links |
+| Product | Summary and measured results | Stack | Links |
 |---|---|---|---|
-| [**Moniguard**](products/moniguard/) | Real-time e-commerce & PoD fraud scoring (`0–1000` + reason codes). Calibrated XGBoost + Isolation Forest ensemble reaches **PR-AUC 0.875** (`95% CI: 0.841–0.898`), **Recall@5% alert rate = 0.895**, and **13.0 ms p95 scoring latency** on a 60k **synthetic** time-split benchmark. | Python, XGBoost, Scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case Study](products/moniguard/) · [Product Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
-| [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal, position-sizing risk engine, and educational AI performance coach. Full-stack NestJS + React + BullMQ monorepo built on the engine of my archived desktop predecessor (FXLedger v1.1.0): **363 core** (349 ported from FXLedger v1.1.0) **+ 155 API + 25 web + 7 Python tests** and **14 Playwright e2e runs** (7 tests × 2 viewports). | TypeScript, React, NestJS, PostgreSQL, Redis, Electron, Playwright | [Case Study](products/lolos-ledger/) · *Source private* |
-| [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English analytics agent that queries a read-only SQLite store through a governed YAML semantic layer and AST SQL guard, monitors daily KPIs, and writes weekly executive summaries. On **synthetic** retail data: **96.0% (48/50)** in-sample, **56.0% (14/25)** held-out, **12/12** adversarial prompts blocked, **36.6 ms p95**. | Python, FastAPI, SQLite, sqlglot, Streamlit | [Case Study](products/bi-operations-agent/) · [Product Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
-| [**AIOps Expense Tracker**](products/expense-tracker/) | NGN-first personal & SME finance app with TF-IDF + Logistic Regression auto-categorisation retrained on user corrections (**0.9204 Macro-F1**), receipt-text parsing (no OCR), MAD anomaly detection (**F1 0.973**), and a 3-month ETS forecast (**8.1% holdout WAPE**), all on **synthetic** data. | Python, Scikit-learn, FastAPI, React, Vite | [Case Study](products/expense-tracker/) · [Product Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
+| [**Moniguard**](products/moniguard/) | Pay-on-delivery and e-commerce fraud scoring (`0–1000` plus reason codes). PR-AUC **0.875** (95% CI 0.841–0.898), recall@5% alerts **0.895**, **13.0 ms** p95 on a 60k **synthetic** time-split benchmark. | Python, XGBoost, scikit-learn, FastAPI, Airflow, MLflow, Docker | [Case study](products/moniguard/) · [Repo](https://github.com/ikebude/MLOps-Fraud-Detection) |
+| [**BI Operations Agent**](products/bi-operations-agent/) | Plain-English questions to guarded `SELECT` queries over a YAML semantic layer, daily KPI monitoring and weekly summaries. On **synthetic** retail data: **96.0%** in-sample, **56.0%** held-out, **12/12** adversarial prompts blocked, **36.6 ms** p95. | Python, FastAPI, SQLite, sqlglot, Streamlit | [Case study](products/bi-operations-agent/) · [Repo](https://github.com/ikebude/AIMLOps-BI-Operations-Agent) |
+| [**AIOps Expense Tracker**](products/expense-tracker/) | NGN personal and SME finance app, extended from a course starter: TF-IDF + logistic regression categoriser (**0.9204** macro-F1), receipt-text parsing (no OCR), MAD anomaly detection (F1 **0.973**), ETS forecast (**8.1%** holdout WAPE), all on **synthetic** data. | Python, scikit-learn, FastAPI, React, Vite | [Case study](products/expense-tracker/) · [Repo](https://github.com/ikebude/AIOps_Expense_Tracker) |
+| [**Lolo's Ledger**](products/lolos-ledger/) | Multi-asset trading journal and position-sizing risk engine with an educational AI analyst that never gives trading signals. NestJS + React + BullMQ monorepo built on the engine (and 349 core tests) of my desktop journal FXLedger v1.1.0. | TypeScript, React, NestJS, PostgreSQL, Redis, Python, Playwright | [Case study](products/lolos-ledger/) · source private |
+| [**LoanLens**](products/loanlens/) and [**Customer Intelligence**](products/customer-intelligence/) | Product pages for the two strongest ML projects below. | Python, scikit-learn, Streamlit | see section 3 |
 
 ---
 
-## 2. Industry Case Studies — 3Consulting Limited (`industry-work/`)
+## 2. Work at 3Consulting Limited (`industry-work/`)
 
-> *Shown as engineering case studies (problem, architecture, my role, and planned public sites). Proprietary company source code is never published here.*
+Engineering case studies only: the problem, the architecture and my part in it. No company source code is published here, and none of these products is presented as live; each public site is marked *deployment pending verification*.
 
-| Platform | Domain | What It Does & My Role | Case Study & Public Site |
+| Platform | Domain | My part | Case study |
 |---|---|---|---|
-| [**SafeData (ADRS)**](industry-work/safedata/) | Data Retention & Consent Governance | Tracks record retention schedules, processes consent-withdrawal webhooks into disposal countdowns, enforces legal holds/dual approvals, and seals SHA-256 audit trails. *Role: retention/consent lifecycle logic, PostgreSQL test suite, GitHub Actions CI & security scanning.* | [Case Study](industry-work/safedata/) · [safedata.3consult-ng.com](https://safedata.3consult-ng.com) *(deployment pending verification)* |
-| [**FraudGuard**](industry-work/fraudguard/) | Real-Time Transaction Fraud Prevention | Multi-service fraud intelligence platform (PostgreSQL outbox → Kafka → streaming inference → Flask analyst queue + SAR/governance + Airflow/MLflow retraining). *Role: feature engineering, ensemble pipeline, Airflow/MLflow MLOps, analyst dashboard.* | [Case Study](industry-work/fraudguard/) · [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) *(deployment pending verification)* |
-| [**Africa Stablecoin Intelligence (ASI)**](industry-work/africa-stablecoin-intelligence/) | Market & Regulatory Intelligence | Tracks African stablecoin adoption, corridor metrics, central-bank regulatory posture by country, and editorial research dispatches. *Role: data source schema, Light/Dark/System UI across public & admin apps, launch indexing.* | [Case Study](industry-work/africa-stablecoin-intelligence/) · [africastablecoinintelligence.com](https://africastablecoinintelligence.com) *(deployment pending verification)* |
+| [**SafeData**](industry-work/safedata/) | Data retention and consent governance (NDPA, GDPR) | Retention and consent-lifecycle logic, PostgreSQL test suite, CI security scanning | [Read](industry-work/safedata/) |
+| [**FraudGuard**](industry-work/fraudguard/) | Transaction fraud prevention | Feature engineering, ensemble scoring pipeline, Airflow/MLflow retraining, analyst dashboard | [Read](industry-work/fraudguard/) |
+| [**Africa Stablecoin Intelligence**](industry-work/africa-stablecoin-intelligence/) | Market and regulatory intelligence | Market and regulatory data schema, Light/Dark/System UI, launch and indexing preparation | [Read](industry-work/africa-stablecoin-intelligence/) |
+
+FraudGuard is 3Consulting's product and Moniguard is my personal project. They are separate codebases, and no metric is reported for both.
 
 ---
 
-## 3. Machine Learning Projects (`machine-learning/`)
+## 3. Machine learning projects (`machine-learning/`)
+
+Each project has pinned requirements, tests that regenerate `reports/` and `img/`, and a Limitations section.
+
+| Project | Question | Headline result | Folder |
+|---|---|---|---|
+| **LoanLens: Prosper credit risk** | Which loans will default, judged on later loans? | Out-of-time ROC-AUC 0.705, KS 0.303; policy simulator at a 25% PD cutoff | [`prosper-loan-risk/`](machine-learning/prosper-loan-risk/) |
+| **Customer Intelligence: telco churn, RFM, CLV** | Who should the retention team call first? | Calibrated GBDT PR-AUC 0.841 (logistic baseline 0.831), 80.5% precision at a 20% call budget | [`customer-retention/`](machine-learning/customer-retention/) |
+| **NYC taxi fare and duration** | How well can a fare be quoted before the trip? | Fare MAE $1.47 (R² 0.95) on an out-of-time quarter, 29.6% lower than a linear baseline | [`tlc-cab-fare-intelligence/`](machine-learning/tlc-cab-fare-intelligence/) |
+| **Waze user churn** | Which users are about to churn? | PR-AUC 0.379, ROC-AUC 0.745; the logistic baseline was as good as the tree models | [`waze-churn-prediction/`](machine-learning/waze-churn-prediction/) |
+| **S&P 500 clustering and outliers** | How do constituents group on fundamentals? | 3 K-Means regimes (silhouette 0.37); market-cap tier macro-F1 0.869 vs 0.656 baseline | [`sp500-analysis/`](machine-learning/sp500-analysis/) |
+| **Car pricing** | What drives MSRP once dealer invoice is excluded? | Gradient boosting R² 0.866, MAPE 12.3% on 86 test vehicles | [`cars-model-analysis/`](machine-learning/cars-model-analysis/) |
+
+---
+
+## 4. Analytics, BI and SQL (`analytics-and-bi/`)
 
 | Project | Focus | Folder |
 |---|---|---|
-| **Waze User Churn Prediction** | Behavioural churn classification, feature engineering (session velocity, streak ratios), and retention targeting | [`machine-learning/waze-churn-prediction/`](machine-learning/waze-churn-prediction/) |
-| **TLC CabFare Intelligence (NYC Taxi)** | Fare modelling and demand/anomaly analysis across NYC Yellow Taxi trip records | [`machine-learning/tlc-cab-fare-intelligence/`](machine-learning/tlc-cab-fare-intelligence/) |
-| **Customer Retention & Churn Analysis** | Cohort retention, churn driver identification, and segment risk profiling (foundation for **Customer Intelligence**) | [`machine-learning/customer-retention/`](machine-learning/customer-retention/) |
-| **Prosper Loan Credit Risk Analysis** | Borrower default risk, credit-grade behaviour, and yield vs. loss analysis across 113,937 Prosper listings (55,518 closed loans modelled) (foundation for **LoanLens**) | [`machine-learning/prosper-loan-risk/`](machine-learning/prosper-loan-risk/) |
-| **S&P 500 Financial Clustering & EDA** | SQL normalization + PCA dimensionality reduction + K-Means market segmentation across S&P 500 companies | [`machine-learning/sp500-analysis/`](machine-learning/sp500-analysis/) |
-| **Cars Model Analysis** | Multi-language (Python, R, Power BI) pricing and feature analysis | [`machine-learning/cars-model-analysis/`](machine-learning/cars-model-analysis/) |
+| **CRM sales pipeline** | Win rate, cycle time and SKU mix across 8,800 B2B opportunities | [`crm-sales-analysis/`](analytics-and-bi/crm-sales-analysis/) |
+| **Power BI dashboards** | Churn, contact-centre SLA and HR diversity dashboards with DAX measures | [`power-bi-dashboards/`](analytics-and-bi/power-bi-dashboards/) |
+| **SQL: Danny's Diner** | PostgreSQL CTEs, window functions and conditional logic answering 10 loyalty questions | [`sql-querying/`](analytics-and-bi/sql-querying/) |
+| **KPMG and PwC simulations** | Data-quality audit, customer valuation and retention analysis in Python, R, Tableau and Power BI | [`bi-analytics/`](analytics-and-bi/bi-analytics/) |
+| **Exploratory analyses** | Housing, weather, Netflix, cars and COVID-19 datasets in Python and R | [`global-data-analytics/`](analytics-and-bi/global-data-analytics/) |
 
 ---
 
-## 4. Analytics, BI & SQL Projects (`analytics-and-bi/`)
+## 5. How this repository is kept honest
 
-| Project | Focus | Folder |
-|---|---|---|
-| **CRM Sales Funnel Analysis** | B2B pipeline conversion rates, stage drop-off diagnostics, and deal velocity | [`analytics-and-bi/crm-sales-analysis/`](analytics-and-bi/crm-sales-analysis/) |
-| **Power BI Dashboard Portfolio** | Executive dashboards using DAX time intelligence, data modelling, and drill-through views | [`analytics-and-bi/power-bi-dashboards/`](analytics-and-bi/power-bi-dashboards/) |
-| **Strategic SQL Querying** | Complex MS SQL Server queries (CTEs, window functions, multi-table joins) for operational decision-making | [`analytics-and-bi/sql-querying/`](analytics-and-bi/sql-querying/) |
-| **BI Analytics Simulations** | End-to-end client data quality, segmentation, and executive reporting packages | [`analytics-and-bi/bi-analytics/`](analytics-and-bi/bi-analytics/) |
-| **Global Data Analytics Projects** | Exploratory data analysis and statistical reporting in Python and R | [`analytics-and-bi/global-data-analytics/`](analytics-and-bi/global-data-analytics/) |
+1. **Numbers come from code.** Every ML metric here is written by the project's own pipeline to `reports/*.json`; product numbers come from the product repos' reports. Synthetic data is always labelled.
+2. **Metrics that fit the problem.** Imbalanced problems report PR-AUC, recall at a fixed contact or alert budget, calibration and 95% bootstrap intervals, next to a simple baseline.
+3. **Confidentiality.** Company work is described, never published.
+4. **CI.** [`ci.yml`](.github/workflows/ci.yml) checks links, runs every project's tests, and fails if regenerated results differ from the committed ones.
 
----
-
-## 5. Ground Rules This Repository Follows
-
-1. **Real numbers only.** Every metric reported comes from executing the code in the repository. No invented accuracy or synthetic business claims (Moniguard and other product metrics are on synthetic data where stated).
-2. **The right metric for imbalanced problems.** Fraud, churn, and loan default models report **PR-AUC**, **Recall at a fixed alert/contact budget**, **Precision**, and **95% bootstrap confidence intervals**—never raw accuracy alone.
-3. **Strict confidentiality.** Consulting case studies in `industry-work/` document problem framing, architecture, and my engineering contributions—never client or employer source code.
-4. **Automated CI verification.** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) discovers and runs tests across ML/product folders on every push.
-
----
-
-## Connect
-
-- **GitHub:** [github.com/ikebude](https://github.com/ikebude)
-- **Portfolio:** [datascienceportfol.io/ikebude](https://www.datascienceportfol.io/ikebude)
-- **Email:** [precious.ikebude@outlook.com](mailto:precious.ikebude@outlook.com)
+A slide deck and LinkedIn carousels are in [`showcase/`](showcase/); see the notes there before sharing them.

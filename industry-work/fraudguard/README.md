@@ -6,7 +6,7 @@
 - **Company:** 3Consulting Limited (Lagos, Nigeria)
 - **My Role:** BI Scientist / AI/ML Engineer (Nov 2025 – present) — feature engineering, ensemble scoring pipeline, MLflow/Airflow MLOps workflows, analyst dashboard & governance reporting
 - **Public site (planned):** [fraudguard.3consult-ng.com](https://fraudguard.3consult-ng.com) *(deployment pending verification)*
-- **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here. FraudGuard is 3Consulting's product. It is not Moniguard: Moniguard is a separate personal project with its own code, synthetic data and metrics, and no FraudGuard metric is reported anywhere in this repository.
+- **Codebase Status:** Proprietary (3Consulting Limited). This page is an engineering case study; no proprietary source code is published here. FraudGuard is 3Consulting's product. It is not Moniguard: Moniguard is a separate personal project in its own repository, with its own synthetic data and metrics; no FraudGuard metric is reported anywhere in this repository.
 
 | Public Product Site (`fraudguard.3consult-ng.com`) | Real-Time Risk Scoring & SAR Analyst Queue |
 |---|---|
